@@ -1,0 +1,172 @@
+﻿@model Ostawy.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = null; // عشان تاخد المساحة كاملة زي صفحة اللوجين
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>إنشاء حساب جديد - أوستاوي</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; background-color: #f8f9ff; margin: 0; padding: 0; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(3,22,54,0.85), rgba(3,22,54,0.7)),
+            url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');
+            background-size: cover; background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col m-0 p-0">
+    <div class="flex-grow grid grid-cols-1 md:grid-cols-2 m-0 p-0">
+
+        <div class="hidden md:flex hero-bg relative p-12 flex-col justify-between text-white order-last">
+            <div class="z-10">
+                <a asp-controller="Home" asp-action="Index" class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white" style="font-variation-settings:'FILL' 1;">handyman</span>
+                    </div>
+                    <h1 class="text-3xl font-black">أوستاوي</h1>
+                </a>
+                <p class="text-white/85 text-lg max-w-md leading-relaxed">انضم إلينا الآن واستمتع بتجربة فريدة لطلب الخدمات أو تقديمها كمحترف.</p>
+            </div>
+            <div class="z-10 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                <div class="flex items-center gap-4 mb-2">
+                    <span class="material-symbols-outlined text-orange-400" style="font-variation-settings:'FILL' 1;">verified</span>
+                    <span class="font-bold">أكبر تجمع للفنيين</span>
+                </div>
+                <p class="text-white/80 text-sm">فرص عمل أوسع، وتحكم كامل في أوقات عملك وأرباحك بكل شفافية.</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center p-4 md:p-12 bg-white m-0">
+            <div class="w-full max-w-md m-0">
+                
+                <div class="mb-6 m-0 p-0">
+                    <h2 class="text-3xl font-black text-slate-900 mb-2 m-0 p-0">إنشاء حساب جديد</h2>
+                    <p class="text-gray-500 m-0 p-0">ابدأ معنا اليوم كمزود خدمة أو كعميل.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 p-1 bg-gray-100 rounded-xl mb-6 m-0">
+                    <button type="button" onclick="setRole('client')" id="tab-client" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0">
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">person</span>
+                        عميل
+                    </button>
+                    <button type="button" onclick="setRole('worker')" id="tab-worker" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0">
+                        <span class="material-symbols-outlined text-sm">engineering</span>
+                        فني / مزود خدمة
+                    </button>
+                </div>
+
+                <div id="errorMsg" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-semibold m-0"></div>
+
+                <form asp-controller="Account" asp-action="Register" method="post" id="registerForm" class="space-y-4 m-0 p-0">
+                    
+                    <input type="hidden" name="Role" id="roleInput" value="client" />
+
+                    <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">الاسم الكامل</label>
+                        <div class="relative m-0 p-0">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">person</span>
+                            <input asp-for="FullName" id="nameInput" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="يوسف عيد" type="text" />
+                        </div>
+                        <span asp-validation-for="FullName" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">البريد الإلكتروني</label>
+                        <div class="relative m-0 p-0">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">mail</span>
+                            <input asp-for="Email" id="emailInput" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="example@ostawy.com" type="text" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">كلمة المرور</label>
+                        <div class="relative m-0 p-0">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock</span>
+                            <input asp-for="Password" id="passInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">تأكيد كلمة المرور</label>
+                        <div class="relative m-0 p-0">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock_reset</span>
+                            <input asp-for="ConfirmPassword" id="confirmPassInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <button type="button" onclick="doRegister()" id="registerBtn" class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold text-base shadow-lg hover:opacity-90 active:scale-[0.98] transition-all m-0">
+                        إنشاء الحساب
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-gray-500 text-sm m-0">
+                    لديك حساب بالفعل؟
+                    <a class="text-orange-600 font-bold hover:underline mr-1" asp-controller="Account" asp-action="Login">تسجيل الدخول</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentRole = 'client';
+
+        function setRole(role) {
+            currentRole = role;
+            document.getElementById('roleInput').value = role;
+            
+            const tc = document.getElementById('tab-client');
+            const tw = document.getElementById('tab-worker');
+            if (role === 'client') {
+                tc.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0';
+                tw.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0';
+            } else {
+                tw.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0';
+                tc.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0';
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.add('hidden'), 4000);
+        }
+
+        function doRegister() {
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const pass = document.getElementById('passInput').value;
+            const confirmPass = document.getElementById('confirmPassInput').value;
+            
+            if (!name || !email || !pass || !confirmPass) {
+                return showError('يرجى إدخال البيانات كاملة');
+            }
+
+            if (pass !== confirmPass) {
+                return showError('كلمة المرور وتأكيدها غير متطابقين');
+            }
+
+            const btn = document.getElementById('registerBtn');
+            btn.textContent = 'جاري إنشاء الحساب...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('registerForm').submit();
+            }, 500);
+        }
+    </script>
+</body>
+</html>
