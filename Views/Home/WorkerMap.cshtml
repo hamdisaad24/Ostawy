@@ -1,0 +1,200 @@
+﻿@{
+    ViewData["Title"] = "خريطة الطلبات المتاحة - أوستاوي";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>لوحة طلبات الأوستاية - أوستاوي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; margin: 0; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        #map { height: calc(100vh - 64px); width: 100%; }
+        .leaflet-popup-content-wrapper { border-radius: 16px !important; padding: 6px; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+
+    <header class="flex justify-between items-center w-full px-4 md:px-8 h-16 bg-slate-800 border-b border-slate-700 shadow-md">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-orange-500 text-2xl animate-pulse">engineering</span>
+            <h1 class="font-black text-lg text-white">لوحة تحكم الأسطى لايف 🛠️</h1>
+        </div>
+        <div class="flex items-center gap-3">
+            <select id="workerCategoryFilter" onchange="loadActiveRequests()" class="rounded-xl border-slate-600 bg-slate-700 text-white text-xs font-bold p-2.5 outline-none focus:border-orange-500">
+                <option value="all">كل الطلبات المتاحة</option>
+                <option value="plumbing">🔧 سباكة</option>
+                <option value="electric">⚡ كهرباء</option>
+                <option value="ac">❄️ تكييف</option>
+                <option value="paint">🎨 دهانات</option>
+            </select>
+            <button onclick="loadActiveRequests()" class="p-2 bg-slate-700 text-orange-400 rounded-xl hover:bg-slate-600 transition-colors" title="تحديث الطلبات">
+                <span class="material-symbols-outlined text-xl">refresh</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="relative w-full h-[calc(100vh-64px)]">
+        <div id="map" class="w-full h-full"></div>
+
+        <div class="absolute bottom-6 right-6 z-[1000] bg-slate-800/95 border border-slate-700 rounded-2xl p-4 shadow-2xl w-64 backdrop-blur-sm">
+            <p class="text-xs text-slate-400 font-medium mb-1">طلبات زبائن مفتوحة الآن بالقرب منك</p>
+            <div class="flex items-center justify-between">
+                <span id="requestCountDisplay" class="text-3xl font-black text-orange-500">٠</span>
+                <span class="flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-full font-bold">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span>
+                    محدّث لايف
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let requestMarkers = [];
+        let activeRequests = [];
+        
+        // أيدي الفني الافتراضي للتجربة (في الشغل الحقيقي هتاخده من بيانات الـ Login للأسطى)
+        const currentWorkerId = 1; 
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // رسم الخريطة وسنترتها على القاهرة
+            map = L.map('map', { zoomControl: false }).setView([30.0444, 31.2357], 13);
+            
+            L.control.zoom({ position: 'bottomleft' }).addTo(map);
+
+            // استخدام ستايل غامق (Dark Map) عشان يليق بلوحة تحكم الفني المحترفة
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // تحميل الطلبات لأول مرة
+            loadActiveRequests();
+
+            // ريفريش تلقائي للطلبات كل 6 ثواني عشان لو عميل جديد نزل طلب يظهر للأسطى علطول
+            setInterval(loadActiveRequests, 6000);
+        });
+
+        // 1. جلب طلبات العملاء المفتوحة من الـ .NET API
+        async function loadActiveRequests() {
+            const cat = document.getElementById('workerCategoryFilter').value;
+            try {
+                const response = await fetch(`/Bidding/GetActiveRequestsJson?category=${cat}`);
+                activeRequests = await response.json();
+
+                renderRequestsOnMap();
+            } catch (err) {
+                console.error("خطأ في جلب طلبات العملاء:", err);
+            }
+        }
+
+        // 2. رسم دبابيس طلبات الزبائن على الخريطة
+        function renderRequestsOnMap() {
+            // مسح الدبابيس القديمة
+            requestMarkers.forEach(m => map.removeLayer(m));
+            requestMarkers = [];
+
+            // تحديث عداد الطلبات بالأرقام العربية
+            document.getElementById('requestCountDisplay').textContent = 
+                activeRequests.length.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+            activeRequests.forEach(req => {
+                // عمل كاستم أيقونة زرقاء فخمة تعبر عن طلب زبون
+                const customerIcon = L.divIcon({
+                    className: '',
+                    html: `<div style="
+                        background: #3b82f6;
+                        border: 3px solid white;
+                        border-radius: 50%;
+                        width: 32px; height: 32px;
+                        display: flex; align-items: center; justify-content: center;
+                        box-shadow: 0 4px 15px rgba(59,130,246,0.5);
+                        cursor: pointer;
+                        animation: bounce 2s infinite;
+                    "><span class="material-symbols-outlined text-white text-sm" style="font-variation-settings:'FILL' 1">person_pin</span></div>`,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16],
+                    popupAnchor: [0, -16]
+                });
+
+                const marker = L.marker([req.lat, req.lng], { icon: customerIcon });
+
+                // محتوى الـ Popup اللي هيظهر للفني لما يضغط على مكان الزبون
+                const popupHtml = `
+                    <div style="min-width:240px; padding:12px; direction:rtl; text-align:right; font-family:'Noto Sans Arabic',sans-serif; color:#0f172a;">
+                        <span style="background:#dbeafe; color:#1e40af; font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px;">
+                            طلب ${getCategoryNameArabic(req.category)} 🛠️
+                        </span>
+                        <p style="font-weight:700; font-size:14px; margin:10px 0 6px; color:#1e293b; line-height:1.4;">"${req.description}"</p>
+                        <div style="display:flex; justify-content:between; align-items:center; background:#f8fafc; padding:8px; border-radius:10px; margin-bottom:12px;">
+                            <span style="font-size:12px; color:#64748b;">ميزانية الزبون:</span>
+                            <span style="font-weight:900; font-size:15px; color:#16a34a;">${req.customerPrice} ج.م</span>
+                        </div>
+                        
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <input id="offerPrice_${req.id}" type="number" value="${req.customerPrice}" 
+                                style="width:80px; padding:8px; border:1px solid #cbd5e1; border-radius:8px; font-weight:900; text-align:center; outline:none;" />
+                            <button onclick="sendBidToCustomer(${req.id})" 
+                                style="flex:1; background:#fd7613; color:white; border:none; padding:8px; border-radius:8px; font-weight:700; font-size:12px; cursor:pointer; transition:all 0.2s;">
+                                تقديم عرض سعر 💰
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                marker.bindPopup(popupHtml);
+                marker.addTo(map);
+                requestMarkers.push(marker);
+            });
+        }
+
+        // 3. إرسال عرض السعر للداتا بيز
+        async function sendBidToCustomer(requestId) {
+            const inputField = document.getElementById(`offerPrice_${requestId}`);
+            const offerPrice = parseFloat(inputField.value);
+
+            if (!offerPrice || offerPrice <= 0) {
+                alert("من فضلك اكتب سعر عرض صالح!");
+                return;
+            }
+
+            // تجهيز الـ Form Data للإرسال للـ Controller
+            const formData = new FormData();
+            formData.append('requestId', requestId);
+            formData.append('workerId', currentWorkerId);
+            formData.append('offerPrice', offerPrice);
+
+            try {
+                const response = await fetch('/Bidding/AddBid', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message);
+                    map.closePopup(); // قفل الصندوق بعد الإرسال بنجاح
+                    loadActiveRequests(); // تحديث الخريطة
+                }
+            } catch (err) {
+                console.error("خطأ في إرسال العرض:", err);
+                alert("حدث خطأ، تأكد من أن الطلب ما زال متاحاً.");
+            }
+        }
+
+        function getCategoryNameArabic(cat) {
+            const mapping = { 'plumbing': 'سباكة', 'electric': 'كهرباء', 'ac': 'تكييف', 'paint': 'دهانات' };
+            return mapping[cat] || 'عام';
+        }
+    </script>
+</body>
+</html>

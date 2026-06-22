@@ -1,0 +1,276 @@
+﻿@model IEnumerable<Ostawy.Models.User>
+
+@{
+    ViewData["Title"] = "طلب أوستا - أوستاوي";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>اطلب أوستا - أوستاوي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; margin: 0; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        #map { height: calc(100vh - 64px - 64px); width: 100%; }
+        @@media (min-width: 768px) { #map { height: calc(100vh - 64px); } }
+        .leaflet-popup-content-wrapper { border-radius: 12px !important; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="sticky top-0 z-50 flex justify-between items-center w-full px-4 md:px-8 h-16 bg-white shadow-sm border-b border-gray-100">
+        <div class="flex items-center gap-3">
+            <h1 class="font-black text-xl text-slate-900">نظام مناقصات أوستاوي 🗺️</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="locateUser()" class="p-2.5 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition-colors" title="موقعي الحقيقي">
+                <span class="material-symbols-outlined text-xl">my_location</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-col md:flex-row h-full" style="height: calc(100vh - 64px - 64px); overflow: hidden;">
+        <div class="flex-1 relative">
+            <div id="map"></div>
+            <div class="absolute top-3 right-3 z-10 bg-white/90 p-2.5 rounded-xl shadow-md text-xs font-bold text-slate-800">
+                📍 اضغط على الخريطة لتحديد مكان المشكلة
+            </div>
+        </div>
+
+        <div class="w-full md:w-96 bg-white border-r border-gray-100 flex flex-col h-full overflow-hidden" id="sidePanel">
+            
+            <div id="createRequestSection" class="p-6 space-y-4 flex-grow overflow-y-auto">
+                <div>
+                    <h2 class="font-black text-lg text-slate-900">انشر مشكلتك الآن</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">حدد موقعك واكتب السعر العادل لينافس الفنيون عليه.</p>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-400">
+                    <div>خط العرض: <span id="displayLat">لم يحدد</span></div>
+                    <div>خط الطول: <span id="displayLng">لم يحدد</span></div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">نوع الخدمة المطلوبة</label>
+                    <select id="jobCategory" class="w-full rounded-xl border-gray-200 p-3 bg-gray-50 text-sm focus:border-orange-500 focus:ring-orange-200">
+                        <option value="plumbing">🔧 سباكة</option>
+                        <option value="electric">⚡ كهرباء</option>
+                        <option value="ac">❄️ تكييف وتبريد</option>
+                        <option value="paint">🎨 دهانات ونقاشة</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">اشرح المشكلة للفنيين</label>
+                    <textarea id="jobDescription" rows="3" placeholder="مثال: عندي ماسورة مكسورة في المطبخ وبتنزل مية..." class="w-full rounded-xl border-gray-200 p-3 bg-gray-50 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">السعر المعروض (ج.م)</label>
+                    <input id="customerPrice" type="number" value="100" class="w-full rounded-xl border-gray-200 p-3 bg-gray-50 text-sm font-black focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all" />
+                </div>
+
+                <button onclick="submitJobRequest()" class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold text-base shadow-lg hover:bg-orange-600 transition-all">
+                    أنشئ المزاد وانشر الطلب 🚀
+                </button>
+            </div>
+
+            <div id="waitingBidsSection" class="hidden p-6 space-y-4 flex-grow overflow-y-auto bg-slate-50">
+                <div class="text-center py-4 bg-white rounded-2xl p-4 shadow-sm border border-orange-100 animate-pulse">
+                    <div class="w-2 h-2 bg-orange-500 rounded-full mx-auto mb-2 animate-ping"></div>
+                    <h2 class="font-black text-base text-slate-900">في انتظار عروض الأوستاية...</h2>
+                    <p class="text-xs text-gray-500 mt-1">الفنيون القريبون يراجعون طلبك الآن.</p>
+                </div>
+
+                <h3 class="font-bold text-sm text-slate-800 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-orange-500">gavel</span>
+                    العروض المقدمة لك:
+                </h3>
+
+                <div id="bidsList" class="space-y-3">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let selectedLat = null;
+        let selectedLng = null;
+        let currentRequestId = null;
+        let bidsInterval = null;
+        let currentMarker = null;
+
+        // معرف افتراضي للعميل الحالي للتجربة (في الحقيقي هتاخده من الـ User ID بعد الـ Login)
+        const currentClientId = 5; 
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // سنتر الخريطة مبدئياً على القاهرة
+            map = L.map('map', { zoomControl: false }).setView([30.0444, 31.2357], 13);
+            L.control.zoom({ position: 'bottomleft' }).addTo(map);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // الاستماع للضغط على الخريطة لتحديد الموقع
+            map.on('click', function(e) {
+                setTargetLocation(e.latlng.lat, e.latlng.lng);
+            });
+
+            locateUser();
+        });
+
+        function locateUser() {
+            if (!navigator.geolocation) return;
+            navigator.geolocation.getCurrentPosition(pos => {
+                setTargetLocation(pos.coords.latitude, pos.coords.longitude);
+                map.setView([pos.coords.latitude, pos.coords.longitude], 15);
+            });
+        }
+
+        function setTargetLocation(lat, lng) {
+            selectedLat = lat;
+            selectedLng = lng;
+            document.getElementById('displayLat').textContent = lat.toFixed(4);
+            document.getElementById('displayLng').textContent = lng.toFixed(4);
+
+            if (currentMarker) map.removeLayer(currentMarker);
+            
+            // وضع دبوس يمثل العميل
+            currentMarker = L.marker([lat, lng]).addTo(map)
+                .bindPopup('<p style="font-family:Noto Sans Arabic; font-weight:700; padding:4px; text-align:center;">📍 مكان مشكلتك هنا</p>').openPopup();
+        }
+
+        // 1. إرسال الطلب للداتا بيز
+        async function submitJobRequest() {
+            if (!selectedLat || !selectedLng) {
+                alert("من فضلك حدد مكان المشكلة على الخريطة أولاً!");
+                return;
+            }
+
+            const desc = document.getElementById('jobDescription').value.trim();
+            const category = document.getElementById('jobCategory').value;
+            const price = document.getElementById('customerPrice').value;
+
+            if (!desc) {
+                alert("من فضلك اكتب وصفاً للمشكلة عشان الفني يفهمها.");
+                return;
+            }
+
+            const requestData = {
+                clientId: currentClientId,
+                description: desc,
+                category: category,
+                customerPrice: parseFloat(price),
+                lat: selectedLat,
+                lng: selectedLng
+            };
+
+            try {
+                const response = await fetch('/Bidding/CreateJobRequest', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    currentRequestId = result.requestId;
+                    
+                    // تحويل الشاشة لوضع انتظار العروض
+                    document.getElementById('createRequestSection').classList.add('hidden');
+                    document.getElementById('waitingBidsSection').classList.remove('hidden');
+
+                    // تشغيل التحديث التلقائي (كل 4 ثواني) للبحث عن عروض الفنيين
+                    startCheckingForBids();
+                }
+            } catch (err) {
+                console.error("خطأ أثناء نشر الطلب:", err);
+            }
+        }
+
+        // 2. فحص العروض القادمة (لايف)
+        function startCheckingForBids() {
+            bidsInterval = setInterval(async () => {
+                if (!currentRequestId) return;
+
+                try {
+                    const response = await fetch(`/Bidding/GetBidsForRequest?requestId=${currentRequestId}`);
+                    const bids = await response.json();
+
+                    renderBidsList(bids);
+                } catch (err) {
+                    console.error("خطأ في جلب العروض:", err);
+                }
+            }, 4000); // كل 4 ثواني
+        }
+
+        // 3. رسم كروت العروض في القائمة الجانبية
+        function renderBidsList(bids) {
+            const list = document.getElementById('bidsList');
+            list.innerHTML = '';
+
+            if (bids.length === 0) {
+                list.innerHTML = '<p class="text-xs text-center text-gray-400 py-6">لم يصل أي عرض حتى الآن.. خليك فاتح الصفحة ومستني</p>';
+                return;
+            }
+
+            bids.forEach(bid => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex flex-col gap-2';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">${bid.workerName || 'أسطى محترف'}</h4>
+                            <p class="text-amber-500 font-bold text-xs mt-0.5">⭐ ${bid.workerRating.toFixed(1)}</p>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-xs text-gray-400 block">عرض سعر</span>
+                            <span class="font-black text-orange-600 text-base">${bid.offerPrice} ج.م</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-2">
+                        <button onclick="acceptWorkerBid(${bid.bidId})" class="flex-1 bg-green-600 text-white font-bold py-2 rounded-lg text-xs hover:bg-green-700 transition-all">قبول العرض ✅</button>
+                        <button class="bg-gray-100 text-gray-500 font-bold px-3 py-2 rounded-lg text-xs hover:bg-gray-200 transition-all">رفض</button>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        // 4. موافقة العميل على فني معين وقفل المزاد
+        async function acceptWorkerBid(bidId) {
+            if (!confirm("هل أنت متأكد إنك موافق على عرض الأسطى ده؟")) return;
+
+            try {
+                const response = await fetch(`/Bidding/AcceptBid?bidId=${bidId}`, { method: 'POST' });
+                const result = await response.json();
+
+                if (result.success) {
+                    clearInterval(bidsInterval); // إيقاف العداد التلقائي
+                    alert(result.message);
+                    
+                    // إعادة تصفير الصفحة للوضع الافتراضي
+                    location.reload();
+                }
+            } catch (err) {
+                console.error("حدث خطأ في قبول العرض:", err);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿@model Ostawy.Models.User
+
+@{
+    ViewData["Title"] = "إعدادات الحساب - أوستاوي";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="light" dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>تعديل بيانات الملف الشخصي</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        body {
+        font-family: 'Noto Sans Arabic', sans-serif;
+        }</style>
+    </head>
+    <body class="bg-slate-50 text-slate-800 min-h-screen flex items-center justify-center p-4">
+
+        <div class="w-full max-w-xl bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+        
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                <div class="p-2.5 bg-orange-50 text-orange-500 rounded-xl">
+                    <span class="material-symbols-outlined text-2xl">manage_accounts</span>
+                </div>
+                <div>
+                    <h1 class="font-black text-xl text-slate-900">إعدادات ملفك الشخصي 🛠️</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">برجاء استكمال أو تحديث بياناتك لتنشيط ظهورك للزبائن.</p>
+                </div>
+            </div>
+
+            <form asp-action="CompleteProfile" method="post" class="space-y-5" onsubmit="getGpsLocation(event)">
+            
+                <input type="hidden" asp-for="Lat" id="geoLat" />
+                <input type="hidden" asp-for="Lng" id="geoLng" />
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1.5">الاسم الكامل (مسجل من الـ Register)</label>
+                    <input asp-for="FullName" type="text" readonly class="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-semibold text-slate-500 cursor-not-allowed outline-none" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">رقم الهاتف الفعلي (للتواصل مع الزبائن) *</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">call</span>
+                        <input asp-for="Phone" type="tel" required placeholder="مثال: 01023456789" class="w-full rounded-xl border border-slate-200 pr-10 pl-4 py-3 text-sm font-bold text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">العنوان الحالي بالتفصيل *</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">home_pin</span>
+                        <input asp-for="Address" type="text" required placeholder="مثال: القاهرة، الدقي، شارع مصدق" class="w-full rounded-xl border border-slate-200 pr-10 pl-4 py-3 text-sm text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">حرفتك / تخصصك الرئيسي *</label>
+                        <select asp-for="Specialty" class="w-full rounded-xl border border-slate-200 p-3 text-sm font-bold text-slate-800 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 bg-white">
+                            <option value="سباكة">🔧 سباكة</option>
+                            <option value="كهرباء">⚡ كهرباء</option>
+                            <option value="تكييف">❄️ تكييف وتبريد</option>
+                            <option value="دهانات">🎨 دهانات ونقاشة</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">سعر الفحص / اليومية المبدئي (ج.م) *</label>
+                        <input asp-for="Price" type="number" required min="1" class="w-full rounded-xl border border-slate-200 p-3 text-sm font-black text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">نبذة عن خبرتك وسوابق أعمالك (تظهر للزبون)</label>
+                    <textarea asp-for="Bio" rows="3" placeholder="اكتب للزبائن نبذة تشجعهم يختاروك.. (مثال: خبرة 8 سنوات في تشطيب الشقق والفيلات الكبرى ومتاح للطوارئ)" class="w-full rounded-xl border border-slate-200 p-3 text-sm text-slate-900 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all"></textarea>
+                </div>
+
+                <div class="flex gap-3 pt-2 border-t border-slate-100 mt-4">
+                    <button type="submit" class="flex-1 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white rounded-xl font-black text-sm shadow-md shadow-orange-500/10 transition-all">
+                        حفظ التعديلات وتنشيط حسابي 🚀
+                    </button>
+                    <a href="/Worker/Dashboard" class="px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-sm text-center transition-all">
+                        إلغاء
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function getGpsLocation(e) {
+            e.preventDefault(); // وقف الإرسال ثانية واحدة
+            const form = e.target;
+
+            if (navigator.geolocation) {
+            // بنطلب لوكيشن الأسطى الحقيقي
+            navigator.geolocation.getCurrentPosition(pos => {
+            document.getElementById('geoLat').value = pos.coords.latitude;
+            document.getElementById('geoLng').value = pos.coords.longitude;
+            form.submit(); // أرسل الفورم للداتا بيز بعد الحفظ نجاح اللوكيشن
+            }, err => {
+            console.warn("الأسطى رفض إذن الـ GPS، سيتم استخدام لوكيشن القاهرة الافتراضي.");
+            document.getElementById('geoLat').value = 30.0444;
+            document.getElementById('geoLng').value = 31.2357;
+            form.submit();
+            });
+            } else {
+            form.submit();
+            }
+            }
+        </script>
+    </body>
+</html>
