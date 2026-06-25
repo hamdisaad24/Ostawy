@@ -1,8 +1,8 @@
-﻿@model Ostawy.Models.RegisterViewModel
+﻿@model Ostawy.ViewModels.RegisterViewModel
 
 @{
     ViewData["Title"] = "Register";
-    Layout = null; // عشان تاخد المساحة كاملة زي صفحة اللوجين
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -26,7 +26,6 @@
 </head>
 <body class="min-h-screen flex flex-col m-0 p-0">
     <div class="flex-grow grid grid-cols-1 md:grid-cols-2 m-0 p-0">
-
         <div class="hidden md:flex hero-bg relative p-12 flex-col justify-between text-white order-last">
             <div class="z-10">
                 <a asp-controller="Home" asp-action="Index" class="flex items-center gap-3 mb-8">
@@ -51,25 +50,14 @@
                 
                 <div class="mb-6 m-0 p-0">
                     <h2 class="text-3xl font-black text-slate-900 mb-2 m-0 p-0">إنشاء حساب جديد</h2>
-                    <p class="text-gray-500 m-0 p-0">ابدأ معنا اليوم كمزود خدمة أو كعميل.</p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 p-1 bg-gray-100 rounded-xl mb-6 m-0">
-                    <button type="button" onclick="setRole('client')" id="tab-client" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0">
-                        <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">person</span>
-                        عميل
-                    </button>
-                    <button type="button" onclick="setRole('worker')" id="tab-worker" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0">
-                        <span class="material-symbols-outlined text-sm">engineering</span>
-                        فني / مزود خدمة
-                    </button>
+                    <p class="text-gray-500 m-0 p-0">أنشئ حسابك وابدأ في طلب الخدمات بسهولة.</p>
                 </div>
 
                 <div id="errorMsg" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-semibold m-0"></div>
 
+                <div asp-validation-summary="All"
+                     class="text-red-600 text-sm mb-4 font-bold"></div>
                 <form asp-controller="Account" asp-action="Register" method="post" id="registerForm" class="space-y-4 m-0 p-0">
-                    
-                    <input type="hidden" name="Role" id="roleInput" value="client" />
 
                     <div>
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">الاسم الكامل</label>
@@ -93,8 +81,20 @@
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">كلمة المرور</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock</span>
-                            <input asp-for="Password" id="passInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+
+                            <input asp-for="Password"
+                                   id="passInput"
+                                   class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0"
+                                   placeholder="••••••••"
+                                   type="password" />
+
+                            <button type="button"
+                                    onclick="togglePassword('passInput', 'passIcon')"
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
+                                <span class="material-symbols-outlined" id="passIcon">visibility</span>
+                            </button>
                         </div>
+
                         <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
 
@@ -102,9 +102,43 @@
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">تأكيد كلمة المرور</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock_reset</span>
-                            <input asp-for="ConfirmPassword" id="confirmPassInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+
+                            <input asp-for="ConfirmPassword"
+                                   id="confirmPassInput"
+                                   class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0"
+                                   placeholder="••••••••"
+                                   type="password" />
+
+                            <button type="button"
+                                    onclick="togglePassword('confirmPassInput', 'confirmPassIcon')"
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
+                                <span class="material-symbols-outlined" id="confirmPassIcon">visibility</span>
+                            </button>
                         </div>
+
                         <span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1">
+                            العنوان
+                        </label>
+
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                location_on
+                            </span>
+
+                            <input asp-for="Address"
+                                   id="addressF"
+                                   class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none"
+                                   placeholder="القاهرة - المعادي"
+                                   type="text" />
+                        </div>
+
+                        <span asp-validation-for="Address"
+                              class="text-red-500 text-xs mt-1 block">
+                        </span>
                     </div>
 
                     <button type="button" onclick="doRegister()" id="registerBtn" class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold text-base shadow-lg hover:opacity-90 active:scale-[0.98] transition-all m-0">
@@ -121,23 +155,6 @@
     </div>
 
     <script>
-        let currentRole = 'client';
-
-        function setRole(role) {
-            currentRole = role;
-            document.getElementById('roleInput').value = role;
-            
-            const tc = document.getElementById('tab-client');
-            const tw = document.getElementById('tab-worker');
-            if (role === 'client') {
-                tc.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0';
-                tw.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0';
-            } else {
-                tw.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white shadow-sm border border-gray-100 text-orange-600 font-bold transition-all text-sm m-0';
-                tc.className = 'flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-gray-500 hover:bg-white/50 font-bold transition-all text-sm m-0';
-            }
-        }
-
         function showError(msg) {
             const el = document.getElementById('errorMsg');
             el.textContent = msg;
@@ -150,8 +167,9 @@
             const email = document.getElementById('emailInput').value.trim();
             const pass = document.getElementById('passInput').value;
             const confirmPass = document.getElementById('confirmPassInput').value;
+            const address = document.getElementById('addressF').value.trim();
             
-            if (!name || !email || !pass || !confirmPass) {
+            if (!name || !email || !pass || !confirmPass || !address) {
                 return showError('يرجى إدخال البيانات كاملة');
             }
 
@@ -166,6 +184,19 @@
             setTimeout(() => {
                 document.getElementById('registerForm').submit();
             }, 500);
+        }
+
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "visibility_off";
+            } else {
+                input.type = "password";
+                icon.textContent = "visibility";
+            }
         }
     </script>
 </body>

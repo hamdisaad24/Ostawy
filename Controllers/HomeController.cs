@@ -15,42 +15,42 @@ public class HomeController : Controller
     {
         _context = context;
     }
-    // 1. الأكشن اللي بيفتح صفحة الخريطة
-    public IActionResult MapView()
-    {
-        return View();
-    }
+    //// 1. الأكشن اللي بيفتح صفحة الخريطة
+    //public IActionResult MapView()
+    //{
+    //    return View();
+    //}
 
-    // 2. الـ API اللي الـ JavaScript هيكلمه عشان ياخد بيانات الفنيين الحقيقية
-    [HttpGet]
-    public IActionResult GetWorkersJson()
-    {
-        // سحب المستخدمين اللي الـ Role بتاعهم worker فقط من الداتا بيز
-        var workersList = _context.Users
-            .Where(u => u.Role == "worker"
-            && u.IsAvailable == true
-            && u.Lat != null && u.Lng != null
-            && !string.IsNullOrEmpty(u.Specialty)
-            && u.Price > 0
-            )
-            .Select(u => new
-            {
-                id = u.Id,
-                name = u.FullName,
-                specialty = u.Specialty,
-                category = u.Category,
-                rating = u.Rating,
-                reviews = u.ReviewsCount,
-                price = u.Price,
-                lat = u.Lat,
-                lng = u.Lng,
-                available = u.IsAvailable,
-                avatar = string.IsNullOrEmpty(u.FullName) ? "أ" : u.FullName.Substring(0, 1) // بيجيب أول حرف للافتار
-            })
-            .ToList();
+    //// 2. الـ API اللي الـ JavaScript هيكلمه عشان ياخد بيانات الفنيين الحقيقية
+    //[HttpGet]
+    //public IActionResult GetWorkersJson()
+    //{
+    //    // سحب المستخدمين اللي الـ Role بتاعهم worker فقط من الداتا بيز
+    //    var workersList = _context.Users
+    //        .Where(u => u.Role == "worker"
+    //        && u.IsAvailable == true
+    //        && u.Lat != null && u.Lng != null
+    //        && !string.IsNullOrEmpty(u.Specialty)
+    //        && u.Price > 0
+    //        )
+    //        .Select(u => new
+    //        {
+    //            id = u.Id,
+    //            name = u.FullName,
+    //            specialty = u.Specialty,
+    //            category = u.Category,
+    //            rating = u.Rating,
+    //            reviews = u.ReviewsCount,
+    //            price = u.Price,
+    //            lat = u.Lat,
+    //            lng = u.Lng,
+    //            available = u.IsAvailable,
+    //            avatar = string.IsNullOrEmpty(u.FullName) ? "أ" : u.FullName.Substring(0, 1) // بيجيب أول حرف للافتار
+    //        })
+    //        .ToList();
 
-        return Json(workersList); // بيرجع البيانات كـ JSON
-    }
+    //    return Json(workersList); // بيرجع البيانات كـ JSON
+    //}
 
 
     public IActionResult Index()
@@ -63,14 +63,14 @@ public class HomeController : Controller
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    //public IActionResult Error()
+    //{
+    //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    //}
 
-    public IActionResult WorkerDashboard()
-    {
-        return Content("أهلاً بك في لوحة تحكم الفني (تحت الإنشاء)");
-    }
+    //public IActionResult WorkerDashboard()
+    //{
+    //    return Content("أهلاً بك في لوحة تحكم الفني (تحت الإنشاء)");
+    //}
 }

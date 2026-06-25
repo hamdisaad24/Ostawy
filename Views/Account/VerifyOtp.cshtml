@@ -1,0 +1,134 @@
+﻿@model Ostawy.ViewModels.VerifyOtpViewModel
+
+@{
+    ViewData["Title"] = "Verify OTP";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Verify OTP</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+        font-family: 'Noto Sans Arabic', sans-serif;
+        background-color: #f8f9ff;
+        }
+
+        .hero-bg {
+        background-image: linear-gradient(rgba(3,22,54,0.85), rgba(3,22,54,0.7)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');
+        background-size: cover;
+        background-position: center;
+        }
+
+        .otp-box {
+        width: 50px;
+        height: 60px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background: #f9fafb;
+        outline: none;
+        }
+
+        .otp-box:focus {
+        border-color: #fb923c;
+        box-shadow: 0 0 0 2px rgba(251,146,60,0.3);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <div class="flex-grow grid grid-cols-1 md:grid-cols-2">
+
+        <!-- LEFT SIDE (FORM) -->
+        <div class="flex items-center justify-center bg-white p-6">
+
+            <div class="w-full max-w-md">
+
+                <h2 class="text-3xl font-black mb-2">تحقق من الرمز</h2>
+
+                <p class="text-gray-500 mb-2">تم إرسال كود إلى:</p>
+
+                <p class="text-orange-600 font-bold mb-6">
+                    @Model.Email
+                </p>
+
+                <div asp-validation-summary="All" class="text-red-600 mb-4 text-sm font-bold"></div>
+
+                <form asp-action="VerifyOtp" method="post" class="space-y-4">
+
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="Code" id="otpHidden" />
+
+                    <!-- OTP INPUTS -->
+                    <div class="flex justify-between gap-2" dir="ltr">
+                        <input class="otp-box" maxlength="1" />
+                        <input class="otp-box" maxlength="1" />
+                        <input class="otp-box" maxlength="1" />
+                        <input class="otp-box" maxlength="1" />
+                        <input class="otp-box" maxlength="1" />
+                        <input class="otp-box" maxlength="1" />
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-orange-500 text-white py-3 rounded-xl font-bold hover:opacity-90">
+                        تأكيد الرمز
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE (IMAGE) -->
+        <div class="hidden md:flex hero-bg items-center justify-center text-white p-10">
+
+            <div class="text-center">
+
+                <h1 class="text-3xl font-black mb-4">أوستاوي</h1>
+
+                <p class="text-white/80 leading-relaxed">
+                    أدخل رمز التحقق المرسل إلى بريدك الإلكتروني لإكمال العملية بأمان
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('.otp-box');
+        const hidden = document.getElementById('otpHidden');
+
+        inputs.forEach((input, i) => {
+        input.addEventListener('input', () => {
+
+        if (input.value && i < inputs.length - 1)
+        inputs[i + 1].focus();
+
+        hidden.value = Array.from(inputs).map(x => x.value).join('');
+        });
+
+        input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && !input.value && i > 0) {
+        inputs[i - 1].focus();
+        }
+        });
+        });
+    </script>
+
+</body>
+</html>

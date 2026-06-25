@@ -1,37 +1,49 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Ostawy.Data;
-
-
+using Ostawy.Helpers;
+using Ostawy.Interfaces;
+using Ostawy.Models;
+using Ostawy.SeedingData;
+using Ostawy.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Authentication Youssef
-
-builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
+    option =>
     {
-        options.LoginPath = "/Acount/Login";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-    });
+        option.Password.RequiredLength = 8;
+        option.Password.RequireNonAlphanumeric = false;
+        option.Password.RequireDigit = false;
+        option.Password.RequireUppercase = false;
+        option.Password.RequireLowercase = false;
+    })
+       .AddEntityFrameworkStores<ApplicationDbContext>()
+       .AddDefaultTokenProviders();
+
+builder.Services.Configure<EmailSettings>(
+    builder.Configuration.GetSection(EmailSettings.SectionName));
+
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+await RoleSeeder.SeedRolesAsync(app);
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -40,7 +52,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}")
+    pattern: "{controller=Home}/{action=index}/{id?}")
     .WithStaticAssets();
 
 
