@@ -9,25 +9,28 @@ namespace Ostawy.Models
         public int Id { get; set; }
 
         [Required]
-        public int ClientId { get; set; } // رقم العميل اللي عمل الطلب
+        public int ClientId { get; set; }
 
         [Required]
         [StringLength(500)]
-        public string Description { get; set; } // تفاصيل المشكلة (مثلاً: ماسورة مكسورة في الحمام)
+        public string Description { get; set; } = string.Empty;
 
         [Required]
-        public string Category { get; set; } // القسم (plumbing, electric, ac, paint)
+        public string Category { get; set; } = string.Empty;
+
+        public decimal? CustomerPrice { get; set; }
 
         [Required]
-        public decimal CustomerPrice { get; set; } // السعر الافتراضي اللي العميل عرضه
+        public double Lat { get; set; }
 
         [Required]
-        public double Lat { get; set; } // خط العرض لمكان المشكلة
+        public double Lng { get; set; }
 
-        [Required]
-        public double Lng { get; set; } // خط الطول لمكان المشكلة
+        public string? Area { get; set; }
 
-        public string Status { get; set; } = "Open"; // الحالة: Open (مفتوح للعروض) أو Closed (تم الاختيار والانتهاء)
+        public string? ExactAddress { get; set; }
+
+        public string Status { get; set; } = "Open";
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }

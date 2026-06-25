@@ -1,8 +1,336 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "الرئيسية";
+    var requests = ViewBag.Requests as List<Ostawy.Models.JobRequest> ?? new();
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@Html.AntiForgeryToken()
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 animate-in">
+
+    <!-- Hero Banner -->
+    <div class="bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600 rounded-3xl p-6 sm:p-10 md:p-12 text-white mb-8 relative overflow-hidden card-hover">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                    <span class="material-symbols-outlined fill text-2xl">handyman</span>
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black">مرحباً بك في أوستاوي</h1>
+                    <p class="text-white/75 text-sm sm:text-base">منصتك الموثوقة لطلب الخدمات المنزلية</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined fill text-amber-300">search</span>
+                    <p class="text-xs font-bold mt-1">ابحث عن فني</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined fill text-amber-300">compare_arrows</span>
+                    <p class="text-xs font-bold mt-1">قارن العروض</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined fill text-amber-300">handshake</span>
+                    <p class="text-xs font-bold mt-1">اتفق ووفر</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined fill text-amber-300">star</span>
+                    <p class="text-xs font-bold mt-1">قيم الخدمة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-6">
+
+            <!-- Create Request Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover">
+                <div class="bg-gradient-to-l from-orange-50 to-amber-50 px-6 py-4 border-b border-gray-100">
+                    <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                        <span class="material-symbols-outlined fill text-orange-500">add_circle</span>
+                        طلب خدمة جديدة
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <form id="newRequestForm" class="space-y-4">
+                        <div>
+                            <label class="text-sm font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-base text-orange-500">description</span>
+                                وصف المشكلة <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="reqDescription" required rows="3" maxlength="500" placeholder="اشرح المشكلة بالتفصيل (مثلاً: ماسورة مياه مقطوعة في المطبخ)" class="w-full rounded-xl border-2 border-gray-100 p-3.5 text-sm outline-none focus:border-orange-400 focus:bg-orange-50/30 transition-all"></textarea>
+                            <p class="text-xs text-gray-400 mt-1 flex justify-between"><span>اكتب وصف واضح عشان الفني يفهمك</span><span id="charCount">0/500</span></p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-base text-orange-500">category</span>
+                                    التخصص <span class="text-red-500">*</span>
+                                </label>
+                                <select id="reqCategory" class="w-full rounded-xl border-2 border-gray-100 p-3.5 text-sm outline-none focus:border-orange-400 focus:bg-orange-50/30 bg-white transition-all">
+                                    <option value="plumbing">🔧 سباكة</option>
+                                    <option value="electric">⚡ كهرباء</option>
+                                    <option value="ac">❄️ تكييف وتبريد</option>
+                                    <option value="paint">🎨 دهانات ونقاشة</option>
+                                    <option value="carpentry">🪚 نجارة</option>
+                                    <option value="tiles">🧱 سيراميك وبلاط</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-sm font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-base text-orange-500">payments</span>
+                                    السعر (اختياري)
+                                </label>
+                                <div class="relative">
+                                    <input id="reqPrice" type="number" min="1" placeholder="مثلاً: 500" class="w-full rounded-xl border-2 border-gray-100 p-3.5 text-sm outline-none focus:border-orange-400 focus:bg-orange-50/30 transition-all pl-12" />
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-400">ج.م</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-sm">info</span> اتركه فارغاً للتفاوض مع الفنيين</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-base text-orange-500">location_on</span>
+                                    المنطقة <span class="text-red-500">*</span>
+                                </label>
+                                <input id="reqArea" required placeholder="مثال: الجيزة، الدقي" class="w-full rounded-xl border-2 border-gray-100 p-3.5 text-sm outline-none focus:border-orange-400 focus:bg-orange-50/30 transition-all" />
+                                <p class="text-xs text-gray-400 mt-1">هتظهر للفنيين على الخريطة</p>
+                            </div>
+                            <div>
+                                <label class="text-sm font-bold text-slate-700 block mb-1.5 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-base text-orange-500">home_pin</span>
+                                    العنوان بالتفصيل
+                                </label>
+                                <input id="reqExactAddress" placeholder="شارع، عمارة، دور، شقة" class="w-full rounded-xl border-2 border-gray-100 p-3.5 text-sm outline-none focus:border-orange-400 focus:bg-orange-50/30 transition-all" />
+                                <p class="text-xs text-gray-400 mt-1">يظهر للفني بعد قبول العرض</p>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="submitRequest()" id="submitReqBtn" class="w-full py-3.5 bg-gradient-to-l from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white rounded-xl font-black text-sm shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-all active:scale-[0.98]">
+                            <span class="flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined fill">rocket_launch</span>
+                                انشر الطلب للفنيين
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Requests -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover">
+                <div class="bg-gradient-to-l from-orange-50 to-amber-50 px-6 py-4 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                            <span class="material-symbols-outlined fill text-orange-500">list_alt</span>
+                            طلباتي
+                        </h2>
+                        @if (requests.Count > 0)
+                        {
+                            <span class="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1 rounded-full">@requests.Count طلب</span>
+                        }
+                    </div>
+                </div>
+                <div class="p-6">
+                    @if (requests.Count == 0)
+                    {
+                        <div class="text-center py-12">
+                            <span class="material-symbols-outlined text-6xl text-gray-200 mb-4">inbox</span>
+                            <p class="font-black text-slate-700 text-lg">لا توجد طلبات بعد</p>
+                            <p class="text-sm text-gray-400 mt-1">أنشئ طلبك الأول الآن وستبدأ العروض بالوصول</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="space-y-3">
+                            @foreach (var req in requests.Take(5))
+                            {
+                                <div class="group border-2 border-gray-50 hover:border-orange-100 rounded-xl p-4 transition-all cursor-pointer" onclick="window.location='/Home/RequestDetails/@req.Id'">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full @(req.Status == "Open" ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-500")">
+                                                    <span class="w-1.5 h-1.5 rounded-full @(req.Status == "Open" ? "bg-emerald-500" : "bg-gray-400")"></span>
+                                                    @(req.Status == "Open" ? "مفتوح" : "مغلق")
+                                                </span>
+                                                <span class="text-xs text-gray-400">@req.CreatedAt.ToString("dd MMM yyyy")</span>
+                                                <span class="text-xs text-gray-300">•</span>
+                                                <span class="text-xs text-gray-400 flex items-center gap-0.5">
+                                                    <span class="material-symbols-outlined text-xs">location_on</span>
+                                                    @req.Area
+                                                </span>
+                                            </div>
+                                            <p class="text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-orange-600 transition-colors">@req.Description</p>
+                                            @if (req.CustomerPrice.HasValue)
+                                            {
+                                                <span class="text-xs font-bold text-emerald-600 mt-1 inline-block bg-emerald-50 px-2 py-0.5 rounded-lg">💰 @req.CustomerPrice.Value.ToString("N0") ج.م</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-xs font-bold text-amber-600 mt-1 inline-block bg-amber-50 px-2 py-0.5 rounded-lg">🤝 قابل للتفاوض</span>
+                                            }
+                                        </div>
+                                        <div class="flex-shrink-0 flex flex-col items-center gap-1">
+                                            <div class="w-10 h-10 bg-orange-50 group-hover:bg-orange-100 rounded-xl flex items-center justify-center transition-all">
+                                                <span class="material-symbols-outlined text-orange-500 fill">chevron_left</span>
+                                            </div>
+                                            <span class="text-[10px] text-gray-400 font-bold">العروض</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @if (requests.Count > 5)
+                            {
+                                <p class="text-center text-sm text-orange-600 font-bold hover:underline cursor-pointer">عرض الكل (@requests.Count)</p>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+            <!-- Requests Map Link -->
+            <a href="/Home/MapView" class="block bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl p-6 text-white card-hover group">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined fill text-2xl">map</span>
+                    </div>
+                    <div>
+                        <h3 class="font-black">خريطة الفنيين</h3>
+                        <p class="text-white/70 text-xs">اعرف مين قريب منك</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-xl px-4 py-2.5">
+                    <span class="text-sm font-bold">استعرض الآن</span>
+                    <span class="material-symbols-outlined fill group-hover:translate-x-1 transition-transform">arrow_left</span>
+                </div>
+            </a>
+
+            <!-- Chat Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white fill">forum</span>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-slate-900">المحادثات</h3>
+                        <p class="text-xs text-gray-400">تواصل مع الفنيين</p>
+                    </div>
+                </div>
+                <a href="/Chat" class="flex items-center justify-between w-full py-3 px-4 bg-gradient-to-l from-blue-50 to-blue-50/50 text-blue-600 rounded-xl text-sm font-bold hover:from-blue-100 hover:to-blue-100 transition-all group">
+                    <span>فتح المحادثات</span>
+                    <span class="material-symbols-outlined fill group-hover:translate-x-1 transition-transform text-lg">arrow_left</span>
+                </a>
+            </div>
+
+            <!-- How it works -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover">
+                <h3 class="font-black text-slate-900 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined fill text-orange-500">lightbulb</span>
+                    كيف يعمل؟
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-7 h-7 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-orange-600 font-black text-xs">1</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">انشر طلبك</p>
+                            <p class="text-xs text-gray-400">حدد المشكلة والمنطقة وسعرك المبدئي</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-7 h-7 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-orange-600 font-black text-xs">2</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">استقبل العروض</p>
+                            <p class="text-xs text-gray-400">الفنيين هيبعتوا لك أسعارهم وعروضهم</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-7 h-7 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span class="text-orange-600 font-black text-xs">3</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">اختر الأفضل</p>
+                            <p class="text-xs text-gray-400">قارن العروض واختار الفني المناسب ليك</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+// Character counter
+document.getElementById('reqDescription')?.addEventListener('input', function() {
+    document.getElementById('charCount').textContent = this.value.length + '/500';
+});
+
+function submitRequest() {
+    const desc = document.getElementById('reqDescription').value.trim();
+    const cat = document.getElementById('reqCategory').value;
+    const price = document.getElementById('reqPrice').value;
+    const area = document.getElementById('reqArea').value.trim();
+    const exactAddr = document.getElementById('reqExactAddress').value.trim();
+
+    if (!desc || !area) {
+        return alert('من فضلك اكتب وصف المشكلة والمنطقة');
+    }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            sendRequest(pos.coords.latitude, pos.coords.longitude);
+        }, err => {
+            sendRequest(30.0444, 31.2357);
+        });
+    } else {
+        sendRequest(30.0444, 31.2357);
+    }
+
+    function sendRequest(lat, lng) {
+        const btn = document.getElementById('submitReqBtn');
+        btn.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined animate-spin">progress_activity</span> جاري النشر...</span>';
+        btn.disabled = true;
+
+        const formData = new FormData();
+        formData.append('description', desc);
+        formData.append('category', cat);
+        formData.append('customerPrice', price || '');
+        formData.append('lat', lat);
+        formData.append('lng', lng);
+        formData.append('area', area);
+        formData.append('exactAddress', exactAddr);
+
+        fetch('/Home/CreateRequest', {
+            method: 'POST',
+            body: formData,
+            headers: { 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' }
+        })
+        .then(r => r.json())
+        .then(result => {
+            if (result.success) {
+                alert('✅ ' + result.message);
+                location.reload();
+            } else {
+                alert(result.message || 'حدث خطأ');
+                btn.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined fill">rocket_launch</span> انشر الطلب للفنيين</span>';
+                btn.disabled = false;
+            }
+        })
+        .catch(() => {
+            alert('حدث خطأ في الاتصال');
+            btn.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined fill">rocket_launch</span> انشر الطلب للفنيين</span>';
+            btn.disabled = false;
+        });
+    }
+}
+</script>

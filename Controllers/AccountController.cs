@@ -94,7 +94,7 @@ namespace Ostawy.Controllers
 
             // التوجيه حسب الدور
             if (userEmail.Role == "worker") return RedirectToAction("Dashboard", "Worker");
-            return RedirectToAction("MapView", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         // دالة التشفير الثابتة

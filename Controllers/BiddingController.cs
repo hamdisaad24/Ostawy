@@ -53,6 +53,7 @@ namespace Ostawy.Controllers
                 customerPrice = r.CustomerPrice,
                 lat = r.Lat,
                 lng = r.Lng,
+                area = r.Area,
                 createdAt = r.CreatedAt
             }).ToList();
 

@@ -9,10 +9,14 @@ namespace Ostawy.Data
         {
         }
 
-        // السطر ده معناه: اعملي جدول اسمه Users بناءً على كلاس User
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Order> Orders { get; set; } = null!;
+        public DbSet<JobRequest> JobRequests { get; set; } = null!;
+        public DbSet<JobBid> JobBids { get; set; } = null!;
+        public DbSet<Review> Reviews { get; set; } = null!;
+        public DbSet<ChatMessage> ChatMessages { get; set; } = null!;
+        public DbSet<WorkerPortfolio> WorkerPortfolios { get; set; } = null!;
 
-        // دالة الـ OnModelCreating دي بنستخدمها عشان نملى الداتا بيز ببيانات أولية (Seed Data)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -24,8 +28,5 @@ namespace Ostawy.Data
                 new User { Id = 4, FullName = "يوسف حسن", Email = "youssef_h@ostawy.com", PasswordHash = "123456", Role = "worker", Specialty = "دهانات", Category = "paint", Lat = 30.0700, Lng = 31.2800, IsAvailable = true, Price = 70, Rating = 4.9, ReviewsCount = 211 }
             );
         }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<JobRequest> JobRequests { get; set; }
-        public DbSet<JobBid> JobBids { get; set; }
     }
 }

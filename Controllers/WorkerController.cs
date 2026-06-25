@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Ostawy.Data;
 using Ostawy.Models;
 using System.Linq;
@@ -13,6 +14,45 @@ namespace Ostawy.Controllers
         public WorkerController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult CompleteProfile()
+        {
+            var workerIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(workerIdStr))
+                return RedirectToAction("Login", "Account");
+
+            int workerId = int.Parse(workerIdStr);
+            var worker = _context.Users.Find(workerId);
+            if (worker == null) return NotFound();
+
+            return View(worker);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CompleteProfile(User model)
+        {
+            var workerIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(workerIdStr))
+                return RedirectToAction("Login", "Account");
+
+            int workerId = int.Parse(workerIdStr);
+            var worker = await _context.Users.FindAsync(workerId);
+            if (worker == null) return NotFound();
+
+            worker.Phone = model.Phone;
+            worker.Address = model.Address;
+            worker.Specialty = model.Specialty;
+            worker.Price = model.Price;
+            worker.Bio = model.Bio;
+            worker.Lat = model.Lat;
+            worker.Lng = model.Lng;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Dashboard");
         }
 
         public IActionResult Dashboard()
