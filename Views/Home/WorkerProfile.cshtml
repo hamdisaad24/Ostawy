@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "الملف الشخصي";
+    Layout = null;
+    var worker = ViewBag.Worker as Ostawy.Models.User;
+    var reviews = ViewBag.Reviews as List<Ostawy.Models.Review> ?? new();
+    var portfolio = ViewBag.Portfolio as List<Ostawy.Models.WorkerPortfolio> ?? new();
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@worker.FullName - أوستاوي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <a href="javascript:history.back()" class="inline-flex items-center gap-1 text-sm text-orange-600 font-bold mb-6 hover:underline">
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+            رجوع
+        </a>
+
+        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 mb-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center">
+                    <span class="text-white font-black text-2xl">@(worker.FullName?.Substring(0, 1) ?? "ف")</span>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black text-slate-900">@worker.FullName</h1>
+                    <div class="flex items-center gap-2 text-sm text-gray-500 mt-1">
+                        <span>@worker.Specialty</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1">
+                            ⭐ @worker.Rating.ToString("F1")
+                        </span>
+                        <span>•</span>
+                        <span>@worker.ReviewsCount تقييم</span>
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(worker.Bio))
+            {
+                <div class="mb-6">
+                    <h3 class="text-sm font-bold text-slate-700 mb-2">نبذة عني</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">@worker.Bio</p>
+                </div>
+            }
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                <div class="bg-gray-50 rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined text-orange-500">payments</span>
+                    <p class="text-lg font-black text-slate-900">@worker.Price.ToString("N0") ج.م</p>
+                    <p class="text-xs text-gray-400">سعر اليومية</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined text-orange-500">star</span>
+                    <p class="text-lg font-black text-slate-900">@worker.Rating.ToString("F1")</p>
+                    <p class="text-xs text-gray-400">التقييم</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-3 text-center">
+                    <span class="material-symbols-outlined text-orange-500">reviews</span>
+                    <p class="text-lg font-black text-slate-900">@worker.ReviewsCount</p>
+                    <p class="text-xs text-gray-400">تقييم</p>
+                </div>
+            </div>
+        </div>
+
+        @if (portfolio.Count > 0)
+        {
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 mb-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined fill text-orange-500">photo_library</span>
+                    معرض الأعمال
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    @foreach (var item in portfolio)
+                    {
+                        <div class="rounded-xl overflow-hidden border border-gray-100">
+                            <img src="@item.ImageUrl" alt="@item.Description" class="w-full h-32 object-cover" onerror="this.style.display='none'" />
+                            @if (!string.IsNullOrEmpty(item.Description))
+                            {
+                                <p class="text-xs text-gray-500 p-2">@item.Description</p>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <h2 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined fill text-orange-500">rate_review</span>
+                التقييمات
+            </h2>
+            @if (reviews.Count == 0)
+            {
+                <p class="text-sm text-gray-400 text-center py-4">لا توجد تقييمات بعد</p>
+            }
+            else
+            {
+                <div class="space-y-4">
+                    @foreach (var review in reviews)
+                    {
+                        <div class="border-b border-gray-100 pb-4 last:border-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-bold text-sm text-slate-900">@review.ClientName</span>
+                                <span class="text-xs text-gray-400">@review.CreatedAt.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <div class="flex items-center gap-0.5 mb-2">
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <span class="text-sm @(i < review.Rating ? "text-yellow-400" : "text-gray-200")">★</span>
+                                }
+                            </div>
+                            @if (!string.IsNullOrEmpty(review.Comment))
+                            {
+                                <p class="text-sm text-gray-600">"@review.Comment"</p>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

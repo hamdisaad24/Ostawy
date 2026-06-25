@@ -1,50 +1,105 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Ostawy</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Ostawy.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - أوستاوي</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        * { font-family: 'Noto Sans Arabic', sans-serif; }
+        body { background: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        @@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-in { animation: fadeIn 0.4s ease-out; }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ostawy</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MapView">MapView</a>
-                        </li>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <a asp-controller="Home" asp-action="Index" class="flex items-center gap-2.5 group">
+                        <div class="w-9 h-9 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+                            <span class="material-symbols-outlined text-white fill text-lg">handyman</span>
+                        </div>
+                        <span class="text-lg font-black text-slate-900">أوستاوي</span>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex items-center gap-1">
+                    <a asp-controller="Home" asp-action="Index" class="px-4 py-2 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all">
+                        الرئيسية
+                    </a>
+                    <a asp-controller="Home" asp-action="MapView" class="px-4 py-2 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all">
+                        خريطة الفنيين
+                    </a>
+                    <a asp-controller="Chat" asp-action="Index" class="px-4 py-2 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all">
+                        المحادثات
+                    </a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <span class="hidden sm:block text-sm font-bold text-slate-700 bg-gray-50 px-3 py-1.5 rounded-xl">
+                        👤 @(User.Identity?.Name ?? "زائر")
+                    </span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-red-500 hover:bg-red-50 rounded-xl transition-all">
+                            <span class="material-symbols-outlined text-base">logout</span>
+                            <span class="hidden sm:inline">تسجيل خروج</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white fill text-sm">handyman</span>
+                        </div>
+                        <span class="font-black text-slate-900">أوستاوي</span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">المنصة الرائدة لربطك بأفضل الفنيين والخبراء في منطقتك بكل سهولة وأمان.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-3">روابط سريعة</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">الشروط والأحكام</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">سياسة الخصوصية</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-3">تواصل معنا</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-orange-500">mail</span> support@ostawy.com</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-orange-500">call</span> 0100-123-4567</li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Ostawy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="border-t border-gray-100 pt-6 text-center">
+                <p class="text-sm text-gray-400">© 2026 أوستاوي. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
