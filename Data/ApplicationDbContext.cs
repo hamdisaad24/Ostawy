@@ -19,4 +19,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     }
     public DbSet<EmailVerification> EmailVerifications { get; set; }
     public DbSet<PasswordResetOtp> PasswordResetOtps { get; set; }
+
 }

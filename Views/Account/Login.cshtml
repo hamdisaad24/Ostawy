@@ -37,6 +37,20 @@
             padding: 0; 
             margin: 0; 
         }
+
+
+        
+    /* إلغاء العين الافتراضية في متصفحات إيدج وكروم */
+    input::-ms-reveal,
+    input::-ms-clear {
+        display: none !important;
+    }
+    
+    input::-webkit-contacts-auto-fill-button,
+    input::-webkit-credentials-auto-fill-button {
+        display: none !important;
+    }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col m-0 p-0">
@@ -151,21 +165,27 @@
         }
 
         function doLogin() {
-            const email = document.getElementById('emailInput').value.trim();
-            const pass = document.getElementById('passInput').value;
-            
-            if (!email || !pass) {
-                return showError('يرجى إدخال البيانات كاملة');
-            }
+    const email = document.getElementById('emailInput').value.trim();
+    const pass = document.getElementById('passInput').value;
+    
+    if (!email || !pass) {
+        return showError('يرجى إدخال البيانات كاملة');
+    }
 
-            const btn = document.getElementById('loginBtn');
-            btn.textContent = 'جاري التحقق...';
-            btn.disabled = true;
+    const btn = document.getElementById('loginBtn');
+    btn.textContent = 'جاري التحقق...';
+    btn.disabled = true;
 
-            setTimeout(() => {
-                document.getElementById('loginForm').submit();
-            }, 500);
+    // 👈 التعديل السحري هنا: استخدام requestSubmit عشان يبعت الـ Tokens والـ Validation صح
+    setTimeout(() => {
+        const form = document.getElementById('loginForm');
+        if (typeof form.requestSubmit === 'function') {
+            form.requestSubmit();
+        } else {
+            form.submit();
         }
+    }, 500);
+}
 
         document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
     </script>

@@ -22,6 +22,17 @@
             url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');
             background-size: cover; background-position: center;
         }
+
+        /* إلغاء العين الافتراضية في متصفحات إيدج وكروم */
+        input::-ms-reveal,
+        input::-ms-clear {
+            display: none !important;
+        }
+        
+        input::-webkit-contacts-auto-fill-button,
+        input::-webkit-credentials-auto-fill-button {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col m-0 p-0">
@@ -55,15 +66,15 @@
 
                 <div id="errorMsg" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-semibold m-0"></div>
 
-                <div asp-validation-summary="All"
-                     class="text-red-600 text-sm mb-4 font-bold"></div>
+                <div asp-validation-summary="All" class="text-red-600 text-sm mb-4 font-bold"></div>
+                
                 <form asp-controller="Account" asp-action="Register" method="post" id="registerForm" class="space-y-4 m-0 p-0">
 
                     <div>
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">الاسم الكامل</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">person</span>
-                            <input asp-for="FullName" id="nameInput" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="يوسف عيد" type="text" />
+                            <input asp-for="FullName" id="nameInput" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="الاسم ثلاثي" type="text" />
                         </div>
                         <span asp-validation-for="FullName" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
@@ -81,20 +92,11 @@
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">كلمة المرور</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock</span>
-
-                            <input asp-for="Password"
-                                   id="passInput"
-                                   class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0"
-                                   placeholder="••••••••"
-                                   type="password" />
-
-                            <button type="button"
-                                    onclick="togglePassword('passInput', 'passIcon')"
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
+                            <input asp-for="Password" id="passInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+                            <button type="button" onclick="togglePassword('passInput', 'passIcon')" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
                                 <span class="material-symbols-outlined" id="passIcon">visibility</span>
                             </button>
                         </div>
-
                         <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
 
@@ -102,43 +104,21 @@
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">تأكيد كلمة المرور</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock_reset</span>
-
-                            <input asp-for="ConfirmPassword"
-                                   id="confirmPassInput"
-                                   class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0"
-                                   placeholder="••••••••"
-                                   type="password" />
-
-                            <button type="button"
-                                    onclick="togglePassword('confirmPassInput', 'confirmPassIcon')"
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
+                            <input asp-for="ConfirmPassword" id="confirmPassInput" class="w-full pr-12 pl-12 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="••••••••" type="password" />
+                            <button type="button" onclick="togglePassword('confirmPassInput', 'confirmPassIcon')" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500">
                                 <span class="material-symbols-outlined" id="confirmPassIcon">visibility</span>
                             </button>
                         </div>
-
                         <span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
 
                     <div>
-                        <label class="text-sm font-bold text-slate-900 block mb-1">
-                            العنوان
-                        </label>
-
+                        <label class="text-sm font-bold text-slate-900 block mb-1">العنوان</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                location_on
-                            </span>
-
-                            <input asp-for="Address"
-                                   id="addressF"
-                                   class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none"
-                                   placeholder="القاهرة - المعادي"
-                                   type="text" />
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">location_on</span>
+                            <input asp-for="Address" id="addressF" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none" placeholder="القاهرة - المعادي" type="text" />
                         </div>
-
-                        <span asp-validation-for="Address"
-                              class="text-red-500 text-xs mt-1 block">
-                        </span>
+                        <span asp-validation-for="Address" class="text-red-500 text-xs mt-1 block"></span>
                     </div>
 
                     <button type="button" onclick="doRegister()" id="registerBtn" class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold text-base shadow-lg hover:opacity-90 active:scale-[0.98] transition-all m-0">
@@ -181,8 +161,14 @@
             btn.textContent = 'جاري إنشاء الحساب...';
             btn.disabled = true;
 
+            // 👈 التعديل السحري: استخدام requestSubmit لضمان إرسال الـ Tokens والـ Validation بأمان للـ .NET
             setTimeout(() => {
-                document.getElementById('registerForm').submit();
+                const form = document.getElementById('registerForm');
+                if (typeof form.requestSubmit === 'function') {
+                    form.requestSubmit();
+                } else {
+                    form.submit();
+                }
             }, 500);
         }
 
