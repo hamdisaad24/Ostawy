@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ostawy.Models
-{
+namespace Ostawy.ViewModels
+{ 
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "الاسم مطلوب")]
@@ -22,5 +22,9 @@ namespace Ostawy.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "كلمة المرور وتأكيدها غير متطابقين")]
         public string ConfirmPassword { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "العنوان مطلوب")]
+        [StringLength(200, MinimumLength = 5, ErrorMessage = "العنوان يجب أن يكون بين 5 و 200 حرف")]
+        public string Address { get; set; } = string.Empty;
     }
 }

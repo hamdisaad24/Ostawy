@@ -1,0 +1,180 @@
+﻿@model Ostawy.ViewModels.VerifyEmailViewModel
+
+@{
+    ViewData["Title"] = "تأكيد البريد الإلكتروني";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تأكيد البريد الإلكتروني</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+        font-family: 'Noto Sans Arabic', sans-serif;
+        background-color: #f8f9ff;
+        margin: 0;
+        padding: 0;
+        }
+
+        .hero-bg {
+        background-image: linear-gradient(rgba(3,22,54,0.85), rgba(3,22,54,0.7)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');
+        background-size: cover;
+        background-position: center;
+        }
+
+        .otp-box {
+        width: 50px;
+        height: 60px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        outline: none;
+        background: #f9fafb;
+        }
+
+        .otp-box:focus {
+        border-color: #fb923c;
+        box-shadow: 0 0 0 2px rgba(251,146,60,0.3);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col m-0 p-0">
+
+    <div class="flex-grow grid grid-cols-1 md:grid-cols-2">
+
+        <!-- LEFT SIDE (FORM) -->
+        <div class="flex items-center justify-center p-4 md:p-12 bg-white">
+
+            <div class="w-full max-w-md">
+
+                <h2 class="text-3xl font-black text-slate-900 mb-2">
+                    تأكيد البريد الإلكتروني
+                </h2>
+
+                <p class="text-gray-500 mb-6">
+                    أدخل رمز التحقق المرسل إلى:
+                </p>
+
+                <p class="font-bold text-orange-600 mb-6">
+                    @Model.Email
+                </p>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-xl text-sm">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+
+                <div asp-validation-summary="All"
+                     class="text-red-600 text-sm mb-4 font-bold"></div>
+                <form asp-action="VerifyEmail" method="post">
+
+                    <input asp-for="UserId" type="hidden" />
+                    <input asp-for="Email" type="hidden" />
+                    <input asp-for="Code" type="hidden" id="otpHidden" />
+
+                    <div class="mb-6">
+
+                        <label class="text-sm font-bold">رمز التحقق</label>
+
+                        <div class="flex justify-between gap-2 mt-3" dir="ltr">
+
+                            <input class="otp-box" maxlength="1" />
+                            <input class="otp-box" maxlength="1" />
+                            <input class="otp-box" maxlength="1" />
+                            <input class="otp-box" maxlength="1" />
+                            <input class="otp-box" maxlength="1" />
+                            <input class="otp-box" maxlength="1" />
+
+                        </div>
+
+                        <span asp-validation-for="Code" class="text-red-500 text-xs"></span>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold hover:opacity-90">
+                        تأكيد الحساب
+                    </button>
+
+                </form>
+
+                <form asp-action="ResendOtp" method="post" class="mt-4 text-center">
+
+                    <input asp-for="UserId" type="hidden" />
+                    <input asp-for="Email" type="hidden" />
+
+                    <button type="submit"
+                            class="text-orange-600 font-bold hover:underline">
+                        إعادة إرسال الرمز
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE (IMAGE) -->
+        <div class="hidden md:flex hero-bg relative p-12 flex-col justify-between text-white">
+
+            <div>
+                <a asp-controller="Home" asp-action="Index" class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center">
+                        ✉️
+                    </div>
+                    <h1 class="text-3xl font-black">أوستاوي</h1>
+                </a>
+
+                <p class="text-white/85 text-lg max-w-md">
+                    تم إرسال رمز التحقق إلى بريدك الإلكتروني، أدخل الكود لتفعيل حسابك.
+                </p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                <p class="text-white/80 text-sm">
+                    تأكد من إدخال الكود خلال 5 دقائق فقط.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('.otp-box');
+        const hidden = document.getElementById('otpHidden');
+
+        inputs.forEach((input, index) => {
+
+        input.addEventListener('input', () => {
+
+        if (input.value && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+        }
+
+        let code = "";
+        inputs.forEach(i => code += i.value);
+        hidden.value = code;
+        });
+
+        input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && !input.value && index > 0) {
+        inputs[index - 1].focus();
+        }
+        });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ostawy.Models
+namespace Ostawy.ViewModels
 {
     public class LoginViewModel
     {
@@ -13,6 +13,8 @@ namespace Ostawy.Models
         [Required(ErrorMessage = "كلمة المرور مطلوبة")]
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
+
+        public bool RememberMe { get; set; }    
 
     }
 }
