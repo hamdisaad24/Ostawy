@@ -9,7 +9,9 @@ namespace Ostawy.Data
         {
         }
 
-        // السطر ده معناه: اعملي جدول اسمه Users بناءً على كلاس User
+        // السطر ده هو اللي هيخلي المشروع يشوف جدول الـ Categories
+        public DbSet<Category> Categories { get; set; }
+
         public DbSet<User> Users { get; set; }
     }
 }
