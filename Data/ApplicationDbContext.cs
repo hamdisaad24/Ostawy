@@ -12,9 +12,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
 
     }
 
-        // السطر ده معناه: اعملي جدول اسمه Users بناءً على كلاس User
-        public DbSet<User> Users { get; set; }
-    }
     public DbSet<EmailVerification> EmailVerifications { get; set; }
     public DbSet<PasswordResetOtp> PasswordResetOtps { get; set; }
 

@@ -51,6 +51,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/10.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "10.0.9"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
         "type": "package",
         "compile": {
@@ -498,11 +514,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/10.0.8": {
+      "Microsoft.EntityFrameworkCore/10.0.9": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "10.0.8",
-          "Microsoft.EntityFrameworkCore.Analyzers": "10.0.8"
+          "Microsoft.EntityFrameworkCore.Abstractions": "10.0.9",
+          "Microsoft.EntityFrameworkCore.Analyzers": "10.0.9"
         },
         "compile": {
           "lib/net10.0/Microsoft.EntityFrameworkCore.dll": {
@@ -518,7 +534,7 @@
           "buildTransitive/net10.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/10.0.8": {
+      "Microsoft.EntityFrameworkCore.Abstractions/10.0.9": {
         "type": "package",
         "compile": {
           "lib/net10.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
@@ -531,7 +547,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/10.0.8": {
+      "Microsoft.EntityFrameworkCore.Analyzers/10.0.9": {
         "type": "package"
       },
       "Microsoft.EntityFrameworkCore.Design/10.0.8": {
@@ -561,10 +577,10 @@
           "build/net10.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/10.0.8": {
+      "Microsoft.EntityFrameworkCore.Relational/10.0.9": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "10.0.8"
+          "Microsoft.EntityFrameworkCore": "10.0.9"
         },
         "compile": {
           "lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll": {
@@ -655,15 +671,15 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/7.7.1": {
+      "Microsoft.IdentityModel.Abstractions/8.19.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net10.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net10.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         }
@@ -684,18 +700,18 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/7.7.1": {
+      "Microsoft.IdentityModel.Logging/8.19.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "7.7.1"
+          "Microsoft.IdentityModel.Abstractions": "8.19.1"
         },
         "compile": {
-          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net10.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net10.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         }
@@ -1094,6 +1110,22 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/10.0.9": {
+      "sha512": "5yHCQ6fDsOKJTCyXCHb7Q4KFPrlTF5k+u5unV7GXI89NJkvgk6nXr6jGxdBi003Sx8MzTjZGpjABLmpOZ2Pg1A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.identity.entityframeworkcore/10.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
+        "lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.identity.entityframeworkcore.10.0.9.nupkg.sha512",
+        "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
@@ -2318,10 +2350,10 @@
         "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll"
       ]
     },
-    "Microsoft.EntityFrameworkCore/10.0.8": {
-      "sha512": "EJx+fIBMgBlgD+ublKCn+GTOJkw3UqV7xOjYWBRVdUYyIm8UfvAsmSOPFiIInsWTHyMEYUJ9gCJY1jwX+6UB7w==",
+    "Microsoft.EntityFrameworkCore/10.0.9": {
+      "sha512": "tu85SRzOT021V7EQlViCiAE7TqldVn469Y6lt5TEn/+XC4/MeNCHgMRSxqYuWqvF4zAQZUhCmtNEZuM3ss4LeA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/10.0.8",
+      "path": "microsoft.entityframeworkcore/10.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2330,14 +2362,14 @@
         "buildTransitive/net10.0/Microsoft.EntityFrameworkCore.props",
         "lib/net10.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net10.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.10.0.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.10.0.9.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/10.0.8": {
-      "sha512": "jbKDXWPZQhuPHygMnwzNOqxBADVcpRVytcKYZsA++QqhPkpF93Ta8o5mbJQGrARSjlkr9WtOaADV97EDMOZ7DA==",
+    "Microsoft.EntityFrameworkCore.Abstractions/10.0.9": {
+      "sha512": "GRMaiPkqYna/gCsyDffYDWmefGPC3hDrdMw+2rrGcQwhs6uZOsaMQXMJnoXQ35tx9SkBV2ieRRU9N/jLOO6BZw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/10.0.8",
+      "path": "microsoft.entityframeworkcore.abstractions/10.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2345,21 +2377,21 @@
         "PACKAGE.md",
         "lib/net10.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net10.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.10.0.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.10.0.9.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/10.0.8": {
-      "sha512": "M3BZ8JH8rB6BE7dO2g9iVbrHLnEz9wMXT6q+tDR6Nq3gyP3KmBj5OTiZGxyF3vesjOQNKanYoPGSNBR4kR2llg==",
+    "Microsoft.EntityFrameworkCore.Analyzers/10.0.9": {
+      "sha512": "aiEFB+C5EsZGqxvMPazE07hbWsp4iPaufJpanGt5O+lrwv7mJLrqma5haVIgFAPCyhQkmk75XSCEubT1zUjxtA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/10.0.8",
+      "path": "microsoft.entityframeworkcore.analyzers/10.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "docs/PACKAGE.md",
-        "microsoft.entityframeworkcore.analyzers.10.0.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.10.0.9.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
@@ -2379,10 +2411,10 @@
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/10.0.8": {
-      "sha512": "UU3diAD2wwZveye2rnrwaF/wvJ9tm5iL2fuY9TTap6/iGQK1OO29M1BzXZRlRPVH/dByt5w/pISBSFtyR7hTqw==",
+    "Microsoft.EntityFrameworkCore.Relational/10.0.9": {
+      "sha512": "dEoyYKgiaZHHgOFm1WMWm1sFEsEuhPWufX4L9PekKtqd/RaIcPjkCjvbrVvJtApErb5wPSJhYvnTlxhH+p9h2g==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/10.0.8",
+      "path": "microsoft.entityframeworkcore.relational/10.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2390,7 +2422,7 @@
         "PACKAGE.md",
         "lib/net10.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/net10.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.10.0.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.10.0.9.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
@@ -2505,15 +2537,16 @@
         "microsoft.identity.client.extensions.msal.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Abstractions/7.7.1": {
-      "sha512": "S7sHg6gLg7oFqNGLwN1qSbJDI+QcRRj8SuJ1jHyCmKSipnF6ZQL+tFV2NzVfGj/xmGT9TykQdQiBN+p5Idl4TA==",
+    "Microsoft.IdentityModel.Abstractions/8.19.1": {
+      "sha512": "gFA8THIk23uNF/vMdOHnjIdXD1LyA2g12cHzMJ+Xag6WpgWLw6E/6uCXxvA0gp9d2yAvkRt3xzFzMUiO/hofnQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.abstractions/7.7.1",
+      "path": "microsoft.identitymodel.abstractions/8.19.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Microsoft.IdentityModel.Abstractions.dll",
-        "lib/net461/Microsoft.IdentityModel.Abstractions.xml",
+        "README.md",
+        "lib/net10.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net10.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net462/Microsoft.IdentityModel.Abstractions.dll",
         "lib/net462/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net472/Microsoft.IdentityModel.Abstractions.dll",
@@ -2522,9 +2555,11 @@
         "lib/net6.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/net8.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
-        "microsoft.identitymodel.abstractions.7.7.1.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.8.19.1.nupkg.sha512",
         "microsoft.identitymodel.abstractions.nuspec"
       ]
     },
@@ -2551,15 +2586,16 @@
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/7.7.1": {
-      "sha512": "BZNgSq/o8gsKExdYoBKPR65fdsxW0cTF8PsdqB8y011AGUJJW300S/ZIsEUD0+sOmGc003Gwv3FYbjrVjvsLNQ==",
+    "Microsoft.IdentityModel.Logging/8.19.1": {
+      "sha512": "H+sMrMpdbWnwkQnpb/ESkQovtOgdefmj0ecGCcP40mDKzE5i4dUYkH6599M9mWYFNGNJnTp92l/9wLubYXWimw==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/7.7.1",
+      "path": "microsoft.identitymodel.logging/8.19.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Microsoft.IdentityModel.Logging.dll",
-        "lib/net461/Microsoft.IdentityModel.Logging.xml",
+        "README.md",
+        "lib/net10.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net10.0/Microsoft.IdentityModel.Logging.xml",
         "lib/net462/Microsoft.IdentityModel.Logging.dll",
         "lib/net462/Microsoft.IdentityModel.Logging.xml",
         "lib/net472/Microsoft.IdentityModel.Logging.dll",
@@ -2568,9 +2604,11 @@
         "lib/net6.0/Microsoft.IdentityModel.Logging.xml",
         "lib/net8.0/Microsoft.IdentityModel.Logging.dll",
         "lib/net8.0/Microsoft.IdentityModel.Logging.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.7.7.1.nupkg.sha512",
+        "microsoft.identitymodel.logging.8.19.1.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -3082,29 +3120,31 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 10.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.8",
-      "Microsoft.EntityFrameworkCore.Tools >= 10.0.8"
+      "Microsoft.EntityFrameworkCore.Tools >= 10.0.8",
+      "Microsoft.IdentityModel.Logging >= 8.19.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\Users\\Hamdy\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\Ostawy\\Ostawy.csproj",
+      "projectUniqueName": "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj",
       "projectName": "Ostawy",
-      "projectPath": "C:\\Users\\hp\\source\\repos\\Ostawy\\Ostawy.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\source\\repos\\Ostawy\\obj\\",
+      "projectPath": "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj",
+      "packagesPath": "C:\\Users\\Hamdy\\.nuget\\packages\\",
+      "outputPath": "D:\\DEPI\\Project\\Ostawy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hamdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3139,6 +3179,10 @@
         "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[10.0.9, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -3154,6 +3198,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[10.0.8, )"
+          },
+          "Microsoft.IdentityModel.Logging": {
+            "target": "Package",
+            "version": "[8.19.1, )"
           }
         },
         "imports": [
@@ -3592,13 +3640,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }
