@@ -5,7 +5,7 @@ public class EmailVerification
     public Guid Id { get; set; }
 
     public Guid UserId { get; set; }
-    public ApplicationUser User { get; set; } = new ApplicationUser();
+    public ApplicationUser? User { get; set; }
 
     public string Code { get; set; } = string.Empty;
 

@@ -1,3 +1,4 @@
+using API.SeedingData;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Ostawy.Data;
@@ -34,6 +35,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var app = builder.Build();
 await RoleSeeder.SeedRolesAsync(app);
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await AdminSeeder.SeedAsync(services);
+}
 
 if (!app.Environment.IsDevelopment())
 {

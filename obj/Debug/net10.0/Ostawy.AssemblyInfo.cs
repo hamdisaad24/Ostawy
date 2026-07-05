@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ostawy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88f2de7e57d93f90b67af8b8c89f888236fc4599")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0d5c8709466469add0d09073248e91a3e95452a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ostawy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ostawy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
