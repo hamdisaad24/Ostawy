@@ -277,7 +277,7 @@
             <nav class="auth-nav">
                 @if (User!.Identity!.IsAuthenticated)
                 {
-                    <a class="link-login" asp-area="" asp-controller="Account" asp-action="Profile">بروفايل</a>
+                    <a class="link-login" asp-area="" asp-controller="Profile" asp-action="Index">بروفايل</a>
                     <a class="btn-register-nav" asp-area="" asp-controller="Account" asp-action="Logout">خروج</a>
                 }
                 else
@@ -321,7 +321,7 @@
                         <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الشكاوى</a>
                     }
                     <hr>
-                    <a class="mobile-nav-item text-primary" asp-controller="Account" asp-action="Profile">بروفايل</a>
+                    <a class="mobile-nav-item text-primary" asp-controller="Profile" asp-action="Index">بروفايل</a>
                     <a class="mobile-nav-item text-danger" asp-controller="Account" asp-action="Logout">تسجيل الخروج</a>
                 }
                 else
