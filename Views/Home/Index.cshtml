@@ -561,8 +561,8 @@
                     <h1 class="hero-title">كل صنايعية منطقتك <br><span class="highlight-text">في مكان واحد</span></h1>
                     <p class="hero-subtitle">سواء كنت عميل تبحث عن أسطى شاطر يحل مشكلتك بسرعة، أو فني محترف وعايز تزود دخلك وتلاقي شغل مضمون.. أوستاوي هو اختيارك الذكي.</p>
                     <div class="hero-actions">
-                        <a href="/Account/Register?role=client" class="btn btn-primary">طلب صنايعي (أنا عميل)</a>
-                        <a href="/Account/Register?role=worker" class="btn btn-outline">انضم كفني (أنا صنايعي)</a>
+                        <a asp-action="CreateRequest" asp-controller="Customer" class="btn btn-primary">طلب صنايعي (أنا عميل)</a>
+                        <a asp-action="Register" asp-controller="Account" asp-route-role="worker" class="btn btn-outline">انضم كفني (أنا صنايعي)</a>
                     </div>
                 </div>
                 <div class="hero-image-wrapper">

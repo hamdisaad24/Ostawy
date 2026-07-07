@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlPdHAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MyProjects/Ostawy2/Ostawy/Views/Artisan/AvailableJobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXNhblxBdmFpbGFibGVKb2JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MyProjects/Ostawy2/Ostawy/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +72,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/MyProjects/Ostawy2/Ostawy/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Customer/CreateRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlUmVxdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Customer/RequestDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVxdWVzdERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MyProjects/Ostawy2/Ostawy/Views/Home/Index.cshtml]

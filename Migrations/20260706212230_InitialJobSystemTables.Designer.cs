@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ostawy.Data;
 
@@ -11,9 +12,11 @@ using Ostawy.Data;
 namespace Ostawy.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260706212230_InitialJobSystemTables")]
+    partial class InitialJobSystemTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,38 +255,6 @@ namespace Ostawy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IconPath = "",
-                            Name = "أعمال السباكة"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IconPath = "",
-                            Name = "كهرباء منازل"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IconPath = "",
-                            Name = "تكييف وتبريد"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IconPath = "",
-                            Name = "نقاشة ودهانات"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IconPath = "",
-                            Name = "نجارة وصيانة أثاث"
-                        });
                 });
 
             modelBuilder.Entity("Ostawy.Models.EmailVerification", b =>
