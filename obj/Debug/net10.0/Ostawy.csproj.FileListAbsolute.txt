@@ -614,3 +614,4 @@ D:\MyProjects\Ostawy2\Ostawy\obj\Debug\net10.0\Ostawy.pdb
 D:\MyProjects\Ostawy2\Ostawy\obj\Debug\net10.0\Ostawy.genruntimeconfig.cache
 D:\MyProjects\Ostawy2\Ostawy\obj\Debug\net10.0\ref\Ostawy.dll
 D:\MyProjects\Ostawy2\Ostawy\obj\Debug\net10.0\compressed\xtlkc57mll-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\DEPI\Project\Ostawy\bin\Debug\net10.0\Stripe.net.dll

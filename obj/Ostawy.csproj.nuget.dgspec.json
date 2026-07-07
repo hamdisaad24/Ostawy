@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyProjects\\Ostawy2\\Ostawy\\Ostawy.csproj": {}
+    "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj": {}
   },
   "projects": {
-    "D:\\MyProjects\\Ostawy2\\Ostawy\\Ostawy.csproj": {
+    "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyProjects\\Ostawy2\\Ostawy\\Ostawy.csproj",
+        "projectUniqueName": "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj",
         "projectName": "Ostawy",
-        "projectPath": "D:\\MyProjects\\Ostawy2\\Ostawy\\Ostawy.csproj",
-        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "D:\\MyProjects\\Ostawy2\\Ostawy\\obj\\",
+        "projectPath": "D:\\DEPI\\Project\\Ostawy\\Ostawy.csproj",
+        "packagesPath": "C:\\Users\\Hamdy\\.nuget\\packages\\",
+        "outputPath": "D:\\DEPI\\Project\\Ostawy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hamdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -75,6 +75,10 @@
             "Microsoft.IdentityModel.Logging": {
               "target": "Package",
               "version": "[8.19.1, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[52.1.0, )"
             }
           },
           "imports": [
@@ -96,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

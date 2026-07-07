@@ -1,0 +1,253 @@
+@model Ostawy.ViewModels.PlanViewModel
+
+@{
+    ViewData["Title"] = "إضافة باقة جديدة";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --border: #e5e7eb;
+        --bg: #f8fafc;
+    }
+
+    .page-container {
+        max-width: 850px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .card-plan {
+        background: white;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        overflow: hidden;
+    }
+
+    .card-header-custom {
+        background: var(--primary);
+        color: white;
+        padding: 22px 30px;
+    }
+
+    .card-header-custom h3 {
+        margin: 0;
+        font-weight: 800;
+    }
+
+    .card-body-custom {
+        padding: 35px;
+    }
+
+    .form-label {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        min-height: 48px;
+        border: 1px solid var(--border);
+    }
+
+    textarea.form-control {
+        min-height: 120px;
+        resize: none;
+    }
+
+    .form-check {
+        margin-bottom: 18px;
+    }
+
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .form-check-label {
+        font-weight: 600;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    .feature-box {
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    .btn-save {
+        background: var(--secondary);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: .3s;
+    }
+
+    .btn-save:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-back {
+        background: #e5e7eb;
+        color: #111827;
+        padding: 12px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .btn-back:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+    .validation-summary-errors ul {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="page-container">
+
+    <div class="card-plan">
+
+        <div class="card-header-custom">
+            <h3>إضافة باقة جديدة</h3>
+        </div>
+
+        <div class="card-body-custom">
+
+            <form asp-action="Create" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-4">
+                    <label asp-for="Name" class="form-label">
+                        اسم الباقة
+                    </label>
+
+                    <input asp-for="Name" class="form-control" />
+
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Description" class="form-label">
+                        الوصف
+                    </label>
+
+                    <textarea asp-for="Description" class="form-control"></textarea>
+
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="Price" class="form-label">
+                            السعر (EGP)
+                        </label>
+
+                        <input asp-for="Price"
+                               type="number"
+                               step="0.01"
+                               min="0"
+                               class="form-control" />
+
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="MaxRequests" class="form-label">
+                            الحد الأقصى للطلبات
+                        </label>
+
+                        <input asp-for="MaxRequests"
+                               type="number"
+                               class="form-control" />
+
+                        <small class="text-muted">
+                            اكتب -1 إذا كانت الطلبات غير محدودة.
+                        </small>
+
+                        <span asp-validation-for="MaxRequests" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <h5 class="mb-4 fw-bold">
+                        مميزات الباقة
+                    </h5>
+
+                    <div class="form-check">
+
+                        <input asp-for="AllowVideos"
+                               class="form-check-input" />
+
+                        <label asp-for="AllowVideos"
+                               class="form-check-label">
+                            السماح برفع الفيديوهات
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input asp-for="HasPrioritySearch"
+                               class="form-check-input" />
+
+                        <label asp-for="HasPrioritySearch"
+                               class="form-check-label">
+                            أولوية الظهور في البحث
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input asp-for="HasVerifiedBadge"
+                               class="form-check-input" />
+
+                        <label asp-for="HasVerifiedBadge"
+                               class="form-check-label">
+                            شارة التوثيق
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-5">
+
+                    <button type="submit" class="btn-save">
+                        حفظ الباقة
+                    </button>
+
+                    <a asp-action="Index" class="btn-back">
+                        رجوع
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

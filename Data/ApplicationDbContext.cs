@@ -14,4 +14,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
 
     public DbSet<EmailVerification> EmailVerifications { get; set; }
     public DbSet<PasswordResetOtp> PasswordResetOtps { get; set; }
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<UserSubscription> UserSubscriptions { get; set; }
+    public DbSet<Payment> Payments { get; set; }    
 }
