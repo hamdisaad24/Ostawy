@@ -5,6 +5,7 @@ using Ostawy.Data;
 using Ostawy.Helpers;
 using Ostawy.Interfaces;
 using Ostawy.Models;
+using Ostawy.Repositories;
 using Ostawy.SeedingData;
 using Ostawy.Services;
 
@@ -26,9 +27,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection(EmailSettings.SectionName));
+builder.Services.Configure<PaymobSettings>(
+    builder.Configuration.GetSection(PaymobSettings.SectionName));
 
 builder.Services.AddScoped<IEmailService, EmailService>();
-
+builder.Services.AddScoped<PlanService>();
+builder.Services.AddScoped<PlanRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

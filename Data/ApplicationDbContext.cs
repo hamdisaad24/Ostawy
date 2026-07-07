@@ -39,4 +39,26 @@ namespace Ostawy.Data
         // جداول نظام البروفايل والأوسطى (شغل صاحبك بعد التعديل)
         public DbSet<Craftsman> Craftsmen { get; set; }
     }
+<<<<<<< HEAD
+=======
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // تعريف مفتاح مركب للجدول الوسيط
+        modelBuilder.Entity<CraftsmanProfession>()
+            .HasKey(cp => new { cp.CraftsmanId, cp.ProfessionId });
+    }
+
+    public DbSet<EmailVerification> EmailVerifications { get; set; }
+    public DbSet<PasswordResetOtp> PasswordResetOtps { get; set; }
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<UserSubscription> UserSubscriptions { get; set; }
+    public DbSet<Payment> Payments { get; set; }   
+    public DbSet<Craftsman> Craftsmen { get; set; }
+    public DbSet<ApplicationUser> Applicationusers { get; set; }
+    public DbSet <Category> Categories { get; set; }
+    public DbSet<CraftsmanProfession> Craftsmanprofessions { get; set; }
+    public DbSet<Profession> Professions { get; set; }
+>>>>>>> 07f7e43df252c8299d81d9f3b49bff1a2b706906
 }

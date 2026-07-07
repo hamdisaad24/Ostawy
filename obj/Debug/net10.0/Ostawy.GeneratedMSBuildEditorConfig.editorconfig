@@ -90,6 +90,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MyProjects/Ostawy2/Ostawy/Views/Plan/create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhblxjcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Plan/delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhblxkZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Plan/edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhblxlZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Plan/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhblxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MyProjects/Ostawy2/Ostawy/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

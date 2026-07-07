@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\MyProjects\\Ostawy2\\Ostawy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +27,8 @@
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260706135711_addprofileandcraftsmantables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,20 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20260706135711_AddProfileAndCraftsmanTables.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
-              "RelativeToolTip": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T12:52:09.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
@@ -130,14 +117,14 @@
               "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
               "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\ProfileViewModel.cs",
               "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
-              "ViewState": "AgIAAAYAAACAzMzMzMw6wBsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T12:20:52.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Profile\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Profile\\Index.cshtml",
@@ -150,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ProfileController.cs",
               "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
@@ -159,6 +146,45 @@
               "ViewState": "AgIAACIAAAAAAAAAAAAYwCUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T12:02:20.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T21:20:45.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AvailableJobs.cshtml",
+              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
+              "RelativeDocumentMoniker": "Views\\Artisan\\AvailableJobs.cshtml",
+              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
+              "RelativeToolTip": "Views\\Artisan\\AvailableJobs.cshtml",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAswHQAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T21:38:45.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20260706135711_AddProfileAndCraftsmanTables.cs",
+              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "RelativeToolTip": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T12:52:09.364Z",
               "EditorCaption": ""
             },
             {
@@ -172,32 +198,6 @@
               "ViewState": "AgIAAGQAAACgzMzMzMwcwGgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-07-06T21:28:23.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AvailableJobs.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
-              "RelativeDocumentMoniker": "Views\\Artisan\\AvailableJobs.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
-              "RelativeToolTip": "Views\\Artisan\\AvailableJobs.cshtml",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAuwHgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-06T21:38:45.851Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Category.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "Models\\Category.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
-              "RelativeToolTip": "Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T21:20:45.274Z",
               "EditorCaption": ""
             },
             {
