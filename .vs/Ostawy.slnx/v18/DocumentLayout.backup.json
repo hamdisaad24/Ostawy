@@ -1,21 +1,97 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\MyProjects\\Ostawy2\\Ostawy\\",
+  "WorkspaceRootPath": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\models\\craftsmanprofession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\craftsmanprofession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\migrations\\20260706135711_addprofileandcraftsmantables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260706135711_addprofileandcraftsmantables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\wwwroot\\images\\osta.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\images\\osta.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\wwwroot\\images\\indostry.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\images\\indostry.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|c:\\users\\souki\\source\\repos\\gostawy\\ostawy\\models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,37 +102,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoleSeeder.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\RoleSeeder.cs",
-              "RelativeDocumentMoniker": "SeedingData\\RoleSeeder.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\RoleSeeder.cs",
-              "RelativeToolTip": "SeedingData\\RoleSeeder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T12:38:53.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAQwN4AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-05T12:23:49.417Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -64,24 +122,291 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAABsCAAAAAAAAAAAuwCQCAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAACICAAAAAAAAAAAAADMCAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-07-05T12:00:57.725Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Profile\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Profile\\Index.cshtml",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Profile\\Index.cshtml*",
+              "RelativeToolTip": "Views\\Profile\\Index.cshtml*",
+              "ViewState": "AgIAALEAAAAAAAAAAADwv8cAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T11:09:20.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-06T15:12:36.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:20.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForgotPasswordViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ForgotPasswordViewModel.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ForgotPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:18.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Profession.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\Profession.cs",
+              "RelativeDocumentMoniker": "Models\\Profession.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\Profession.cs",
+              "RelativeToolTip": "Models\\Profession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:16.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CraftsmanProfession.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\CraftsmanProfession.cs",
+              "RelativeDocumentMoniker": "Models\\CraftsmanProfession.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\CraftsmanProfession.cs",
+              "RelativeToolTip": "Models\\CraftsmanProfession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:14.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAD4vxcBAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-05T12:23:49.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:13.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAJwBAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:05.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAswHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:48:58.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProfileViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\ProfileViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\ViewModels\\ProfileViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA9wB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:46:20.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20260706135711_AddProfileAndCraftsmanTables.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "RelativeToolTip": "Migrations\\20260706135711_AddProfileAndCraftsmanTables.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwBIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T13:57:11.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T11:26:08.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAArwG0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T14:46:17.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:20:47.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RoleSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\SeedingData\\RoleSeeder.cs",
+              "RelativeDocumentMoniker": "SeedingData\\RoleSeeder.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\SeedingData\\RoleSeeder.cs",
+              "RelativeToolTip": "SeedingData\\RoleSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAApwA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T12:38:53.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T14:44:54.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T14:44:48.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "wwwroot\\favicon.ico",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2026-07-05T14:44:35.901Z",
+              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "osta.png",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\images\\osta.png",
+              "RelativeDocumentMoniker": "wwwroot\\images\\osta.png",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\images\\osta.png",
+              "RelativeToolTip": "wwwroot\\images\\osta.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-07-05T14:44:26.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "indostry.png",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\images\\indostry.png",
+              "RelativeDocumentMoniker": "wwwroot\\images\\indostry.png",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\wwwroot\\images\\indostry.png",
+              "RelativeToolTip": "wwwroot\\images\\indostry.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-07-05T14:44:21.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "EmailVerification.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\EmailVerification.cs",
+              "DocumentMoniker": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\EmailVerification.cs",
               "RelativeDocumentMoniker": "Models\\EmailVerification.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\EmailVerification.cs",
+              "ToolTip": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Models\\EmailVerification.cs",
               "RelativeToolTip": "Models\\EmailVerification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
