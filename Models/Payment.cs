@@ -6,6 +6,9 @@ public class Payment
     public Guid UserId { get; set; }
     public ApplicationUser? User { get; set; }
 
+    public Guid PlanId { get; set; }
+    public Plan? Plan { get; set; }
+
     public decimal Amount { get; set; }
     public string Currency { get; set; } = "EGP";
     public DateTime PaymentDate { get; set; }

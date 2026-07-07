@@ -1,0 +1,89 @@
+@{
+    ViewData["Title"] = "فشل الدفع";
+}
+
+
+<style>
+
+.cancel-box{
+
+    max-width:600px;
+
+    margin:150px auto;
+
+    text-align:center;
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+.icon{
+
+    font-size:70px;
+
+    color:#dc2626;
+
+}
+
+
+h1{
+
+    color:#031636;
+
+    font-weight:900;
+
+}
+
+
+.btn-back{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    background:#fd7613;
+
+    color:white;
+
+    padding:12px 30px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+}
+
+</style>
+
+
+<div class="cancel-box">
+
+
+    <div class="icon">
+        ✕
+    </div>
+
+
+    <h1>
+        لم تكتمل عملية الدفع
+    </h1>
+
+
+    <p>
+        حدثت مشكلة أثناء الدفع أو تم إلغاء العملية.
+    </p>
+
+
+    <a asp-action="Index" class="btn-back">
+        المحاولة مرة أخرى
+    </a>
+
+
+</div>

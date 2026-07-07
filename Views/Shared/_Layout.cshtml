@@ -654,7 +654,6 @@
         var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (Guid.TryParse(userIdString, out Guid userId))
         {
-            // التحقق هل الحرفي لديه اشتراك نشط حالياً وخطة Pro
             isProUser = _context.UserSubscriptions
                 .Any(s => s.UserId == userId && s.IsActive && s.Plan!.Name == "Pro");
         }
@@ -693,7 +692,7 @@
                         @if (!isProUser)
                         {
                             <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post" class="d-inline ms-2">
-                                <input type="hidden" name="planId" value="هنا_تضع_الـ_Guid_الخاص_بالخطة_البرو" />
+                                <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
                                 <button type="submit" class="btn-upgrade-pro">🚀 ترقية إلى PRO</button>
                             </form>
                         }
@@ -725,7 +724,7 @@
             <nav class="auth-nav">
                 @if (User!.Identity!.IsAuthenticated)
                 {
-                    <a class="link-login" asp-area="" asp-controller="Account" asp-action="Profile">بروفايل</a>
+                    <a class="link-login" asp-area="" asp-controller="Profile" asp-action="index">بروفايل</a>
                     <a class="btn-register-nav" asp-area="" asp-controller="Account" asp-action="Logout">خروج</a>
                 }
                 else
@@ -763,7 +762,7 @@
                         {
                             <div class="px-3 py-2">
                                 <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post">
-                                    <input type="hidden" name="planId" value="هنا_تضع_الـ_Guid_الخاص_بالخطة_البرو" />
+                                    <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
                                     <button type="submit" class="btn-upgrade-pro w-100 text-center py-2">🚀 ترقية إلى PRO</button>
                                 </form>
                             </div>
@@ -780,7 +779,7 @@
                         <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الشكاوى</a>
                     }
                     <hr>
-                    <a class="mobile-nav-item text-primary" asp-controller="Account" asp-action="Profile">بروفايل</a>
+                    <a class="mobile-nav-item text-primary" asp-controller="Profile" asp-action="Index">بروفايل</a>
                     <a class="mobile-nav-item text-danger" asp-controller="Account" asp-action="Logout">تسجيل الخروج</a>
                 }
                 else

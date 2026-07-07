@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ostawy.Migrations
 {
     /// <inheritdoc />
-    public partial class SetupAuthentications : Migration
+    public partial class setupDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,6 +55,32 @@ namespace Ostawy.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IconPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Craftsmanprofessions",
+                columns: table => new
+                {
+                    CraftsmanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProfessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Craftsmanprofessions", x => new { x.CraftsmanId, x.ProfessionId });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PasswordResetOtps",
                 columns: table => new
                 {
@@ -68,6 +94,38 @@ namespace Ostawy.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PasswordResetOtps", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plans",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MaxRequests = table.Column<int>(type: "int", nullable: false),
+                    DurationInDays = table.Column<int>(type: "int", nullable: false),
+                    AllowVideos = table.Column<bool>(type: "bit", nullable: false),
+                    HasPrioritySearch = table.Column<bool>(type: "bit", nullable: false),
+                    HasVerifiedBadge = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plans", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Professions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Professions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,6 +235,28 @@ namespace Ostawy.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Craftsmen",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YearsOfExperience = table.Column<int>(type: "int", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Craftsmen", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Craftsmen_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EmailVerifications",
                 columns: table => new
                 {
@@ -194,6 +274,59 @@ namespace Ostawy.Migrations
                         name: "FK_EmailVerifications_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymobOrderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymobTransactionId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserSubscriptions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PlanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    LatestPaymobOrderId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserSubscriptions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserSubscriptions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserSubscriptions_Plans_PlanId",
+                        column: x => x.PlanId,
+                        principalTable: "Plans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -238,8 +371,28 @@ namespace Ostawy.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Craftsmen_UserId",
+                table: "Craftsmen",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmailVerifications_UserId",
                 table: "EmailVerifications",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_UserId",
+                table: "Payments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSubscriptions_PlanId",
+                table: "UserSubscriptions",
+                column: "PlanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSubscriptions_UserId",
+                table: "UserSubscriptions",
                 column: "UserId");
         }
 
@@ -262,16 +415,37 @@ namespace Ostawy.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Craftsmanprofessions");
+
+            migrationBuilder.DropTable(
+                name: "Craftsmen");
+
+            migrationBuilder.DropTable(
                 name: "EmailVerifications");
 
             migrationBuilder.DropTable(
                 name: "PasswordResetOtps");
 
             migrationBuilder.DropTable(
+                name: "Payments");
+
+            migrationBuilder.DropTable(
+                name: "Professions");
+
+            migrationBuilder.DropTable(
+                name: "UserSubscriptions");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Plans");
         }
     }
 }

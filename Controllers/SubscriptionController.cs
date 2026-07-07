@@ -7,6 +7,8 @@ using Microsoft.Extensions.Options;
 using Ostawy.Data;
 using Ostawy.Helpers;
 using Ostawy.Services;
+using Microsoft.EntityFrameworkCore;
+using Ostawy.Models;
 
 namespace Ostawy.Controllers;
 
@@ -76,7 +78,7 @@ public class SubscriptionController : Controller
             var orderResult = JsonSerializer.Deserialize<JsonElement>(await orderResponse.Content.ReadAsStringAsync());
             string paymobOrderId = orderResult.GetProperty("id").GetInt64().ToString();
 
-            await _paymentService.CreatePendingPaymentAsync(userId, plan.Price, paymobOrderId);
+            await _paymentService.CreatePendingPaymentAsync(userId, plan.Id, plan.Price, paymobOrderId);
 
             var paymentKeyUrl = "https://accept.paymob.com/api/acceptance/payment_keys"; 
             var paymentKeyData = new
@@ -85,6 +87,7 @@ public class SubscriptionController : Controller
                 amount_cents = (int)(plan.Price * 100),
                 expiration = 3600,
                 order_id = paymobOrderId,
+                return_url = "https://wipe-foe-brittle.ngrok-free.dev/Subscription/Callback",
                 billing_data = new
                 {
                     apartment = "NA", floor = "NA", building = "NA", street = "NA", postal_code = "NA", city = "NA", country = "NA",
@@ -115,6 +118,46 @@ public class SubscriptionController : Controller
             TempData["ErrorMessage"] = "عذراً، حدث خطأ غير متوقع أثناء إعداد عملية الدعم. حاول مرة أخرى.";
             return RedirectToAction("Index", "Home");
         }
+    }
+
+
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> Callback()
+    {
+        var success = Request.Query["success"].ToString();
+        var orderId = Request.Query["order"].ToString();
+        var payment = await _context.Payments
+            .FirstOrDefaultAsync(x => x.PaymobOrderId == orderId);
+
+        if(payment == null)
+            return NotFound();
+
+        if(success != "true")
+        {
+            payment.Status = "Failed";
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Cancel));
+        }
+
+        payment.Status = "Paid";
+        payment.PaymobTransactionId =
+            Request.Query["id"].ToString();
+
+        var subscription = new UserSubscription
+        {
+            Id = Guid.NewGuid(),
+            UserId = payment.UserId,
+            PlanId = payment.PlanId,
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow.AddDays(30),
+            IsActive = true,
+            LatestPaymobOrderId = payment.PaymobOrderId
+        };
+
+        _context.UserSubscriptions.Add(subscription);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Success));
     }
 
     [HttpGet]

@@ -9,13 +9,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
-
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-        // تعريف مفتاح مركب للجدول الوسيط
         modelBuilder.Entity<CraftsmanProfession>()
             .HasKey(cp => new { cp.CraftsmanId, cp.ProfessionId });
     }
@@ -26,7 +23,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<UserSubscription> UserSubscriptions { get; set; }
     public DbSet<Payment> Payments { get; set; }   
     public DbSet<Craftsman> Craftsmen { get; set; }
-    public DbSet<ApplicationUser> Applicationusers { get; set; }
     public DbSet <Category> Categories { get; set; }
     public DbSet<CraftsmanProfession> Craftsmanprofessions { get; set; }
     public DbSet<Profession> Professions { get; set; }

@@ -354,56 +354,47 @@ namespace Ostawy.Migrations
                 });
 
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
-            {
-                b.Property<Guid>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("uniqueidentifier");
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                b.Property<decimal>("Amount")
-                    .HasColumnType("decimal(18,2)");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
-                b.Property<string>("Currency")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<DateTime>("PaymentDate")
-                    .HasColumnType("datetime2");
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
 
-                b.Property<string>("PaymobOrderId")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("PaymobOrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("PaymobTransactionId")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<string>("PaymobTransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("Status")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("PlanId")
+                        .HasColumnType("uniqueidentifier");
 
-                b.Property<Guid>("UserId")
-                    .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                b.HasKey("Id");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
-                b.HasIndex("UserId");
+                    b.HasKey("Id");
 
-                b.ToTable("Payments");
-            });
-                        modelBuilder.Entity("Ostawy.Models.Profession", b =>
-            {
-                b.Property<Guid>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("uniqueidentifier");
+                    b.HasIndex("PlanId");
 
-                b.Property<string>("Name")
-                    .IsRequired()
-                    .HasColumnType("nvarchar(max)");
+                    b.HasIndex("UserId");
 
-                b.HasKey("Id");
-
-                b.ToTable("Professions");
-            });
+                    b.ToTable("Payments");
+                });
 
             modelBuilder.Entity("Ostawy.Models.Plan", b =>
                 {
@@ -433,19 +424,31 @@ namespace Ostawy.Migrations
                     b.Property<int>("MaxRequests")
                         .HasColumnType("int");
 
-=======
->>>>>>> 7ee72ff3b2ec245804317870f5cd677a6983ed39
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("Ostawy.Models.Profession", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Professions");
                 });
 
             modelBuilder.Entity("Ostawy.Models.UserSubscription", b =>
@@ -480,11 +483,6 @@ namespace Ostawy.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserSubscriptions");
-=======
-                    b.HasKey("Id");
-
-                    b.ToTable("Professions");
->>>>>>> 7ee72ff3b2ec245804317870f5cd677a6983ed39
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -562,11 +560,19 @@ namespace Ostawy.Migrations
 
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
                 {
+                    b.HasOne("Ostawy.Models.Plan", "Plan")
+                        .WithMany()
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Ostawy.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Plan");
 
                     b.Navigation("User");
                 });
