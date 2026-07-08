@@ -37,9 +37,31 @@ builder.Services.AddScoped<PlanRepository>();
 builder.Services.AddScoped<ProfessionService>();
 builder.Services.AddScoped<ProfessionRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlOptions =>
+    {
+        // Enable transient fault handling for better resiliency
+        sqlOptions.EnableRetryOnFailure();
+    }));
 
 var app = builder.Build();
+
+// Ensure database is migrated/created before performing seeding operations
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var db = services.GetRequiredService<ApplicationDbContext>();
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // If migration fails, surface a clear message in logs but allow the app to attempt to start
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Database migration failed");
+    }
+}
+
 await RoleSeeder.SeedRolesAsync(app);
 
 using (var scope = app.Services.CreateScope())

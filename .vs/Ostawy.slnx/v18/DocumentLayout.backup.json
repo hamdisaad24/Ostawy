@@ -1,126 +1,112 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\MyProjects\\Ostawy2\\Ostawy\\",
+  "WorkspaceRootPath": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708124028_SyncDatabaseSchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20260708124028_SyncDatabaseSchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708123809_AddProfessionAndFixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20260708123809_AddProfessionAndFixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\repositories\\professionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:repositories\\professionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\viewmodels\\becomecraftsmanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\becomecraftsmanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\profile\\becomecraftsman.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\becomecraftsman.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\craftsman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\craftsman.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\artisan\\availablejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\seedingdata\\adminseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\adminseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\20260707200325_finalostawysync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260707200325_finalostawysync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\20260707124316_setupdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260707124316_setupdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\20260706212737_seedcategoriesdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260706212737_seedcategoriesdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\20260706212230_initialjobsystemtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260706212230_initialjobsystemtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\20260706211719_addjobrequestsandbidstables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260706211719_addjobrequestsandbidstables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\seedingdata\\adminseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\adminseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.Craftsmen.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\profession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\repositories\\planrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:repositories\\planrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\wwwroot\\images\\osta.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\images\\osta.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\wwwroot\\images\\indostry.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:wwwroot\\images\\indostry.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|d:\\myprojects\\ostawy2\\ostawy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\craftsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\craftsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -130,409 +116,350 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20260708124028_SyncDatabaseSchema.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708124028_SyncDatabaseSchema.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260708124028_SyncDatabaseSchema.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708124028_SyncDatabaseSchema.cs",
-              "RelativeToolTip": "Migrations\\20260708124028_SyncDatabaseSchema.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T12:40:28.736Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20260708123809_AddProfessionAndFixes.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708123809_AddProfessionAndFixes.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260708123809_AddProfessionAndFixes.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260708123809_AddProfessionAndFixes.cs",
-              "RelativeToolTip": "Migrations\\20260708123809_AddProfessionAndFixes.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T12:38:09.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Profession.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Profession.cs",
-              "RelativeDocumentMoniker": "Models\\Profession.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Profession.cs",
-              "RelativeToolTip": "Models\\Profession.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T12:34:04.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProfessionRepository.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Repositories\\ProfessionRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ProfessionRepository.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Repositories\\ProfessionRepository.cs",
-              "RelativeToolTip": "Repositories\\ProfessionRepository.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAA5wBAAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T12:31:30.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T12:29:35.957Z",
-              "EditorCaption": ""
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ProfileViewModel.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\ProfileViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\ProfileViewModel.cs",
-              "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAADwvxQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T09:37:59.201Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BecomeCraftsmanViewModel.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\BecomeCraftsmanViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\BecomeCraftsmanViewModel.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\ViewModels\\BecomeCraftsmanViewModel.cs",
-              "RelativeToolTip": "ViewModels\\BecomeCraftsmanViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T08:54:53.053Z",
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-06T15:12:36.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACUAAAAgZWZmZmY9wC4AAAA6AAAAAAAAAA==",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T14:44:54.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:34:46.016Z",
+              "WhenOpened": "2026-07-06T10:20:47.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoleSeeder.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\RoleSeeder.cs",
+              "RelativeDocumentMoniker": "SeedingData\\RoleSeeder.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\RoleSeeder.cs",
+              "RelativeToolTip": "SeedingData\\RoleSeeder.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAawA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T12:38:53.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CraftSubmissionViewModel.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\CraftSubmissionViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\CraftSubmissionViewModel.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\CraftSubmissionViewModel.cs",
+              "RelativeToolTip": "ViewModels\\CraftSubmissionViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T20:23:28.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAAAFsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-05T12:23:49.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-06T21:24:16.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAqwPQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T14:46:17.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T14:44:48.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "dbo.AspNetUsers [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql",
+              "ToolTip": "dbo.AspNetUsers [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-07-08T12:17:54.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAO8CAAAAAAAAAAAiwPYCAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-07T21:09:31.676Z",
+              "Title": "AdminSeeder.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\AdminSeeder.cs",
+              "RelativeDocumentMoniker": "SeedingData\\AdminSeeder.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\AdminSeeder.cs",
+              "RelativeToolTip": "SeedingData\\AdminSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T12:24:15.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Craftsman.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Craftsman.cs",
-              "RelativeDocumentMoniker": "Models\\Craftsman.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Craftsman.cs",
-              "RelativeToolTip": "Models\\Craftsman.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAUwAwAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T09:03:42.642Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-07T20:00:18.454Z",
+              "DocumentIndex": 10,
+              "Title": "dbo.Craftsmen [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.Craftsmen.sql",
+              "ToolTip": "dbo.Craftsmen [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-07-08T12:46:50.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Profile\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Profile\\Index.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Profile\\Index.cshtml",
-              "RelativeToolTip": "Views\\Profile\\Index.cshtml",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAYwIsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-07T22:44:36.339Z"
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "Services\\EmailService.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\EmailService.cs",
+              "RelativeToolTip": "Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T14:37:11.009Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BecomeCraftsman.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Profile\\BecomeCraftsman.cshtml",
-              "RelativeDocumentMoniker": "Views\\Profile\\BecomeCraftsman.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Profile\\BecomeCraftsman.cshtml",
-              "RelativeToolTip": "Views\\Profile\\BecomeCraftsman.cshtml",
-              "ViewState": "AgIAABoAAAAAAAAAAAAYwDkAAAAGAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Profile\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Profile\\Index.cshtml",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Profile\\Index.cshtml",
+              "RelativeToolTip": "Views\\Profile\\Index.cshtml",
+              "ViewState": "AgIAALoAAAAAAAAAAAAYwNMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-08T08:55:52.234Z"
+              "WhenOpened": "2026-07-06T11:09:20.882Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "AvailableJobs.cshtml",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
-              "RelativeDocumentMoniker": "Views\\Artisan\\AvailableJobs.cshtml",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Views\\Artisan\\AvailableJobs.cshtml",
-              "RelativeToolTip": "Views\\Artisan\\AvailableJobs.cshtml",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAqwGQAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-07T20:55:24.057Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "RoleSeeder.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\RoleSeeder.cs",
-              "RelativeDocumentMoniker": "SeedingData\\RoleSeeder.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\RoleSeeder.cs",
-              "RelativeToolTip": "SeedingData\\RoleSeeder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAIBJwBYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:23:06.1Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AdminSeeder.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\AdminSeeder.cs",
-              "RelativeDocumentMoniker": "SeedingData\\AdminSeeder.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\SeedingData\\AdminSeeder.cs",
-              "RelativeToolTip": "SeedingData\\AdminSeeder.cs",
-              "ViewState": "AgIAAAEAAACAMTMzMzMLwBAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:05:25.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "20260706212230_InitialJobSystemTables.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706212230_InitialJobSystemTables.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260706212230_InitialJobSystemTables.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706212230_InitialJobSystemTables.cs",
-              "RelativeToolTip": "Migrations\\20260706212230_InitialJobSystemTables.cs",
-              "ViewState": "AgIAAAEAAACQAwAAAIAZwDIAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:25:08.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAACQAAABAl5mZmZkVwDQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T12:40:54.197Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "20260707200325_FinalOstawySync.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260707200325_FinalOstawySync.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260707200325_FinalOstawySync.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260707200325_FinalOstawySync.cs",
-              "RelativeToolTip": "Migrations\\20260707200325_FinalOstawySync.cs",
-              "ViewState": "AgIAAAoAAABgZmZmZmY2wBwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:03:25.968Z"
+              "WhenOpened": "2026-07-06T11:26:08.625Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "20260707124316_setupDatabase.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260707124316_setupDatabase.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260707124316_setupDatabase.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260707124316_setupDatabase.cs",
-              "RelativeToolTip": "Migrations\\20260707124316_setupDatabase.cs",
-              "ViewState": "AgIAADIAAACwzMzMzMwuwDoAAAAnAAAAAAAAAA==",
+              "Title": "Profession.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Profession.cs",
+              "RelativeDocumentMoniker": "Models\\Profession.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Profession.cs",
+              "RelativeToolTip": "Models\\Profession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:19:52.126Z"
+              "WhenOpened": "2026-07-06T15:04:16.051Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "20260706211719_AddJobRequestsAndBidsTables.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706211719_AddJobRequestsAndBidsTables.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260706211719_AddJobRequestsAndBidsTables.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706211719_AddJobRequestsAndBidsTables.cs",
-              "RelativeToolTip": "Migrations\\20260706211719_AddJobRequestsAndBidsTables.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "ForgotPasswordViewModel.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ForgotPasswordViewModel.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ForgotPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:25:04.778Z"
+              "WhenOpened": "2026-07-06T15:04:18.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:20.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAACICAAAAAAAAAAAAADMCAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-05T12:00:57.725Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "20260706212737_SeedCategoriesData.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706212737_SeedCategoriesData.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260706212737_SeedCategoriesData.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\20260706212737_SeedCategoriesData.cs",
-              "RelativeToolTip": "Migrations\\20260706212737_SeedCategoriesData.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAtwDMAAAAiAAAAAAAAAA==",
+              "Title": "Category.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:25:44.045Z"
+              "WhenOpened": "2026-07-06T15:04:13.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAJwBAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T15:04:05.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAswHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:48:58.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProfileViewModel.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ProfileViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ProfileViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA9wB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:46:20.104Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
-              "Title": "Category.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "Models\\Category.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Category.cs",
-              "RelativeToolTip": "Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T20:05:48.002Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "PaymentService.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Services\\PaymentService.cs",
-              "RelativeDocumentMoniker": "Services\\PaymentService.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Services\\PaymentService.cs",
-              "RelativeToolTip": "Services\\PaymentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:39:32.632Z"
+              "Title": "favicon.ico",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "wwwroot\\favicon.ico",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\favicon.ico",
+              "RelativeToolTip": "wwwroot\\favicon.ico",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2026-07-05T14:44:35.901Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AgIAALMCAAAAAAAAAAAAALYCAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:43:59.564Z"
+              "Title": "osta.png",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\osta.png",
+              "RelativeDocumentMoniker": "wwwroot\\images\\osta.png",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\osta.png",
+              "RelativeToolTip": "wwwroot\\images\\osta.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-07-05T14:44:26.833Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Payment.cs",
-              "RelativeDocumentMoniker": "Models\\Payment.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Payment.cs",
-              "RelativeToolTip": "Models\\Payment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:39:24.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "SubscriptionController.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\SubscriptionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SubscriptionController.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\SubscriptionController.cs",
-              "RelativeToolTip": "Controllers\\SubscriptionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:31:44.883Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Plan.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Plan.cs",
-              "RelativeDocumentMoniker": "Models\\Plan.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Models\\Plan.cs",
-              "RelativeToolTip": "Models\\Plan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:39:27.521Z"
+              "DocumentIndex": 24,
+              "Title": "indostry.png",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\indostry.png",
+              "RelativeDocumentMoniker": "wwwroot\\images\\indostry.png",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\indostry.png",
+              "RelativeToolTip": "wwwroot\\images\\indostry.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-07-05T14:44:21.689Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 25,
-              "Title": "PlanRepository.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Repositories\\PlanRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\PlanRepository.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Repositories\\PlanRepository.cs",
-              "RelativeToolTip": "Repositories\\PlanRepository.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAuwDUAAAAwAAAAAAAAAA==",
+              "Title": "EmailVerification.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\EmailVerification.cs",
+              "RelativeDocumentMoniker": "Models\\EmailVerification.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\EmailVerification.cs",
+              "RelativeToolTip": "Models\\EmailVerification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T18:50:06.438Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "D:\\MyProjects\\Ostawy2\\Ostawy\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T19:34:41.363Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 623,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 886,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "WhenOpened": "2026-07-05T11:49:19.164Z",
+              "EditorCaption": ""
             }
           ]
         }

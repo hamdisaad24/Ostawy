@@ -1,4 +1,3 @@
-wwwroot\css\ostawy-craft.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\indostry.png
@@ -65,7 +64,6 @@ wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
 G:\DEPI_.net\project\ostawy\Ostawy\wwwroot\css\site.css
-G:\DEPI_.net\project\ostawy\Ostawy\wwwroot\css\ostawy-craft.css
 G:\DEPI_.net\project\ostawy\Ostawy\wwwroot\js\site.js
 G:\DEPI_.net\project\ostawy\Ostawy\wwwroot\lib\jquery\dist\jquery.slim.min.js
 G:\DEPI_.net\project\ostawy\Ostawy\wwwroot\lib\jquery\dist\jquery.min.map

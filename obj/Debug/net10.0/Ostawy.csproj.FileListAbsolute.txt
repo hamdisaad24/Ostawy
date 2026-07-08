@@ -989,7 +989,6 @@ G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\scopedcss\bundle\Ostawy.styles.css
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\scopedcss\projectbundle\Ostawy.bundle.scp.css
-G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\compressed\6htgj52zzs-{0}-putd6oj4e7-putd6oj4e7.gz
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\compressed\xtlkc57mll-{0}-b9sayid5wm-b9sayid5wm.gz
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\compressed\xpwn079v4f-{0}-61n19gt1b8-61n19gt1b8.gz
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\compressed\1g1n1xp3xk-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
@@ -1068,4 +1067,6 @@ G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Ostawy.runtimeconfig.json
 G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Ostawy.pdb
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\Ostawy.genruntimeconfig.cache
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\ref\Ostawy.dll
+G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Stripe.net.dll
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
