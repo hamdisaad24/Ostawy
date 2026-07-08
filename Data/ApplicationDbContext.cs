@@ -27,6 +27,10 @@ namespace Ostawy.Data
 
             // 🛠️ السطر السحري: بنقول للـ EF لو لقيت جدول متكريت قبل كده، تجاهل الإيرور ده وكمل فرش باقي الجداول
             modelBuilder.Entity<Category>().ToTable("Categories", t => t.ExcludeFromMigrations());
+
+            // Ensure decimal precision to avoid SQL truncation warnings
+            modelBuilder.Entity<Payment>().Property(p => p.Amount).HasPrecision(18, 2);
+            modelBuilder.Entity<Plan>().Property(p => p.Price).HasPrecision(18, 2);
         }
 
         // 1. جداول الحسابات والتحقق الافتراضية

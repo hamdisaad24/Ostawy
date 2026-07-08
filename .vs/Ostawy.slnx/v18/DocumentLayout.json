@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:seedingdata\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\repositories\\craftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:repositories\\craftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,6 +127,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\models\\craft.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:models\\craft.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\repositories\\icraftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:repositories\\icraftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\services\\icraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:services\\icraftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\services\\craftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:services\\craftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\controllers\\craftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\craftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\craftindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\craftindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -132,7 +156,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -140,59 +164,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Craft.cs",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Craft.cs",
-              "RelativeDocumentMoniker": "Models\\Craft.cs",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Craft.cs",
-              "RelativeToolTip": "Models\\Craft.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CraftRepository.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Repositories\\CraftRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\CraftRepository.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Repositories\\CraftRepository.cs",
+              "RelativeToolTip": "Repositories\\CraftRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T21:17:53.843Z",
+              "WhenOpened": "2026-07-08T21:22:06.466Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "CraftImage.cs",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\CraftImage.cs",
-              "RelativeDocumentMoniker": "Models\\CraftImage.cs",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\CraftImage.cs",
-              "RelativeToolTip": "Models\\CraftImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 32,
+              "Title": "ICraftRepository.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Repositories\\ICraftRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ICraftRepository.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Repositories\\ICraftRepository.cs",
+              "RelativeToolTip": "Repositories\\ICraftRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T21:17:53.525Z",
+              "WhenOpened": "2026-07-08T21:22:01.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-07-06T15:12:36.684Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-05T14:44:54.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -205,46 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "20260708210533_AddCategoryAndDescriptionToProfessions.cs",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
-              "RelativeToolTip": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T21:06:08.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": ".gitignore",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAB0AAAAAAAAAAABBwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-07-08T21:13:05.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T10:20:47.728Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RoleSeeder.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\RoleSeeder.cs",
               "RelativeDocumentMoniker": "SeedingData\\RoleSeeder.cs",
@@ -257,7 +216,150 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 36,
+              "Title": "CraftIndexViewModel.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\CraftIndexViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\CraftIndexViewModel.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\CraftIndexViewModel.cs",
+              "RelativeToolTip": "ViewModels\\CraftIndexViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:23:39.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "CraftController.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\CraftController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CraftController.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\CraftController.cs",
+              "RelativeToolTip": "Controllers\\CraftController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:22:29.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CraftService.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\CraftService.cs",
+              "RelativeDocumentMoniker": "Services\\CraftService.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\CraftService.cs",
+              "RelativeToolTip": "Services\\CraftService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:22:21.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ICraftService.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\ICraftService.cs",
+              "RelativeDocumentMoniker": "Services\\ICraftService.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\ICraftService.cs",
+              "RelativeToolTip": "Services\\ICraftService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:22:10.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T14:44:54.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-06T15:12:36.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CraftImage.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\CraftImage.cs",
+              "RelativeDocumentMoniker": "Models\\CraftImage.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\CraftImage.cs",
+              "RelativeToolTip": "Models\\CraftImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:17:53.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Craft.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Craft.cs",
+              "RelativeDocumentMoniker": "Models\\Craft.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Craft.cs",
+              "RelativeToolTip": "Models\\Craft.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:17:53.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "RelativeToolTip": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:06:08.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": ".gitignore",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAB0AAAAAAAAAAABBwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-08T21:13:05.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:20:47.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
               "Title": "CraftSubmissionViewModel.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\CraftSubmissionViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\CraftSubmissionViewModel.cs",
@@ -270,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -283,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AccountController.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -296,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -309,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "dbo.AspNetUsers [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "dbo.AspNetUsers [Data]",
@@ -319,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "AdminSeeder.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\SeedingData\\AdminSeeder.cs",
               "RelativeDocumentMoniker": "SeedingData\\AdminSeeder.cs",
@@ -332,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "dbo.Craftsmen [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.Craftsmen.sql",
               "ToolTip": "dbo.Craftsmen [Data]",
@@ -342,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "EmailService.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "Services\\EmailService.cs",
@@ -355,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Index.cshtml",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Profile\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Profile\\Index.cshtml",
@@ -368,20 +470,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwDMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAABBwDsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T11:26:08.625Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Profession.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Profession.cs",
               "RelativeDocumentMoniker": "Models\\Profession.cs",
@@ -394,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ForgotPasswordViewModel.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ForgotPasswordViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ForgotPasswordViewModel.cs",
@@ -407,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
@@ -420,7 +522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -433,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Category.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
@@ -446,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "ApplicationDbContextModelSnapshot.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
@@ -459,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ProfileController.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
@@ -472,7 +574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "ProfileViewModel.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\ViewModels\\ProfileViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
@@ -485,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "favicon.ico",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\favicon.ico",
               "RelativeDocumentMoniker": "wwwroot\\favicon.ico",
@@ -496,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "osta.png",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\osta.png",
               "RelativeDocumentMoniker": "wwwroot\\images\\osta.png",
@@ -507,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "indostry.png",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\wwwroot\\images\\indostry.png",
               "RelativeDocumentMoniker": "wwwroot\\images\\indostry.png",
@@ -518,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "EmailVerification.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\EmailVerification.cs",
               "RelativeDocumentMoniker": "Models\\EmailVerification.cs",
