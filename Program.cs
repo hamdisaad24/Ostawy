@@ -11,7 +11,9 @@ using Ostawy.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Support MVC controllers and Razor Pages (Razor Pages project may require AddRazorPages)
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
     option =>
@@ -64,6 +66,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=index}/{id?}")
     .WithStaticAssets();
+
+// Map Razor Pages if the project contains pages
+app.MapRazorPages();
 
 
 app.Run();

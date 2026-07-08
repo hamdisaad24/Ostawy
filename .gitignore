@@ -1,2 +1,23 @@
 .vs/
 *.user
+
+# Ignore build outputs
+/bin/
+/obj/
+**/bin/
+**/obj/
+
+# Visual Studio temporary files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+/.idea/
+
+# Debug files
+*.pdb
+*.dll
+*.exe
+*.cache
