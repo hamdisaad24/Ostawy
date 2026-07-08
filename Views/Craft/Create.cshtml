@@ -1,0 +1,264 @@
+@model Ostawy.ViewModels.CraftSubmissionViewModel
+
+@{
+    ViewData["Title"] = "إضافة عمل جديد";
+}
+
+<!-- Google Fonts for Elegant Serif and Clean Sans-Serif Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="~/css/ostawy-craft.css" />
+
+<!-- تخصيصات لتوافق الصفحة مع اللغة العربية والاتجاه من اليمين لليسار (RTL) -->
+<style>
+    .ostawy-form-body {
+        direction: rtl;
+        text-align: right;
+        font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    .ostawy-title {
+        font-family: 'Cairo', 'Playfair Display', serif;
+        font-weight: 700;
+    }
+
+    /* تعديل اتجاه سهم خيارات القائمة المنسدلة ليناسب الـ RTL */
+    .ostawy-select {
+        background-position: left 0.875rem center;
+        padding-left: 2.5rem;
+        padding-right: 0.875rem;
+    }
+
+    /* تعديل اتجاه زر الإغلاق/الحذف فوق الصور */
+    .ostawy-slot-remove {
+        right: auto;
+        left: 4px;
+    }
+
+    /* ضبط محاذاة أزرار التحكم في الأسفل */
+    .ostawy-actions {
+        justify-content: flex-start;
+        flex-row-reverse: row-reverse;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    /* ستايل لتعطيل زر الرفع عند الوصول للحد الأقصى */
+    .ostawy-gallery-slot.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background-color: #f1f5f9;
+    }
+</style>
+
+<div class="ostawy-form-body">
+    <div class="ostawy-card">
+
+        <!-- Header -->
+        <div class="ostawy-header">
+            <h1 class="ostawy-title">إضافة عمل جديد</h1>
+            <p class="ostawy-subtitle">اعرض إبداعاتك ومصنوعاتك اليدوية المتميزة للعالم.</p>
+        </div>
+
+        <!-- Form Submission Structure -->
+        <form asp-action="Create" asp-controller="Craft" method="post" enctype="multipart/form-data" id="craftForm">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+            <!-- Dual Layout row -->
+            <div class="ostawy-grid">
+                
+
+                <!-- Category Dropdown Selection -->
+                <div class="ostawy-field-group">
+                    <label asp-for="CategoryId" class="ostawy-label">القسم / الفئة</label>
+                    <select asp-for="CategoryId" class="ostawy-select" required>
+                        <option value="Carpentry">أعمال نجارة وأخشاب</option>
+                        <option value="Textiles">منسوجات وسجاد يدوي</option>
+                        <option value="Ceramics">خزف وفخار</option>
+                        <option value="Jewelry">مجوهرات وحلي تذكارية</option>
+                        <option value="Leatherwork">مصنوعات جلدية طبيعية</option>
+                        <option value="Glass Art">زجاج معشق وأعمال زجاجية</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Description Frame -->
+            <div class="ostawy-field-group">
+                <label asp-for="Description" class="ostawy-label">وصف عملية التصنيع والقصة</label>
+                <textarea asp-for="Description" class="ostawy-textarea" rows="4" placeholder="صِف المواد المستخدمة، التقنيات، والروح الثقافية أو الإلهام وراء حِرفتك..."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Media Section -->
+            <div>
+                <h3 class="ostawy-section-title">رفع الوسائط والمعرض</h3>
+                <p class="ostawy-section-subtitle">الصورة الأساسية (الغلاف)</p>
+
+                <div class="ostawy-cover-dropzone" id="coverContainer" style="background-size: cover; background-position: center; position: relative;">
+                    <input type="file" asp-for="CoverImage" id="coverInput" class="hidden-input" accept="image/*" required />
+                    <div id="coverTextWrapper">
+                        <div class="ostawy-icon-upload"></div>
+                        <p class="ostawy-upload-text">اسحب وأفلت صورة الغلاف هنا، أو <span style="color: #4e5e82; text-decoration: underline;">اضغط للتصفح من جهازك</span>.</p>
+                        <p class="ostawy-upload-hint">(يفضل رفع صورة ذات جودة عالية)</p>
+                    </div>
+                    <!-- زر حذف صورة الغلاف -->
+                    <button type="button" id="removeCoverBtn" class="ostawy-slot-remove hidden" style="width: 24px; height: 24px; font-size: 14px; top: 10px; left: 10px;">&times;</button>
+                </div>
+                <span asp-validation-for="CoverImage" class="text-danger mb-2 block"></span>
+            </div>
+
+            <!-- Secondary Gallery Attachments Layout -->
+            <div>
+                <h3 class="ostawy-section-title">صور إضافية للمعرض (اختياري) <span id="galleryCounter" style="color: var(--md-outline); font-size: 0.85rem;">(0/5)</span></h3>
+                <p class="ostawy-section-subtitle">أضف زوايا متعددة ولقطات تفصيلية أو مراحل من ورشة العمل لاستعراض حِرفتك بشكل أفضل (بحد أقصى 5 صور).</p>
+
+                <div class="ostawy-gallery-grid" id="galleryGrid">
+
+                    <!-- زر الرفع الافتراضي وعلامة الزائد -->
+                    <div class="ostawy-gallery-slot" id="uploadSlot">
+                        <input type="file" asp-for="GalleryImages" id="galleryInput" class="hidden-input" multiple accept="image/*" />
+                        <span style="font-size: 2rem; font-weight: 400; color: var(--md-outline);">+</span>
+                    </div>
+
+                </div>
+                <span asp-validation-for="GalleryImages" id="galleryError" class="text-danger"></span>
+            </div>
+
+            <!-- Form Control Actions Wrapper -->
+            <div class="ostawy-actions">
+                <button type="submit" class="ostawy-btn ostawy-btn-publish">نشر العمل</button>
+                <button type="button" onclick="window.history.back();" class="ostawy-btn ostawy-btn-cancel" style="background-color: #e2e8f0; color: #031636;">إلغاء</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // === 1. منطق الغلاف (Cover Image) ===
+            const coverInput = document.getElementById("coverInput");
+            const coverContainer = document.getElementById("coverContainer");
+            const coverTextWrapper = document.getElementById("coverTextWrapper");
+            const removeCoverBtn = document.getElementById("removeCoverBtn");
+
+            coverInput.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        coverContainer.style.backgroundImage = `url('${e.target.result}')`;
+                        coverTextWrapper.classList.add("hidden");
+                        removeCoverBtn.classList.remove("hidden");
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            removeCoverBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                coverInput.value = "";
+                coverContainer.style.backgroundImage = "none";
+                coverTextWrapper.classList.remove("hidden");
+                removeCoverBtn.add("hidden");
+            });
+
+
+            // === 2. منطق معرض الصور مع تحديد حد أقصى 5 صور ===
+            const galleryInput = document.getElementById("galleryInput");
+            const galleryGrid = document.getElementById("galleryGrid");
+            const uploadSlot = document.getElementById("uploadSlot");
+            const galleryCounter = document.getElementById("galleryCounter");
+            const galleryError = document.getElementById("galleryError");
+
+            let selectedFiles = [];
+            const MAX_IMAGES = 5;
+
+            // منع فتح نافذة اختيار الملفات إذا وصلنا للحد الأقصى
+            uploadSlot.addEventListener("click", function (e) {
+                if (selectedFiles.length >= MAX_IMAGES) {
+                    e.preventDefault();
+                    galleryError.textContent = "لقد وصلت بالفعل للحد الأقصى المسموح به وهو 5 صور.";
+                }
+            });
+
+            galleryInput.addEventListener("change", function () {
+                const files = Array.from(this.files);
+                galleryError.textContent = ""; // تصفية الأخطاء السابقة
+
+                // فحص إذا كان عدد الصور الكلي سيتحاوز الـ 5
+                if (selectedFiles.length + files.length > MAX_IMAGES) {
+                    galleryError.textContent = `لا يمكن رفع أكثر من 5 صور. يمكنك إضافة ${MAX_IMAGES - selectedFiles.length} صور إضافية فقط.`;
+                    
+                    // أخذ المتبقي فقط المسموح به حتى نصل لـ 5 صور
+                    const allowedSlots = MAX_IMAGES - selectedFiles.length;
+                    if (allowedSlots > 0) {
+                        selectedFiles = selectedFiles.concat(files.slice(0, allowedSlots));
+                    }
+                } else {
+                    selectedFiles = selectedFiles.concat(files);
+                }
+
+                updateGalleryPreview();
+            });
+
+            function updateGalleryPreview() {
+                // إزالة المعاينات السابقة
+                const existingPreviews = galleryGrid.querySelectorAll(".dynamic-preview-slot");
+                existingPreviews.forEach(slot => slot.remove());
+
+                const dataTransfer = new DataTransfer();
+
+                selectedFiles.forEach((file, index) => {
+                    dataTransfer.items.add(file);
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const slot = document.createElement("div");
+                        slot.className = "ostawy-gallery-slot dynamic-preview-slot";
+                        slot.style.backgroundImage = `url('${e.target.result}')`;
+                        slot.style.backgroundSize = "cover";
+                        slot.style.backgroundPosition = "center";
+                        slot.style.borderStyle = "solid";
+                        slot.style.borderColor = "transparent";
+
+                        const removeBtn = document.createElement("div");
+                        removeBtn.className = "ostawy-slot-remove";
+                        removeBtn.innerHTML = "&times;";
+
+                        removeBtn.addEventListener("click", function (event) {
+                            event.stopPropagation();
+                            selectedFiles.splice(index, 1);
+                            galleryError.textContent = ""; // تصفية الخطأ عند الحذف
+                            updateGalleryPreview();
+                        });
+
+                        slot.appendChild(removeBtn);
+                        galleryGrid.insertBefore(slot, uploadSlot);
+                    }
+                    reader.readAsDataURL(file);
+                });
+
+                // تحديث الـ input الفعلي بالملفات الجديدة
+                galleryInput.files = dataTransfer.files;
+
+                // تحديث العداد النصي (Counter)
+                galleryCounter.textContent = `(${selectedFiles.length}/${MAX_IMAGES})`;
+
+                // تعطيل أو تفعيل شكل زر الـ (+) بصرياً بناءً على العدد
+                if (selectedFiles.length >= MAX_IMAGES) {
+                    uploadSlot.classList.add("disabled");
+                } else {
+                    uploadSlot.classList.remove("disabled");
+                }
+            }
+        });
+    </script>
+}
