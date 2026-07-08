@@ -1,0 +1,127 @@
+@model Ostawy.ViewModels.ProfessionViewModel
+
+@{
+    ViewData["Title"] = "تعديل الحرفة";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+    }
+
+    .page-container {
+        max-width: 700px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .card-box {
+        background: #fff;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .page-title {
+        color: var(--primary);
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 12px;
+    }
+
+    .form-control:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 .2rem rgba(253,118,19,.25);
+    }
+
+    .btn-save {
+        background: var(--secondary);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: .3s;
+    }
+
+    .btn-save:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-back {
+        background: #6c757d;
+        color: white;
+        text-decoration: none;
+        padding: 12px 30px;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    .btn-back:hover {
+        color: white;
+        opacity: .9;
+    }
+
+    .text-danger {
+        font-size: 14px;
+    }
+</style>
+
+<div class="page-container">
+
+    <div class="card-box">
+
+        <h2 class="page-title">
+            تعديل الحرفة
+        </h2>
+
+        <form asp-action="Edit" method="post">
+
+            <input asp-for="Id" type="hidden" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-4">
+                <label asp-for="Name" class="form-label"></label>
+
+                <input asp-for="Name"
+                       class="form-control"
+                       placeholder="مثال: سباك" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+
+                <button type="submit" class="btn-save">
+                    ✏️ حفظ التعديلات
+                </button>
+
+                <a asp-action="Index" class="btn-back">
+                    رجوع
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

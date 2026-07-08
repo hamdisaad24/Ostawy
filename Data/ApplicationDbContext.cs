@@ -44,6 +44,7 @@ namespace Ostawy.Data
         public DbSet<Plan> Plans { get; set; }
         public DbSet<UserSubscription> UserSubscriptions { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Profession> Professions { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 

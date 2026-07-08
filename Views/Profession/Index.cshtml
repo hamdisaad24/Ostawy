@@ -1,0 +1,200 @@
+@model IEnumerable<Ostawy.ViewModels.ProfessionViewModel>
+
+@{
+    ViewData["Title"] = "إدارة الحرف";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --light: #f8fafc;
+        --border: #e5e7eb;
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .header-box{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:25px;
+    }
+
+    .page-title{
+        color:var(--primary);
+        font-weight:900;
+    }
+
+    .btn-add{
+        background:var(--secondary);
+        color:white;
+        border:none;
+        padding:12px 22px;
+        border-radius:10px;
+        text-decoration:none;
+        font-weight:bold;
+        transition:.3s;
+    }
+
+    .btn-add:hover{
+        background:var(--primary);
+        color:white;
+        text-decoration:none;
+    }
+
+    .table-card{
+        background:white;
+        border-radius:18px;
+        overflow:hidden;
+        box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+
+    table{
+        margin:0;
+    }
+
+    thead{
+        background:var(--primary);
+        color:white;
+    }
+
+    thead th{
+        padding:18px !important;
+        font-weight:700;
+        text-align:center;
+    }
+
+    tbody td{
+        padding:18px !important;
+        vertical-align:middle;
+        text-align:center;
+    }
+
+    tbody tr:hover{
+        background:#fff8f2;
+    }
+
+    .btn-edit{
+        background:#0d6efd;
+        color:white;
+        padding:7px 15px;
+        border-radius:8px;
+        text-decoration:none;
+        margin-left:5px;
+    }
+
+    .btn-delete{
+        background:#dc3545;
+        color:white;
+        padding:7px 15px;
+        border-radius:8px;
+        text-decoration:none;
+    }
+
+    .btn-edit:hover,
+    .btn-delete:hover{
+        color:white;
+        text-decoration:none;
+        opacity:.9;
+    }
+
+    .alert-success{
+        border-radius:12px;
+    }
+
+</style>
+
+<div class="page-container">
+
+    <div class="header-box">
+
+        <h2 class="page-title">
+            إدارة الحرف
+        </h2>
+
+        <a asp-action="Create" class="btn-add">
+            + إضافة حرفة
+        </a>
+
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="table-card">
+
+        <table class="table table-hover mb-0">
+
+            <thead>
+
+            <tr>
+
+                <th>#</th>
+
+                <th>اسم الحرفة</th>
+
+                <th width="220">
+                    العمليات
+                </th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            @{
+                int i = 1;
+            }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@i</td>
+
+                    <td>
+                        @item.Name
+                    </td>
+
+                    <td>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@item.Id"
+                           class="btn-edit">
+
+                            تعديل
+
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@item.Id"
+                           class="btn-delete">
+
+                            حذف
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                i++;
+            }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
