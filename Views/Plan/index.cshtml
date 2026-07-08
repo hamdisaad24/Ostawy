@@ -1,0 +1,272 @@
+@model IEnumerable<Ostawy.ViewModels.PlanViewModel>
+
+@{
+    ViewData["Title"] = "إدارة الباقات";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --light: #f8fafc;
+        --border: #e5e7eb;
+        --success: #16a34a;
+        --danger: #dc2626;
+    }
+
+    .plans-container {
+        max-width: 1300px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+    }
+
+    .page-title {
+        color: var(--primary);
+        font-weight: 900;
+        margin: 0;
+    }
+
+    .btn-add {
+        background: var(--secondary);
+        color: white;
+        padding: 12px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: .3s;
+    }
+
+    .btn-add:hover {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+    }
+
+    .plans-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    }
+
+    table {
+        margin: 0;
+    }
+
+    thead {
+        background: var(--primary);
+        color: white;
+    }
+
+    th {
+        font-weight: 700;
+        text-align: center;
+        padding: 18px !important;
+        white-space: nowrap;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 18px !important;
+    }
+
+    tbody tr:hover {
+        background: #fafafa;
+    }
+
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--secondary);
+    }
+
+    .badge-custom {
+        padding: 8px 12px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .yes {
+        background: rgba(22, 163, 74, .12);
+        color: var(--success);
+    }
+
+    .no {
+        background: rgba(220, 38, 38, .12);
+        color: var(--danger);
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-edit {
+        background: #031636;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+    .btn-edit:hover {
+        background: #02204e;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-delete {
+        background: #dc2626;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+    .btn-delete:hover {
+        background: #b91c1c;
+        color: white;
+        text-decoration: none;
+    }
+
+    .empty {
+        text-align: center;
+        padding: 70px;
+    }
+
+    .empty h4 {
+        color: #64748b;
+    }
+</style>
+
+<div class="plans-container">
+    <div class="page-header">
+        <div>
+            <h2 class="page-title"> إدارة الباقات</h2>
+            <p class="text-muted"> يمكنك إضافة أو تعديل أو حذف باقات الاشتراك.</p>
+        </div>
+        <a asp-action="Create" class="btn-add">+ إضافة باقة جديدة</a>
+    </div>
+    <div class="plans-card">
+        @if (Model.Any())
+        {
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>اسم الباقة</th>
+                        <th>الوصف</th>
+                        <th>السعر</th>
+                        <th>عدد الطلبات</th>
+                        <th>الفيديوهات</th>
+                        <th>أولوية الظهور</th>
+                        <th>شارة التوثيق</th>
+                        <th width="180">
+                            العمليات
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <strong>@item.Name</strong>
+                            </td>
+                            <td style="max-width:250px">
+                                @item.Description
+                            </td>
+                            <td>
+                                <span class="price">
+                                    @item.Price EGP
+                                </span>
+                            </td>
+                            <td>
+                                @(item.MaxRequests == -1
+                                    ? "غير محدود"
+                                    : item.MaxRequests.ToString())
+                            </td>
+                            <td>
+                                @if (item.AllowVideos)
+                                {
+                                    <span class="badge-custom yes">
+                                        نعم
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge-custom no">
+                                        لا
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.HasPrioritySearch)
+                                {
+                                    <span class="badge-custom yes">
+                                        نعم
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge-custom no">
+                                        لا
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.HasVerifiedBadge)
+                                {
+                                    <span class="badge-custom yes">
+                                        نعم
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge-custom no">
+                                        لا
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                <div class="actions">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-edit">
+                                        تعديل
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-delete">
+                                        حذف
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="empty">
+                <h4>
+                    لا توجد أي باقات حتى الآن.
+                </h4>
+                <br />
+                <a asp-action="Create" class="btn-add">
+                    إضافة أول باقة
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,201 @@
+@model Ostawy.ViewModels.PlanViewModel
+
+@{
+    ViewData["Title"] = "حذف الباقة";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --danger: #dc2626;
+        --bg: #f8fafc;
+    }
+
+    .page-container {
+        max-width: 700px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .card-plan {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .card-header-custom {
+        background: var(--danger);
+        color: white;
+        padding: 25px 30px;
+    }
+
+    .card-header-custom h3 {
+        margin: 0;
+        font-weight: 800;
+    }
+
+    .card-body-custom {
+        padding: 35px;
+    }
+
+    .warning-box {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .warning-box p {
+        margin: 0;
+        color: #991b1b;
+        font-weight: 600;
+    }
+
+    .plan-info {
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .plan-info div {
+        margin-bottom: 12px;
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    .btn-delete {
+        background: var(--danger);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: .3s;
+    }
+
+    .btn-delete:hover {
+        background: #991b1b;
+        color: white;
+    }
+
+    .btn-back {
+        background: #e5e7eb;
+        color: #111827;
+        padding: 12px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .btn-back:hover {
+        color: black;
+    }
+</style>
+
+
+<div class="page-container">
+
+    <div class="card-plan">
+
+        <div class="card-header-custom">
+            <h3>حذف الباقة</h3>
+        </div>
+
+
+        <div class="card-body-custom">
+
+            <div class="warning-box">
+                <p>
+                    هل أنت متأكد أنك تريد حذف هذه الباقة؟
+                    لا يمكن التراجع عن هذه العملية.
+                </p>
+            </div>
+
+
+            <div class="plan-info">
+
+                <div>
+                    اسم الباقة:
+                    <span>
+                        @Model.Name
+                    </span>
+                </div>
+
+
+                <div>
+                    السعر:
+                    <span>
+                        @Model.Price جنيه
+                    </span>
+                </div>
+
+
+                <div>
+                    الحد الأقصى للطلبات:
+                    <span>
+                        @(Model.MaxRequests == -1 
+                            ? "غير محدود" 
+                            : Model.MaxRequests)
+                    </span>
+                </div>
+
+
+                <div>
+                    الفيديوهات:
+                    <span>
+                        @(Model.AllowVideos ? "مسموح" : "غير مسموح")
+                    </span>
+                </div>
+
+
+                <div>
+                    البحث المميز:
+                    <span>
+                        @(Model.HasPrioritySearch ? "مفعل" : "غير مفعل")
+                    </span>
+                </div>
+
+
+                <div>
+                    التوثيق:
+                    <span>
+                        @(Model.HasVerifiedBadge ? "مفعل" : "غير مفعل")
+                    </span>
+                </div>
+
+            </div>
+
+
+            <form asp-action="DeleteConfirmed" method="post">
+
+                <input asp-for="Id" type="hidden" />
+
+
+                <button type="submit"
+                        class="btn-delete">
+
+                    تأكيد الحذف
+
+                </button>
+
+
+                <a asp-action="Index"
+                   class="btn-back">
+
+                    إلغاء
+
+                </a>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>

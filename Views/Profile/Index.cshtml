@@ -1,4 +1,4 @@
-﻿@model Ostawy.ViewModels.ProfileViewModel
+@model Ostawy.ViewModels.ProfileViewModel
 @{
     ViewData["Title"] = "الملف الشخصي";
 }
@@ -6,212 +6,135 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-<style>
-    /* تطبيق الهوية البصرية لصفحة الهوم بيج */
-    body {
-        background-color: #fcfdfe;
-        color: #031636;
-        font-family: 'Manrope', 'Segoe UI', sans-serif;
+<div class="container" style="direction: rtl; text-align: right; margin-top: 160px; margin-bottom: 5rem;">
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mb-4 fw-bold shadow-sm border-0" role="alert" style="border-radius: 10px;">
+            <i class="fa-solid fa-circle-check me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: left; margin-top: -3px;"></button>
+        </div>
     }
-
-    /* مسافة أمان كبيرة ومريحة لمنع التداخل مع الناف بار */
-    .profile-container {
-        margin-top: 180px !important;
-        margin-bottom: 5rem;
-    }
-
-    /* كروت مودرن بيضاء بظلال ناعمة وحواف دائرية احترافية نفس ستايل الهوم */
-    .profile-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(3, 22, 54, 0.04);
-        transition: all 0.3s ease;
-    }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(3, 22, 54, 0.08);
-        }
-
-    /* الستايل المعتمد للـ Badges */
-    .badge-custom {
-        background-color: #fca311;
-        color: #031636;
-        font-weight: 700;
-        border-radius: 8px;
-        padding: 8px 16px;
-    }
-
-    .badge-client {
-        background-color: #e2e8f0;
-        color: #031636;
-        font-weight: 700;
-        border-radius: 8px;
-        padding: 8px 16px;
-    }
-
-    /* صناديق الإحصائيات الفاتحة الراقية */
-    .stat-box {
-        background: #f8fafc;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        border-right: 4px solid #fca311;
-        padding: 16px;
-    }
-
-    /* الزرار البرتقالي المعتمد في الـ CTA بتاع الهوم */
-    .btn-ostawy {
-        background-color: #fca311;
-        color: #031636;
-        font-weight: 700;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-        border: none;
-    }
-
-        .btn-ostawy:hover {
-            background-color: #e59209;
-            transform: scale(1.02);
-            color: #031636;
-            box-shadow: 0 4px 15px rgba(252, 163, 17, 0.3);
-        }
-
-    /* نصوص واضحة ومتباينة جداً */
-    .text-navy-main {
-        color: #031636 !important;
-    }
-
-    .text-navy-muted {
-        color: #475569 !important;
-    }
-
-    .bio-box {
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
-        color: #334155;
-    }
-
-    .profession-tag {
-        background-color: #f1f5f9;
-        color: #031636;
-        border: 1px solid #cbd5e1;
-        font-weight: 600;
-    }
-</style>
-
-<div class="container profile-container animate__animated animate__fadeIn" style="direction: rtl; text-align: right;">
 
     <div class="row g-4">
+        
         <div class="col-lg-4">
-            <div class="card profile-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+            <div class="card p-4 text-center border shadow-sm rounded-4 bg-white">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto mb-3 shadow-sm" style="width: 110px; height: 110px; border: 3px solid #fca311;">
+                    <i class="fa-solid fa-user-tie fa-4x" style="color: #031636;"></i>
+                </div>
+                <h4 class="fw-bold mb-2" style="color: #031636;">@Model.FullName</h4>
+                <p class="text-muted small mb-3">@Model.Email</p>
                 <div>
-                    <div class="position-relative d-inline-block mx-auto mb-3">
-                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto shadow-sm" style="width: 110px; height: 110px; border: 3px solid #fca311;">
-                            <i class="fa-solid fa-user-tie fa-4x text-navy-main"></i>
-                        </div>
-                    </div>
-                    <h4 class="fw-bold mb-2 text-navy-main">@Model.FullName</h4>
-                    <p class="text-navy-muted mb-4"><i class="fa-solid fa-envelope me-1 text-warning"></i> @Model.Email</p>
-
-                    <div class="mb-4">
-                        <span class="badge fs-6 @(Model.IsCraftsman ? "badge-custom" : "badge-client")">
-                            <i class="@(Model.IsCraftsman ? "fa-solid fa-hammer" : "fa-solid fa-user") me-1"></i>
-                            @(Model.IsCraftsman ? "حساب أوسطى معتمد" : "حساب عميل")
-                        </span>
-                    </div>
-                    <hr style="border-color: #e2e8f0;" />
-
-                    <div class="text-start px-2 mt-4 fs-6">
-                        <p class="mb-3 text-navy-main"><strong><i class="fa-solid fa-location-dot text-warning me-2"></i> العنوان:</strong> <span class="text-navy-muted">@Model.Address</span></p>
-                        <p class="mb-0 text-navy-main"><strong><i class="fa-solid fa-phone text-warning me-2"></i> التليفون:</strong> <span class="text-navy-muted">@Model.PhoneNumber</span></p>
-                    </div>
+                    <span class="badge fs-6 @(Model.IsCraftsman ? "bg-warning text-dark" : "bg-light text-dark border")" style="border-radius: 8px; padding: 6px 14px; font-weight: 700;">
+                        <i class="@(Model.IsCraftsman ? "fa-solid fa-hammer" : "fa-solid fa-user") me-1"></i>
+                        @(Model.IsCraftsman ? "حساب أوسطى معتمد" : "حساب عميل")
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-8">
-            <div class="card profile-card p-4 h-100 d-flex flex-column justify-content-between">
-                <div>
-                    @if (Model.IsCraftsman)
-                    {
-                        <h3 class="fw-bold text-navy-main border-bottom pb-3 mb-4" style="border-color: #e2e8f0 !important;">
-                            <i class="fa-solid fa-briefcase text-warning me-2"></i> لوحة تحكم الأوسطى لشغل المهنة
-                        </h3>
+            <div class="d-flex flex-column gap-4">
+                
+                <div class="card p-4 border shadow-sm rounded-4 bg-white">
+                    <h4 class="fw-bold border-bottom pb-3 mb-3" style="color: #031636;">
+                        <i class="fa-solid fa-id-card text-warning me-2"></i> البيانات الشخصية
+                    </h4>
+                    <div class="row g-3 fs-6">
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>👤 الاسم بالكامل:</strong> <span class="text-muted">@Model.FullName</span></p>
+                            <p class="mb-2"><strong>📧 البريد الإلكتروني:</strong> <span class="text-muted">@Model.Email</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>📍 العنوان الحالي:</strong> <span class="text-muted">@Model.Address</span></p>
+                            <p class="mb-2"><strong>📞 رقم التليفون:</strong> <span class="text-muted">@Model.PhoneNumber</span></p>
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="row g-3 mb-4">
-                            <div class="col-md-4">
-                                <div class="stat-box text-center animate__animated animate__fadeInUp">
-                                    <h6 class="text-navy-muted mb-1">التقييم العام</h6>
-                                    <h3 class="fw-bold text-warning m-0">@Model.Rating / 5 <i class="fa-solid fa-star fs-5"></i></h3>
+                @if (Model.IsCraftsman)
+                {
+                    <div class="card p-4 border shadow-sm rounded-4 bg-white animate__animated animate__fadeInUp">
+                        
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                            <h4 class="fw-bold m-0" style="color: #031636;">
+                                <i class="fa-solid fa-chart-pie text-warning me-2"></i> لوحة تحكم وإحصائيات الأوسطى
+                            </h4>
+                            
+                            <form asp-controller="Profile" asp-action="ToggleAvailability" method="post" class="m-0">
+                                @if (Model.IsAvailable)
+                                {
+                                    <button type="submit" class="btn btn-success btn-sm fw-bold px-3 py-1.5 shadow-sm" style="border-radius: 8px;">
+                                        🟢 متاح للشغل (اضغط للمشغول)
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-danger btn-sm fw-bold px-3 py-1.5 shadow-sm" style="border-radius: 8px;">
+                                        🔴 مشغول حالياً (اضغط للإتاحة)
+                                    </button>
+                                }
+                            </form>
+                        </div>
+
+                        <div class="row g-3 mb-4 text-center">
+                            <div class="col-md-6">
+                                <div class="p-3 bg-light rounded-3 border-end border-warning border-4">
+                                    <h6 class="text-muted small mb-1">تقييمك الحالي</h6>
+                                    <h4 class="fw-bold m-0 text-warning">@Model.Rating / 5 <i class="fa-solid fa-star fs-5"></i></h4>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="stat-box text-center animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                                    <h6 class="text-navy-muted mb-1">سنين الخبرة</h6>
-                                    <h3 class="fw-bold text-navy-main m-0">@Model.YearsOfExperience سنة</h3>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="stat-box text-center animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                                    <h6 class="text-navy-muted mb-1">حالة الإتاحة الحالية</h6>
-                                    <h4 class="fw-bold m-0 @(Model.IsAvailable ? "text-success" : "text-danger")">
-                                        <i class="fa-solid fa-circle me-1 fs-6"></i> @(Model.IsAvailable ? "متاح للشغل" : "مشغول حالياً")
-                                    </h4>
+                            <div class="col-md-6">
+                                <div class="p-3 bg-light rounded-3 border-end border-warning border-4">
+                                    <h6 class="text-muted small mb-1">سنين الخبرة المسجلة</h6>
+                                    <h4 class="fw-bold m-0" style="color: #031636;">@Model.YearsOfExperience سنة</h4>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-4">
-                            <h5 class="text-navy-main fw-bold mb-2"><i class="fa-solid fa-address-card text-warning me-2"></i> نبذة عن الأوسطى (Bio):</h5>
-                            <p class="p-3 rounded bio-box">@Model.Bio</p>
+                            <h5 class="fw-bold mb-2" style="color: #031636;">📝 نبذة عنك ووصف الشغل (Bio):</h5>
+                            <p class="p-3 rounded border bg-light text-secondary m-0 small">@Model.Bio</p>
                         </div>
 
-                        <div>
-                            <h5 class="text-navy-main fw-bold mb-3"><i class="fa-solid fa-screwdriver-wrench text-warning me-2"></i> الحِرف والمهن النشطة اللي مسجل فيها:</h5>
-                            <div class="d-flex flex-wrap gap-2">
-                                @if (Model.CurrentProfessions.Any())
-                                {
+                        <div class="d-flex justify-content-between align-items-center mt-2 pt-3 border-top">
+                            <div>
+                                <h6 class="fw-bold mb-2" style="color: #031636;">🛠️ حرفتك النشطة المسجلة:</h6>
+                                <div class="d-flex flex-wrap gap-2">
                                     @foreach (var profession in Model.CurrentProfessions)
                                     {
-                                        <span class="badge profession-tag p-2.5 fs-6 shadow-sm animate__animated animate__zoomIn">
+                                        <span class="badge bg-dark text-white p-2.5 fs-6 shadow-sm" style="border-radius: 8px;">
                                             <i class="fa-solid fa-gears text-warning me-1"></i> @profession
                                         </span>
                                     }
-                                }
-                                else
-                                {
-                                    <p class="text-navy-muted">لم يتم ربط أي حرفة بالملف الشخصي بعد، يمكنك إضافة حرفة الآن!</p>
-                                }
+                                </div>
                             </div>
+                            <a asp-controller="Profile" asp-action="BecomeCraftsman" class="btn btn-sm btn-outline-dark fw-bold px-3 py-2" style="border-radius: 8px;">
+                                ➕ أضِف خدمة/حرفة أخرى
+                            </a>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="text-center my-auto pt-5 pb-4 animate__animated animate__fadeIn">
-                            <i class="fa-solid fa-toolbox fa-4x text-warning mb-3"></i>
-                            <h4 class="text-navy-main fw-bold mb-3">أنت مسجل كـ "عميل عادي" حالياً</h4>
-                            <p class="text-navy-muted px-md-5 fs-5 mb-2">يمكنك تصفح الخدمات وطلب الصنايعية في أي وقت.</p>
-                            <p class="text-navy-muted px-md-5 small">إذا كنت تمتلك حرفة وتريد تقديم خدماتك للناس والربح معنا، يمكنك الانضمام كـ أوسطى بالضغط على الزر بالأسفل للبدء فوراً!</p>
-                        </div>
-                    }
-                </div>
 
-                <div class="text-start mt-5 border-top pt-3" style="border-color: #e2e8f0 !important;">
-                    <a asp-controller="Craft" asp-action="Create" class="btn btn-ostawy px-4 py-2.5 shadow-sm">
-                        @if (Model.IsCraftsman)
-                        {
-                            <span>أضِف عمل / حرفة جديدة &larr;</span>
-                        }
-                        else
-                        {
-                            <span>انضم كـ أوسطى / أضف حرفة جديدة &larr;</span>
-                        }
-                    </a>
-                </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card p-4 text-center border shadow-sm rounded-4 bg-white animate__animated animate__fadeIn" style="min-height: 220px;">
+                        <i class="fa-solid fa-toolbox fa-3x text-warning mb-3"></i>
+                        <h4 class="fw-bold mb-2" style="color: #031636;">سجل حرفتك وابدأ اِكسب معنا! 💰</h4>
+                        <p class="text-muted small px-md-5 mb-4">
+                            إذا كنت تمتلك حرفة (سباكة، نجارة، كهرباء...) وتريد تقديم خدماتك لأهالي منطقتك واستقبال طلبات صيانة، اضغط بالأسفل فوراً للبدء وتحويل حسابك.
+                        </p>
+                        <div class="text-center">
+                            <a asp-controller="Profile" asp-action="BecomeCraftsman" class="btn fw-bold px-5 py-2.5 text-dark shadow-sm" style="background-color: #fca311; border-radius: 10px;">
+                                🚀 انضم كـ أوسطى الآن &larr;
+                            </a>
+                        </div>
+                    </div>
+                }
+
             </div>
         </div>
+
     </div>
 </div>

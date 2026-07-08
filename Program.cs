@@ -5,15 +5,13 @@ using Ostawy.Data;
 using Ostawy.Helpers;
 using Ostawy.Interfaces;
 using Ostawy.Models;
+using Ostawy.Repositories;
 using Ostawy.SeedingData;
 using Ostawy.Services;
-using Ostawy.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Support MVC controllers and Razor Pages (Razor Pages project may require AddRazorPages)
 builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
     option =>
@@ -29,12 +27,15 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection(EmailSettings.SectionName));
+builder.Services.Configure<PaymobSettings>(
+    builder.Configuration.GetSection(PaymobSettings.SectionName));
 
 builder.Services.AddScoped<IEmailService, EmailService>();
-// Register craft repository and service for DI
-builder.Services.AddScoped<ICraftRepository, CraftRepository>();
-builder.Services.AddScoped<ICraftService, CraftService>();
-
+builder.Services.AddScoped<PlanService>();
+builder.Services.AddScoped<PaymentService>();
+builder.Services.AddScoped<PlanRepository>();
+builder.Services.AddScoped<ProfessionService>();
+builder.Services.AddScoped<ProfessionRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -66,9 +67,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=index}/{id?}")
     .WithStaticAssets();
-
-// Map Razor Pages if the project contains pages
-app.MapRazorPages();
 
 
 app.Run();
