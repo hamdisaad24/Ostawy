@@ -3128,23 +3128,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\souki\\.nuget\\packages\\": {},
+    "C:\\Users\\eng_yahia\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Ostawy.csproj",
+      "projectUniqueName": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Ostawy.csproj",
       "projectName": "Ostawy",
-      "projectPath": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\Ostawy.csproj",
-      "packagesPath": "C:\\Users\\souki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\souki\\source\\repos\\GOstawy\\Ostawy\\obj\\",
+      "projectPath": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Ostawy.csproj",
+      "packagesPath": "C:\\Users\\eng_yahia\\.nuget\\packages\\",
+      "outputPath": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\souki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eng_yahia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

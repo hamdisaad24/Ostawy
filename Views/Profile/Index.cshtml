@@ -200,8 +200,15 @@
                 </div>
 
                 <div class="text-start mt-5 border-top pt-3" style="border-color: #e2e8f0 !important;">
-                    <a href="#" class="btn btn-ostawy px-4 py-2.5 shadow-sm">
-                        انضم كـ أوسطى / أضِف حرفة جديدة &larr;
+                    <a asp-controller="Craft" asp-action="Create" class="btn btn-ostawy px-4 py-2.5 shadow-sm">
+                        @if (Model.IsCraftsman)
+                        {
+                            <span>أضِف عمل / حرفة جديدة &larr;</span>
+                        }
+                        else
+                        {
+                            <span>انضم كـ أوسطى / أضف حرفة جديدة &larr;</span>
+                        }
                     </a>
                 </div>
             </div>

@@ -27,4 +27,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet <Category> Categories { get; set; }
     public DbSet<CraftsmanProfession> Craftsmanprofessions { get; set; }
     public DbSet<Profession> Professions { get; set; }
+
+    // Craft related DbSets
+    public DbSet<Models.Craft> Crafts { get; set; }
+    public DbSet<Models.CraftImage> CraftImages { get; set; }
 }

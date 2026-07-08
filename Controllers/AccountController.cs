@@ -241,9 +241,29 @@ namespace Ostawy.Controllers
 
             if (!user.EmailConfirmed)
             {
-                ModelState.AddModelError("", "يجب تأكيد البريد الإلكتروني أولاً.");
-                return View(model);
-            }
+                var otp = Random.Shared.Next(100000, 999999).ToString();
+
+                _context.EmailVerifications.Add(new EmailVerification
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id,
+                    Code = otp,
+                    ExpireAt = DateTime.UtcNow.AddMinutes(5),
+                    IsUsed = false
+                });
+
+                await _context.SaveChangesAsync();
+
+                await _emailService.SendEmailAsync(
+                    user.Email!,
+                    "رمز التحقق",
+                    $"رمز التحقق الخاص بك هو: {otp}");
+
+                return RedirectToAction(
+                    nameof(VerifyEmail),
+                    new { userId = user.Id, email = user.Email });
+            
+        }
 
             bool passwordMatched = await _userManager.CheckPasswordAsync(user, model.Password);
             if (!passwordMatched)
