@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\craft\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\craft\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -16,10 +20,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\craft\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:views\\craft\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -160,8 +160,12 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "dbo.AspNetUsers [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Ostawy/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "dbo.AspNetUsers [Data]",
@@ -171,15 +175,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AccountController.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs*",
-              "RelativeToolTip": "Controllers\\AccountController.cs*",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAAO0AAAAAAAAAAAAqwPsAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-05T14:46:17.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAAAFsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-05T12:23:49.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Craft\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Craft\\Create.cshtml",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Craft\\Create.cshtml",
+              "RelativeToolTip": "Views\\Craft\\Create.cshtml",
+              "ViewState": "AgIAALwAAAAAAAAAAAAAANoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T21:52:59.485Z",
               "EditorCaption": ""
             },
             {
@@ -196,31 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAwBAAAAAAAAAAAAAFsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-05T12:23:49.417Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Craft\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Craft\\Create.cshtml",
-              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Craft\\Create.cshtml",
-              "RelativeToolTip": "Views\\Craft\\Create.cshtml",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAFEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-06T21:52:59.485Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EmailService.cs",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "Services\\EmailService.cs",
@@ -244,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
