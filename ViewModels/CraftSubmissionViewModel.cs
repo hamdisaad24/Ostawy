@@ -8,17 +8,17 @@ namespace Ostawy.ViewModels
     {
         [Required(ErrorMessage = "Title is required.")]
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Category is required.")]
-        public string CategoryId { get; set; }
+        public string CategoryId { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Description is required.")]
         [DataType(DataType.MultilineText)]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "A cover image is required.")]
-        public IFormFile CoverImage { get; set; }
+        public IFormFile? CoverImage { get; set; }
 
         public List<IFormFile> GalleryImages { get; set; } = new List<IFormFile>();
     }

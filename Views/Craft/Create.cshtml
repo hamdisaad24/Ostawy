@@ -41,6 +41,15 @@
     .ostawy-actions {
         justify-content: flex-start;
         flex-row-reverse: row-reverse;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    /* ستايل لتعطيل زر الرفع عند الوصول للحد الأقصى */
+    .ostawy-gallery-slot.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background-color: #f1f5f9;
     }
 </style>
 
@@ -109,8 +118,8 @@
 
             <!-- Secondary Gallery Attachments Layout -->
             <div>
-                <h3 class="ostawy-section-title">صور إضافية للمعرض (اختياري)</h3>
-                <p class="ostawy-section-subtitle">أضف زوايا متعددة ولقطات تفصيلية أو مراحل من ورشة العمل لاستعراض حِرفتك بشكل أفضل.</p>
+                <h3 class="ostawy-section-title">صور إضافية للمعرض (اختياري) <span id="galleryCounter" style="color: var(--md-outline); font-size: 0.85rem;">(0/5)</span></h3>
+                <p class="ostawy-section-subtitle">أضف زوايا متعددة ولقطات تفصيلية أو مراحل من ورشة العمل لاستعراض حِرفتك بشكل أفضل (بحد أقصى 5 صور).</p>
 
                 <div class="ostawy-gallery-grid" id="galleryGrid">
 
@@ -121,7 +130,7 @@
                     </div>
 
                 </div>
-                <span asp-validation-for="GalleryImages" class="text-danger"></span>
+                <span asp-validation-for="GalleryImages" id="galleryError" class="text-danger"></span>
             </div>
 
             <!-- Form Control Actions Wrapper -->
@@ -139,6 +148,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // === 1. منطق الغلاف (Cover Image) ===
             const coverInput = document.getElementById("coverInput");
             const coverContainer = document.getElementById("coverContainer");
             const coverTextWrapper = document.getElementById("coverTextWrapper");
@@ -162,23 +172,50 @@
                 coverInput.value = "";
                 coverContainer.style.backgroundImage = "none";
                 coverTextWrapper.classList.remove("hidden");
-                removeCoverBtn.classList.add("hidden");
+                removeCoverBtn.add("hidden");
             });
 
 
+            // === 2. منطق معرض الصور مع تحديد حد أقصى 5 صور ===
             const galleryInput = document.getElementById("galleryInput");
             const galleryGrid = document.getElementById("galleryGrid");
             const uploadSlot = document.getElementById("uploadSlot");
+            const galleryCounter = document.getElementById("galleryCounter");
+            const galleryError = document.getElementById("galleryError");
 
             let selectedFiles = [];
+            const MAX_IMAGES = 5;
+
+            // منع فتح نافذة اختيار الملفات إذا وصلنا للحد الأقصى
+            uploadSlot.addEventListener("click", function (e) {
+                if (selectedFiles.length >= MAX_IMAGES) {
+                    e.preventDefault();
+                    galleryError.textContent = "لقد وصلت بالفعل للحد الأقصى المسموح به وهو 5 صور.";
+                }
+            });
 
             galleryInput.addEventListener("change", function () {
                 const files = Array.from(this.files);
-                selectedFiles = selectedFiles.concat(files);
+                galleryError.textContent = ""; // تصفية الأخطاء السابقة
+
+                // فحص إذا كان عدد الصور الكلي سيتحاوز الـ 5
+                if (selectedFiles.length + files.length > MAX_IMAGES) {
+                    galleryError.textContent = `لا يمكن رفع أكثر من 5 صور. يمكنك إضافة ${MAX_IMAGES - selectedFiles.length} صور إضافية فقط.`;
+                    
+                    // أخذ المتبقي فقط المسموح به حتى نصل لـ 5 صور
+                    const allowedSlots = MAX_IMAGES - selectedFiles.length;
+                    if (allowedSlots > 0) {
+                        selectedFiles = selectedFiles.concat(files.slice(0, allowedSlots));
+                    }
+                } else {
+                    selectedFiles = selectedFiles.concat(files);
+                }
+
                 updateGalleryPreview();
             });
 
             function updateGalleryPreview() {
+                // إزالة المعاينات السابقة
                 const existingPreviews = galleryGrid.querySelectorAll(".dynamic-preview-slot");
                 existingPreviews.forEach(slot => slot.remove());
 
@@ -204,6 +241,7 @@
                         removeBtn.addEventListener("click", function (event) {
                             event.stopPropagation();
                             selectedFiles.splice(index, 1);
+                            galleryError.textContent = ""; // تصفية الخطأ عند الحذف
                             updateGalleryPreview();
                         });
 
@@ -213,7 +251,18 @@
                     reader.readAsDataURL(file);
                 });
 
+                // تحديث الـ input الفعلي بالملفات الجديدة
                 galleryInput.files = dataTransfer.files;
+
+                // تحديث العداد النصي (Counter)
+                galleryCounter.textContent = `(${selectedFiles.length}/${MAX_IMAGES})`;
+
+                // تعطيل أو تفعيل شكل زر الـ (+) بصرياً بناءً على العدد
+                if (selectedFiles.length >= MAX_IMAGES) {
+                    uploadSlot.classList.add("disabled");
+                } else {
+                    uploadSlot.classList.remove("disabled");
+                }
             }
         });
     </script>

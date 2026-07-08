@@ -10,16 +10,16 @@ namespace Ostawy.Models
 
         [Required]
         [MaxLength(100)]
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public required string Category { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public required string Description { get; set; }
 
         [Required]
-        public string CoverImagePath { get; set; }
+        public required string CoverImagePath { get; set; }
 
         public List<CraftImage> GalleryImages { get; set; } = new List<CraftImage>();
     }

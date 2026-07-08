@@ -9,11 +9,11 @@ namespace Ostawy.Models
         public int Id { get; set; }
 
         [Required]
-        public string ImagePath { get; set; }
+        public required string ImagePath { get; set; }
 
         [ForeignKey("Craft")]
         public int CraftId { get; set; }
 
-        public Craft Craft { get; set; }
+        public Craft? Craft { get; set; }
     }
 }
