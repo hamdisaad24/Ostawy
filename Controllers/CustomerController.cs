@@ -71,20 +71,116 @@ namespace Ostawy.Controllers
             return View(request);
         }
 
-        // 4. API سريع بالـ AJAX عشان يجيب العروض الجديدة أول بأول بدون ريفريش للصفحة
+        // 4. API سريع بالـ AJAX عشان يجيب العروض الجديدة أول بأول مع إظهار اسم الصنايعي
         [HttpGet]
         public async Task<IActionResult> GetBidsForRequest(int requestId)
         {
             var bids = await _db.JobBids
                 .Where(b => b.JobRequestId == requestId && b.Status == "Pending")
-                .Select(b => new {
-                    b.Id,
-                    b.OfferPrice,
-                    b.Note,
-                    CreatedAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
-                }).ToListAsync();
+                .OrderByDescending(b => b.CreatedAt)
+                .ToListAsync();
 
-            return Json(bids);
+            // حركة سحرية: بنجيب الاسماء من جدول الـ Users مباشرة عشان صاحبك مش عامل Navigation Property
+            var result = bids.Select(b => new {
+                id = b.Id,
+                offerPrice = b.OfferPrice,
+                note = b.Note,
+                // بنروح ندور في جدول الـ Users على الاسم باستخدام الـ ArtisanId
+                artisanName = _db.Users.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
+                createdAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
+            }).ToList();
+
+            return Json(result);
+        }
+
+        // 5. 🚀 الـ API الجديد المسؤول عن قبول العرض لايف بالـ AJAX
+        [HttpPost]
+        public async Task<IActionResult> ApiAcceptBid(int bidId)
+        {
+            var bid = await _db.JobBids.Include(b => b.JobRequest).FirstOrDefaultAsync(b => b.Id == bidId);
+            if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+
+            bid.Status = "Accepted";
+            bid.JobRequest.Status = "Accepted"; // قفلنا الطلب وحولناه لمقبول
+
+            // رفض باقي العروض التانية أوتوماتيك عشان الشغلانة اتقفلت خلاص
+            var otherBids = await _db.JobBids.Where(b => b.JobRequestId == bid.JobRequestId && b.Id != bidId).ToListAsync();
+            foreach (var other in otherBids)
+            {
+                other.Status = "Rejected";
+            }
+
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, message = "تم قبول العرض بنجاح! جاري إرسال بيانات التواصل للصنايعي. 🎉" });
+        }
+
+        // 6. 🚀 الـ API الجديد المسؤول عن رفض العرض لايف بالـ AJAX
+        [HttpPost]
+        public async Task<IActionResult> ApiRejectBid(int bidId)
+        {
+            var bid = await _db.JobBids.FindAsync(bidId);
+            if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+
+            bid.Status = "Rejected"; // حولناه لمرفوض
+            await _db.SaveChangesAsync();
+
+            return Json(new { success = true, message = "تم رفض العرض بنجاح." });
+        }
+
+        // 7. صفحة الإشعارات المفصولة ذكياً لكل مستخدم
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Notifications()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            if (User.IsInRole("Client"))
+            {
+                var clientNotifications = await _db.JobBids
+                    .Include(b => b.JobRequest)
+                    .ThenInclude(r => r.Category)
+                    .Where(b => b.JobRequest.ClientId == userId && b.Status == "Pending")
+                    .OrderByDescending(b => b.CreatedAt)
+                    .ToListAsync();
+
+                ViewBag.UserRole = "Client";
+                return View(clientNotifications);
+            }
+
+            if (User.IsInRole("CraftMan"))
+            {
+                var artisanNotifications = await _db.JobBids
+                    .Include(b => b.JobRequest)
+                    .ThenInclude(r => r.Category)
+                    .Where(b => b.ArtisanId == userId && b.Status == "Accepted")
+                    .OrderByDescending(b => b.CreatedAt)
+                    .ToListAsync();
+
+                ViewBag.UserRole = "CraftMan";
+                return View(artisanNotifications);
+            }
+
+            return View(new List<JobBid>());
+        }
+
+        // 5. صفحة "طلباتي" الخاصة بالعميل فقط لمتابعة عروضها
+        [Authorize(Roles = "Client")] // 🔐 دي اللي بتفرّق! بتسمح للعميل وتمنع الصنايعي تماماً
+        [HttpGet]
+        public async Task<IActionResult> MyRequests()
+        {
+            // بنجيب الـ ID بتاع العميل اللي مسجل دخول حالياً
+            var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
+
+            // بنروح للداتا بيز نجيب الطلبات اللي العميل ده عملها هو بس
+            var myRequests = await _db.JobRequests
+                .Include(r => r.Category) // عشان نسحب اسم الحرفة (سباكة، كهرباء...)
+                .Where(r => r.ClientId == clientId)
+                .OrderByDescending(r => r.CreatedAt) // الأحدث يظهر فوق
+                .ToListAsync();
+
+            return View(myRequests);
         }
     }
 }

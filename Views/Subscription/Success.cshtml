@@ -1,0 +1,89 @@
+@{
+    ViewData["Title"] = "تم الدفع";
+}
+
+
+<style>
+
+.success-box{
+
+    max-width:600px;
+
+    margin:150px auto;
+
+    text-align:center;
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+.icon{
+
+    font-size:70px;
+
+    color:#16a34a;
+
+}
+
+
+h1{
+
+    color:#031636;
+
+    font-weight:900;
+
+}
+
+
+.btn-home{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    background:#fd7613;
+
+    color:white;
+
+    padding:12px 30px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+}
+
+</style>
+
+
+<div class="success-box">
+
+
+    <div class="icon">
+        ✓
+    </div>
+
+
+    <h1>
+        تم الدفع بنجاح
+    </h1>
+
+
+    <p>
+        تم تفعيل اشتراكك بنجاح ويمكنك الآن الاستفادة من مميزات الباقة.
+    </p>
+
+
+    <a asp-controller="Home" asp-action="Index" class="btn-home">
+        العودة للرئيسية
+    </a>
+
+
+</div>

@@ -78,6 +78,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlUmVxdWVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MyProjects/Ostawy2/Ostawy/Views/Customer/MyRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTXlSZXF1ZXN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Customer/Notifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTm90aWZpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MyProjects/Ostawy2/Ostawy/Views/Customer/RequestDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVxdWVzdERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,12 +114,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhblxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MyProjects/Ostawy2/Ostawy/Views/Profile/BecomeCraftsman.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxCZWNvbWVDcmFmdHNtYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MyProjects/Ostawy2/Ostawy/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MyProjects/Ostawy2/Ostawy/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Subscription/Cancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXENhbmNlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyProjects/Ostawy2/Ostawy/Views/Subscription/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MyProjects/Ostawy2/Ostawy/Views/_ViewImports.cshtml]

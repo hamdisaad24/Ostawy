@@ -12,6 +12,7 @@ namespace Ostawy.Models
         public string Bio { get; set; } = string.Empty;
         public int YearsOfExperience { get; set; }
         public bool IsVerified { get; set; }
-        public bool IsAvailable { get; set; }   
+        public bool IsAvailable { get; set; }
+        public int CategoryId { get; internal set; }
     }
 }

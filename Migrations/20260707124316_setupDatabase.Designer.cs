@@ -12,8 +12,8 @@ using Ostawy.Data;
 namespace Ostawy.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260707120549_makeplantablesoftdelete")]
-    partial class makeplantablesoftdelete
+    [Migration("20260707124316_setupDatabase")]
+    partial class setupDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -236,6 +236,69 @@ namespace Ostawy.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Ostawy.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("IconPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("YearsOfExperience")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Craftsmen");
+                });
+
+            modelBuilder.Entity("Ostawy.Models.CraftsmanProfession", b =>
+                {
+                    b.Property<Guid>("CraftsmanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProfessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CraftsmanId", "ProfessionId");
+
+                    b.ToTable("Craftsmanprofessions");
+                });
+
             modelBuilder.Entity("Ostawy.Models.EmailVerification", b =>
                 {
                     b.Property<Guid>("Id")
@@ -371,6 +434,21 @@ namespace Ostawy.Migrations
                     b.ToTable("Plans");
                 });
 
+            modelBuilder.Entity("Ostawy.Models.Profession", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Professions");
+                });
+
             modelBuilder.Entity("Ostawy.Models.UserSubscription", b =>
                 {
                     b.Property<Guid>("Id")
@@ -454,6 +532,17 @@ namespace Ostawy.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
+                {
+                    b.HasOne("Ostawy.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Ostawy.Models.EmailVerification", b =>

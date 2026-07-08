@@ -32,6 +32,7 @@ builder.Services.Configure<PaymobSettings>(
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<PlanService>();
+builder.Services.AddScoped<PaymentService>();
 builder.Services.AddScoped<PlanRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

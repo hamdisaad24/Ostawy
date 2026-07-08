@@ -1,4 +1,4 @@
-﻿@model Ostawy.Models.JobRequest
+@model Ostawy.Models.JobRequest
 
 @{
     ViewData["Title"] = "متابعة الطلب - أوستاوي";
@@ -105,11 +105,39 @@
         }
 
         function acceptBid(bidId) {
-            alert("تم قبول العرض بنجاح! جاري إرسال بيانات التواصل للصنايعي.");
-        }
+    if(confirm("هل أنت متأكد من قبول هذا العرض؟")) {
+        $.ajax({
+            url: '/Customer/ApiAcceptBid',
+            type: 'POST',
+            data: { bidId: bidId },
+            success: function(response) {
+                if(response.success) {
+                    alert(response.message);
+                    loadLiveBids(); // تحديث فوري للعروض اللي باقية
+                } else {
+                    alert("حدث خطأ: " + response.message);
+                }
+            }
+        });
+    }
+}
 
-        function rejectBid(bidId) {
-            alert("تم رفض العرض.");
+               function rejectBid(bidId) {
+            $.ajax({
+                url: '/Customer/ApiRejectBid',
+                type: 'POST',
+                data: { bidId: bidId },
+                success: function(response) {
+                    if(response.success) {
+                        // إخفاء كارت العرض المرفوض فوراً بحركة ناعمة
+                        $(`#bid-card-${bidId}`).fadeOut(300, function() {
+                            loadLiveBids();
+                        });
+                    } else {
+                        alert("حدث خطأ أثناء الرفض");
+                    }
+                }
+            });
         }
 
         // تشغيل التحديث التلقائي فور فتح الصفحة

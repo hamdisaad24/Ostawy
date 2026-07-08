@@ -1,0 +1,66 @@
+@model IEnumerable<Ostawy.Models.JobRequest>
+
+@{
+    ViewData["Title"] = "طلباتي الحالية";
+}
+
+<div class="container" style="direction: rtl; text-align: right; padding-top: 120px; padding-bottom: 60px; max-width: 1000px;">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold m-0" style="color: #031636;">📋 طلبات الصيانة الخاصة بي</h3>
+        <a asp-action="CreateRequest" class="btn text-white fw-bold px-4 py-2" style="background-color: #fd7613; border-radius: 10px;">
+            ➕ اطلب أسطى جديد
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="p-5 text-center border bg-white shadow-sm" style="border-radius: 16px;">
+            <p class="fs-4 text-muted mb-3">أنت لسه منزلتش أي طلبات صيانة لحد دلوقتي! 🤔</p>
+            <a asp-action="CreateRequest" class="btn btn-outline-primary">اعمل أول طلب ليك دلوقتي</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (var request in Model)
+            {
+                <div class="col-md-6">
+                    <div class="p-4 bg-white border rounded-4 shadow-sm position-relative h-100 d-flex flex-column justify-content-between" style="border-right: 5px solid #fd7613 !important;">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold fs-5" style="color: #fd7613;">⚙️ @request.Category?.Name</span>
+                                
+                                @if (request.Status == "Open" || request.Status == "Pending")
+                                {
+                                    <span class="badge bg-warning text-dark px-3 py-1.5" style="border-radius: 6px;">⏳ مستني عروض</span>
+                                }
+                                else if (request.Status == "Accepted")
+                                {
+                                    <span class="badge bg-success text-white px-3 py-1.5" style="border-radius: 6px;">✅ شغال حالياً</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary text-white px-3 py-1.5" style="border-radius: 6px;">@request.Status</span>
+                                }
+                            </div>
+                            
+                            <p class="text-muted small mb-3">📅 تاريخ النشر: @request.CreatedAt.ToString("yyyy-MM-dd")</p>
+                            <p class="text-dark small bg-light p-3 rounded-3" style="line-height: 1.6; min-height: 80px;">
+                                @request.Description
+                            </p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-2">
+                            <span class="fw-bold text-navy-main">الميزانية: @request.EstimatedPrice ج.م</span>
+                            
+                            <a asp-action="RequestDashboard" asp-route-requestId="@request.Id" class="btn btn-sm btn-dark px-3 py-2 fw-bold" style="border-radius: 8px;">
+                                👁️ تابع العروض لايف &larr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

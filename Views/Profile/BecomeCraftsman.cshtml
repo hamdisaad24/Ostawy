@@ -1,0 +1,58 @@
+@model Ostawy.ViewModels.BecomeCraftsmanViewModel
+@{
+    ViewData["Title"] = "الانضمام كـ أوسطى";
+}
+
+<div class="container" style="direction: rtl; text-align: right; padding-top: 140px; padding-bottom: 60px; max-width: 600px;">
+    <div class="card shadow-sm border-0 p-4" style="border-radius: 20px; background: #ffffff; border-top: 5px solid #fca311 !important;">
+        
+        <div class="text-center mb-4">
+            <i class="fa-solid fa-screwdriver-wrench fa-3x text-warning mb-2"></i>
+            <h3 class="fw-bold text-navy-main">🛠️ انضم كـ أوسطى في منصتنا</h3>
+            <p class="text-muted small">املأ بيانات مهنتك عشان يبدأ يجيلك زباين وشغل في منطقتك فوراً.</p>
+        </div>
+
+        <form asp-controller="Profile" asp-action="BecomeCraftsman" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label class="form-label fw-bold text-navy-main"><i class="fa-solid fa-phone text-warning me-1"></i> رقم الهاتف المحمول:</label>
+                <input type="text" asp-for="PhoneNumber" class="form-control form-control-lg border-2" style="border-radius: 10px;" placeholder="اكتب رقم تليفونك النشط" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-7 mb-3">
+                    <label class="form-label fw-bold text-navy-main"><i class="fa-solid fa-gears text-warning me-1"></i> اختر الحرفة:</label>
+                    <select asp-for="SelectedProfessionId" class="form-select form-control-lg border-2" style="border-radius: 10px;" required>
+                        <option value="">-- اختار حرفتك --</option>
+                        @if (Model.AvailableProfessions != null)
+                        {
+                            foreach (var cat in Model.AvailableProfessions)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-5 mb-3">
+                    <label class="form-label fw-bold text-navy-main"><i class="fa-solid fa-star text-warning me-1"></i> سنين الخبرة:</label>
+                    <input type="number" asp-for="YearsOfExperience" class="form-control form-control-lg border-2" style="border-radius: 10px;" min="1" max="50" required />
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold text-navy-main"><i class="fa-solid fa-comment-dots text-warning me-1"></i> اكتب نبذة عن خبرتك وزبائنك (Bio):</label>
+                <textarea asp-for="Bio" class="form-control border-2" style="border-radius: 10px;" rows="3" placeholder="مثال: نجار باب وشباك خبرة في غرف النوم والمطابخ وجاهز لأي معاينات في الجيزة..." required></textarea>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-warning py-2.5 fs-5 fw-bold text-dark shadow-sm" style="border-radius: 10px; background-color: #fca311;">
+                    🚀 تفعيل حسابي كـ أوسطى الآن
+                </button>
+                <a asp-action="Index" class="btn btn-light fw-bold py-2" style="border-radius: 10px;">إلغاء والعودة للبروفايل</a>
+            </div>
+        </form>
+
+    </div>
+</div>

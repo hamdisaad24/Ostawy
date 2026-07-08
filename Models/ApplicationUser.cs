@@ -9,5 +9,5 @@ public class ApplicationUser : IdentityUser<Guid>
     public DateTime CreatedAt { get; set; }
     public double Rating { get; set; }
 
-    public string Specialty { get; set; } = string.Empty;
+    //public string Specialty { get; set; } = string.Empty;
 }
