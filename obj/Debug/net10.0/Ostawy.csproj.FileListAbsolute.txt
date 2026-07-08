@@ -1069,4 +1069,3 @@ G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\Ostawy.genruntimeconfig.cac
 G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\ref\Ostawy.dll
 G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
 G:\DEPI_.net\project\ostawy\Ostawy\bin\Debug\net10.0\Stripe.net.dll
-G:\DEPI_.net\project\ostawy\Ostawy\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

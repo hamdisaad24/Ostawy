@@ -5,9 +5,9 @@ using Ostawy.Data;
 using Ostawy.Helpers;
 using Ostawy.Interfaces;
 using Ostawy.Models;
-using Ostawy.Repositories;
 using Ostawy.SeedingData;
 using Ostawy.Services;
+using Ostawy.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,41 +27,16 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection(EmailSettings.SectionName));
-builder.Services.Configure<PaymobSettings>(
-    builder.Configuration.GetSection(PaymobSettings.SectionName));
 
 builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<PlanService>();
-builder.Services.AddScoped<PaymentService>();
-builder.Services.AddScoped<PlanRepository>();
-builder.Services.AddScoped<ProfessionService>();
-builder.Services.AddScoped<ProfessionRepository>();
+// Register craft repository and service for DI
+builder.Services.AddScoped<ICraftRepository, CraftRepository>();
+builder.Services.AddScoped<ICraftService, CraftService>();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlOptions =>
-    {
-        // Enable transient fault handling for better resiliency
-        sqlOptions.EnableRetryOnFailure();
-    }));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
-
-// Ensure database is migrated/created before performing seeding operations
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var db = services.GetRequiredService<ApplicationDbContext>();
-        db.Database.Migrate();
-    }
-    catch (Exception ex)
-    {
-        // If migration fails, surface a clear message in logs but allow the app to attempt to start
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Database migration failed");
-    }
-}
-
 await RoleSeeder.SeedRolesAsync(app);
 
 using (var scope = app.Services.CreateScope())

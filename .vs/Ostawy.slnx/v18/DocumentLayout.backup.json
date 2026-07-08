@@ -107,6 +107,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\viewmodels\\craftsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:viewmodels\\craftsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\migrations\\20260708210533_addcategoryanddescriptiontoprofessions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:migrations\\20260708210533_addcategoryanddescriptiontoprofessions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|g:\\depi_.net\\project\\ostawy\\ostawy\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{7BD37A7A-F9EA-7ECF-4D9F-604728A1F176}|Ostawy.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -116,11 +124,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": ".gitignore",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAB0AAAAAAAAAAABBwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-08T21:13:05.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "DocumentMoniker": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "RelativeToolTip": "Migrations\\20260708210533_AddCategoryAndDescriptionToProfessions.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T21:06:08.89Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -195,7 +229,7 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAwBAAAAAAAAAAAAAFsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAALUAAAAAAAAAAAAqwM0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-07-05T12:23:49.417Z",
               "EditorCaption": ""
@@ -319,7 +353,7 @@
               "RelativeDocumentMoniker": "Models\\Profession.cs",
               "ToolTip": "G:\\DEPI_.net\\project\\ostawy\\Ostawy\\Models\\Profession.cs",
               "RelativeToolTip": "Models\\Profession.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAABBwAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T15:04:16.051Z",
               "EditorCaption": ""

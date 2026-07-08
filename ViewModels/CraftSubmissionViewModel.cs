@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
@@ -5,17 +6,20 @@ namespace Ostawy.ViewModels
 {
     public class CraftSubmissionViewModel
     {
-        [Required]
-        public string CategoryId { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Title is required.")]
+        [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]
+        public string Title { get; set; }
 
-        [Required]
-        [StringLength(2000)]
-        public string Description { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Category is required.")]
+        public string CategoryId { get; set; }
 
-        [Display(Name = "CoverImage")]
-        public IFormFile? CoverImage { get; set; }
+        [Required(ErrorMessage = "Description is required.")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
 
-        [Display(Name = "GalleryImages")]
-        public IFormFile[]? GalleryImages { get; set; }
+        [Required(ErrorMessage = "A cover image is required.")]
+        public IFormFile CoverImage { get; set; }
+
+        public List<IFormFile> GalleryImages { get; set; } = new List<IFormFile>();
     }
 }
