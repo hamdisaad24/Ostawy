@@ -19,6 +19,11 @@ namespace Ostawy.Data
         public DbSet<Craftsman> Craftsmen { get; set; }
         public DbSet<Profession> Professions { get; set; }
         public DbSet<CraftManProfession> CraftManProfessions { get; set; }
+<<<<<<< HEAD
         public DbSet<CraftManProfessionImage> CraftManProfessionImages { get; set; }
+=======
+        public DbSet<JobRequest> JobRequests { get; set; }
+        public DbSet<JobBid> JobBids { get; set; }
+>>>>>>> e6e5dfec399d24b6061d61e5d39dd64881de0979
     }
 }

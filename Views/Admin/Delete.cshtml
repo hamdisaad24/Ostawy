@@ -1,0 +1,160 @@
+@model Ostawy.Models.JobRequest
+
+@{
+    ViewData["Title"] = "حذف الطلب";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --danger: #dc3545;
+    }
+
+    .page-container {
+        max-width: 700px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .card-box {
+        background: #fff;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    }
+
+    .page-title {
+        color: var(--danger);
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .warning-box {
+        background: #fff5f5;
+        border: 1px solid #f5c2c7;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .warning-box h4 {
+        color: var(--danger);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .warning-box p {
+        margin: 0;
+        color: #555;
+    }
+
+    .info-box {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .info-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .info-title {
+        color: var(--primary);
+        font-weight: bold;
+    }
+
+    .info-value {
+        font-weight: 600;
+        color: #444;
+    }
+
+    .btn-delete {
+        background: var(--danger);
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: .3s;
+    }
+
+    .btn-delete:hover {
+        background: #bb2d3b;
+        color: white;
+    }
+
+    .btn-back {
+        background: var(--primary);
+        color: #fff;
+        text-decoration: none;
+        padding: 12px 28px;
+        border-radius: 10px;
+        margin-right: 10px;
+        transition: .3s;
+    }
+
+    .btn-back:hover {
+        background: var(--secondary);
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="page-container">
+    <div class="card-box">
+        <h2 class="page-title">حذف الطلب</h2>
+
+        <div class="warning-box">
+            <h4>تأكيد الحذف</h4>
+            <p>
+                هل أنت متأكد أنك تريد حذف هذا الطلب؟
+                لا يمكن التراجع عن هذه العملية.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-row">
+                <span class="info-title">رقم الطلب</span>
+                <span class="info-value">@Model.Id</span>
+            </div>
+            <div class="info-row">
+                <span class="info-title">العميل</span>
+                <span class="info-value">@Model.ClientId</span>
+            </div>
+            <div class="info-row">
+                <span class="info-title">الوصف</span>
+                <span class="info-value">@Model.Description</span>
+            </div>
+            <div class="info-row">
+                <span class="info-title">الميزانية</span>
+                <span class="info-value">@Model.EstimatedPrice EGP</span>
+            </div>
+            <div class="info-row">
+                <span class="info-title">الحالة</span>
+                <span class="info-value">@Model.Status</span>
+            </div>
+            <div class="info-row">
+                <span class="info-title">تاريخ الطلب</span>
+                <span class="info-value">@Model.CreatedAt.ToString("yyyy/MM/dd - hh:mm tt")</span>
+            </div>
+        </div>
+
+        <form asp-action="DeleteConfirmed" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn-delete">حذف الطلب</button>
+                <a asp-action="Requests" class="btn-back">رجوع</a>
+            </div>
+        </form>
+    </div>
+</div>
