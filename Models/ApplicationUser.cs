@@ -8,4 +8,5 @@ public class ApplicationUser : IdentityUser<Guid>
     public string Address { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public double Rating { get; set; }
+    public bool IsDeleted { get; set; }
 }

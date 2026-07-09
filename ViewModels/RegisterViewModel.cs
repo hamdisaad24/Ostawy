@@ -13,6 +13,10 @@ namespace Ostawy.ViewModels
         [EmailAddress(ErrorMessage = "صيغة البريد الاكتروني غير صحيحة")]
         public string Email { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
+        [Phone(ErrorMessage = "صيغة رقم الهاتف غير صحيحة")]
+        public string PhoneNumber { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "كلمة المرور مطلوبة")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "كلمة المرور يجب أن تكون بين 6 و 100 حرف")]
         [DataType(DataType.Password)]

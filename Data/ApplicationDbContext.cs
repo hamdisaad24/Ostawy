@@ -23,7 +23,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<UserSubscription> UserSubscriptions { get; set; }
     public DbSet<Payment> Payments { get; set; }   
     public DbSet<Craftsman> Craftsmen { get; set; }
-    public DbSet <Category> Categories { get; set; }
     public DbSet<CraftsmanProfession> Craftsmanprofessions { get; set; }
     public DbSet<Profession> Professions { get; set; }
 }

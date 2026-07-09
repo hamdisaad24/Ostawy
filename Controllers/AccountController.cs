@@ -57,6 +57,8 @@ namespace Ostawy.Controllers
                     UserName = model.Email,
                     Address = model.Address,
                     CreatedAt = DateTime.UtcNow,
+                    PhoneNumber = model.PhoneNumber,
+                    IsDeleted = false
                 };
 
                 IdentityResult result = await _userManager.CreateAsync(newUser, model.Password);
@@ -114,6 +116,11 @@ namespace Ostawy.Controllers
                 if (user is null)
                 {
                     ModelState.AddModelError("", "يوجد خطأ حاول مرة اخري في وقت لاحق");
+                    return View(model);
+                }
+                if (user.IsDeleted)
+                {
+                    ModelState.AddModelError("", "الحساب غير موجود");
                     return View(model);
                 }
                 if (user.EmailConfirmed)
@@ -191,7 +198,8 @@ namespace Ostawy.Controllers
 
             if (user is null)
                 return RedirectToAction(nameof(Register));
-
+            if (user.IsDeleted)
+                return RedirectToAction(nameof(Register));
             var otp = Random.Shared.Next(100000, 999999).ToString();
 
             _context.EmailVerifications.Add(new EmailVerification
@@ -236,6 +244,11 @@ namespace Ostawy.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "البريد الإلكتروني أو كلمة المرور غير صحيحة.");
+                return View(model);
+            }
+            if (user.IsDeleted)
+            {
+                ModelState.AddModelError("", "الحساب غير موجود");
                 return View(model);
             }
 
@@ -293,6 +306,11 @@ namespace Ostawy.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "الإيميل غير صحيح");
+                return View(model);
+            }
+            if (user.IsDeleted)
+            {
+                ModelState.AddModelError("", "الحساب غير موجود");
                 return View(model);
             }
 
@@ -439,6 +457,12 @@ namespace Ostawy.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "المستخدم غير موجود");
+                return View(model);
+            }
+
+            if (user.IsDeleted)
+            {
+                ModelState.AddModelError("", "الحساب غير موجود");
                 return View(model);
             }
 

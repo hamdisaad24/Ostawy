@@ -89,6 +89,15 @@
                     </div>
 
                     <div>
+                        <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">رقم الهاتف</label>
+                        <div class="relative m-0 p-0">
+                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">phone</span>
+                            <input asp-for="PhoneNumber" id="phoneInput" class="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 bg-gray-50 transition-all text-base outline-none m-0" placeholder="0111111111" type="text" />
+                        </div>
+                        <span asp-validation-for="PhoneNumber" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
                         <label class="text-sm font-bold text-slate-900 block mb-1 m-0 p-0">كلمة المرور</label>
                         <div class="relative m-0 p-0">
                             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">lock</span>
@@ -148,8 +157,9 @@
             const pass = document.getElementById('passInput').value;
             const confirmPass = document.getElementById('confirmPassInput').value;
             const address = document.getElementById('addressF').value.trim();
-            
-            if (!name || !email || !pass || !confirmPass || !address) {
+            const phone = document.getElementById('phoneInput').value.trim();
+
+            if (!name || !email || !pass || !confirmPass || !address || !phone) {
                 return showError('يرجى إدخال البيانات كاملة');
             }
 
