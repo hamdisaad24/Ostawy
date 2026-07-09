@@ -1,140 +1,249 @@
 @model Ostawy.ViewModels.ProfileViewModel
+
 @{
     ViewData["Title"] = "الملف الشخصي";
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-<div class="container" style="direction: rtl; text-align: right; margin-top: 160px; margin-bottom: 5rem;">
-    
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show mb-4 fw-bold shadow-sm border-0" role="alert" style="border-radius: 10px;">
-            <i class="fa-solid fa-circle-check me-2"></i> @TempData["SuccessMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: left; margin-top: -3px;"></button>
-        </div>
-    }
+<div class="container py-5" style="margin-top:120px;">
 
     <div class="row g-4">
-        
+
+        <!-- معلومات المستخدم -->
         <div class="col-lg-4">
-            <div class="card p-4 text-center border shadow-sm rounded-4 bg-white">
-                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto mb-3 shadow-sm" style="width: 110px; height: 110px; border: 3px solid #fca311;">
-                    <i class="fa-solid fa-user-tie fa-4x" style="color: #031636;"></i>
+
+            <div class="card border-0 shadow rounded-4">
+
+                <div class="card-body text-center p-5">
+
+                    <div class="mx-auto mb-4 d-flex justify-content-center align-items-center rounded-circle"
+                         style="width:110px;height:110px;background:#031636;color:white;font-size:45px;">
+
+                        @Model.FullName[0]
+
+                    </div>
+
+                    <h3 class="fw-bold" style="color:#031636">
+                        @Model.FullName
+                    </h3>
+
+                    <p class="text-muted mb-1">
+                        @Model.Email
+                    </p>
+
+                    <p class="text-muted">
+                        @Model.PhoneNumber
+                    </p>
+
+                    <hr>
+
+                    <div class="text-end">
+
+                        <p>
+                            <strong>العنوان</strong>
+                        </p>
+
+                        <p class="text-muted">
+                            @Model.Address
+                        </p>
+
+                    </div>
+
                 </div>
-                <h4 class="fw-bold mb-2" style="color: #031636;">@Model.FullName</h4>
-                <p class="text-muted small mb-3">@Model.Email</p>
-                <div>
-                    <span class="badge fs-6 @(Model.IsCraftsman ? "bg-warning text-dark" : "bg-light text-dark border")" style="border-radius: 8px; padding: 6px 14px; font-weight: 700;">
-                        <i class="@(Model.IsCraftsman ? "fa-solid fa-hammer" : "fa-solid fa-user") me-1"></i>
-                        @(Model.IsCraftsman ? "حساب أوسطى معتمد" : "حساب عميل")
-                    </span>
-                </div>
+
             </div>
+
         </div>
 
         <div class="col-lg-8">
-            <div class="d-flex flex-column gap-4">
-                
-                <div class="card p-4 border shadow-sm rounded-4 bg-white">
-                    <h4 class="fw-bold border-bottom pb-3 mb-3" style="color: #031636;">
-                        <i class="fa-solid fa-id-card text-warning me-2"></i> البيانات الشخصية
-                    </h4>
-                    <div class="row g-3 fs-6">
-                        <div class="col-md-6">
-                            <p class="mb-2"><strong>👤 الاسم بالكامل:</strong> <span class="text-muted">@Model.FullName</span></p>
-                            <p class="mb-2"><strong>📧 البريد الإلكتروني:</strong> <span class="text-muted">@Model.Email</span></p>
+
+            @if (Model.IsCraftsman)
+            {
+                <div class="card border-0 shadow rounded-4">
+
+                    <div class="card-header border-0 text-white py-3"
+                        style="background:#031636;">
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <h4 class="mb-0 fw-bold">
+                                بيانات الحرفي
+                            </h4>
+
+                            <form asp-controller="Profile"
+                                asp-action="ToggleAvailability"
+                                method="post">
+
+                                <button type="submit"
+                                        class="btn @(Model.IsAvailable ? "btn-success" : "btn-danger") fw-bold">
+
+                                    @(Model.IsAvailable
+                                        ? "🟢 متاح للعمل"
+                                        : "🔴 غير متاح")
+
+                                </button>
+
+                            </form>
+
                         </div>
-                        <div class="col-md-6">
-                            <p class="mb-2"><strong>📍 العنوان الحالي:</strong> <span class="text-muted">@Model.Address</span></p>
-                            <p class="mb-2"><strong>📞 رقم التليفون:</strong> <span class="text-muted">@Model.PhoneNumber</span></p>
-                        </div>
+
                     </div>
+
+                    <div class="card-body p-4">
+
+                        <div class="row mb-4">
+
+                            <div class="col-md-6">
+
+                                <div class="border rounded-4 p-4 text-center h-100">
+
+                                    <h6 class="text-muted">
+                                        عدد الحرف
+                                    </h6>
+
+                                    <h2 class="fw-bold"
+                                        style="color:#fd7613">
+
+                                        @Model.CurrentProfessions.Count
+
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="border rounded-4 p-4 text-center h-100">
+
+                                    <h6 class="text-muted">
+                                        الحالة الحالية
+                                    </h6>
+
+                                    <h5 class="fw-bold">
+
+                                        @if (Model.IsAvailable)
+                                        {
+                                            <span class="text-success">
+                                                متاح لاستقبال الطلبات
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">
+                                                غير متاح حالياً
+                                            </span>
+                                        }
+
+                                    </h5>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <hr />
+
+                        <h4 class="fw-bold mb-4"
+                            style="color:#031636">
+
+                            الحرف المسجلة
+
+                        </h4>
+
+                        <div class="row">
+
+                            @foreach (var profession in Model.CurrentProfessions)
+                            {
+                                <div class="card shadow-sm mb-4 rounded-4">
+
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold text-primary">
+                                            @profession.Profession
+                                        </h4>
+
+                                        <p>
+                                            <strong>سنوات الخبرة:</strong>
+                                            @profession.YearsOfExperience
+                                        </p>
+
+                                        <p>@profession.Bio</p>
+
+                                        <div class="row g-3">
+
+                                            @foreach (var image in profession.Images)
+                                            {
+                                                <div class="col-md-3">
+
+                                                    <img src="@image"
+                                                        class="img-fluid rounded shadow-sm"
+                                                        style="height:180px;width:100%;object-fit:cover;" />
+
+                                                </div>
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="text-center mt-4">
+
+                            <a asp-controller="Profile"
+                            asp-action="BecomeCraftsman"
+                            class="btn text-white fw-bold px-4 py-2"
+                            style="background:#fd7613;">
+
+                                + إضافة حرفة جديدة
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+            else
+            {
+
+                <div class="card border-0 shadow rounded-4">
+
+                    <div class="card-body text-center py-5">
+
+                        <h3 style="color:#031636">
+
+                            أنت عميل
+
+                        </h3>
+
+                        <p class="text-muted">
+
+                            يمكنك التسجيل كحرفي لإضافة خدماتك.
+
+                        </p>
+
+                        <a asp-action="BecomeCraftsman"
+                           class="btn text-white px-4"
+                           style="background:#fd7613">
+
+                            سجل كحرفي
+
+                        </a>
+
+                    </div>
+
                 </div>
 
-                @if (Model.IsCraftsman)
-                {
-                    <div class="card p-4 border shadow-sm rounded-4 bg-white animate__animated animate__fadeInUp">
-                        
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
-                            <h4 class="fw-bold m-0" style="color: #031636;">
-                                <i class="fa-solid fa-chart-pie text-warning me-2"></i> لوحة تحكم وإحصائيات الأوسطى
-                            </h4>
-                            
-                            <form asp-controller="Profile" asp-action="ToggleAvailability" method="post" class="m-0">
-                                @if (Model.IsAvailable)
-                                {
-                                    <button type="submit" class="btn btn-success btn-sm fw-bold px-3 py-1.5 shadow-sm" style="border-radius: 8px;">
-                                        🟢 متاح للشغل (اضغط للمشغول)
-                                    </button>
-                                }
-                                else
-                                {
-                                    <button type="submit" class="btn btn-danger btn-sm fw-bold px-3 py-1.5 shadow-sm" style="border-radius: 8px;">
-                                        🔴 مشغول حالياً (اضغط للإتاحة)
-                                    </button>
-                                }
-                            </form>
-                        </div>
+            }
 
-                        <div class="row g-3 mb-4 text-center">
-                            <div class="col-md-6">
-                                <div class="p-3 bg-light rounded-3 border-end border-warning border-4">
-                                    <h6 class="text-muted small mb-1">تقييمك الحالي</h6>
-                                    <h4 class="fw-bold m-0 text-warning">@Model.Rating / 5 <i class="fa-solid fa-star fs-5"></i></h4>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3 bg-light rounded-3 border-end border-warning border-4">
-                                    <h6 class="text-muted small mb-1">سنين الخبرة المسجلة</h6>
-                                    <h4 class="fw-bold m-0" style="color: #031636;">@Model.YearsOfExperience سنة</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <h5 class="fw-bold mb-2" style="color: #031636;">📝 نبذة عنك ووصف الشغل (Bio):</h5>
-                            <p class="p-3 rounded border bg-light text-secondary m-0 small">@Model.Bio</p>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-2 pt-3 border-top">
-                            <div>
-                                <h6 class="fw-bold mb-2" style="color: #031636;">🛠️ حرفتك النشطة المسجلة:</h6>
-                                <div class="d-flex flex-wrap gap-2">
-                                    @foreach (var profession in Model.CurrentProfessions)
-                                    {
-                                        <span class="badge bg-dark text-white p-2.5 fs-6 shadow-sm" style="border-radius: 8px;">
-                                            <i class="fa-solid fa-gears text-warning me-1"></i> @profession
-                                        </span>
-                                    }
-                                </div>
-                            </div>
-                            <a asp-controller="Profile" asp-action="BecomeCraftsman" class="btn btn-sm btn-outline-dark fw-bold px-3 py-2" style="border-radius: 8px;">
-                                ➕ أضِف خدمة/حرفة أخرى
-                            </a>
-                        </div>
-
-                    </div>
-                }
-                else
-                {
-                    <div class="card p-4 text-center border shadow-sm rounded-4 bg-white animate__animated animate__fadeIn" style="min-height: 220px;">
-                        <i class="fa-solid fa-toolbox fa-3x text-warning mb-3"></i>
-                        <h4 class="fw-bold mb-2" style="color: #031636;">سجل حرفتك وابدأ اِكسب معنا! 💰</h4>
-                        <p class="text-muted small px-md-5 mb-4">
-                            إذا كنت تمتلك حرفة (سباكة، نجارة، كهرباء...) وتريد تقديم خدماتك لأهالي منطقتك واستقبال طلبات صيانة، اضغط بالأسفل فوراً للبدء وتحويل حسابك.
-                        </p>
-                        <div class="text-center">
-                            <a asp-controller="Profile" asp-action="BecomeCraftsman" class="btn fw-bold px-5 py-2.5 text-dark shadow-sm" style="background-color: #fca311; border-radius: 10px;">
-                                🚀 انضم كـ أوسطى الآن &larr;
-                            </a>
-                        </div>
-                    </div>
-                }
-
-            </div>
         </div>
 
     </div>
+
 </div>

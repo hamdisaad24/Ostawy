@@ -1,209 +1,219 @@
-﻿// using Microsoft.AspNetCore.Authorization;
-// using Microsoft.AspNetCore.Identity;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using Ostawy.Data;
-// using Ostawy.Models;
-// using Ostawy.ViewModels;
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Security.Claims;
-// using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Ostawy.Data;
+using Ostawy.Models;
+using Ostawy.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
-// namespace Ostawy.Controllers
-// {
-//     [Authorize]
-//     public class ProfileController : Controller
-//     {
-//         private readonly UserManager<ApplicationUser> _userManager;
-//         private readonly SignInManager<ApplicationUser> _signInManager;
-//         private readonly ApplicationDbContext _context;
+namespace Ostawy.Controllers
+{
+    [Authorize]
+    public class ProfileController : Controller
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
-//         public ProfileController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
-//         {
-//             _userManager = userManager;
-//             _signInManager = signInManager;
-//             _context = context;
-//         }
+        public ProfileController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
+        }
 
-//         [HttpGet]
-//         public async Task<IActionResult> Index()
-//         {
-//             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (userIdString == null) return RedirectToAction("Login", "Account");
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userIdString == null) return RedirectToAction("Login", "Account");
 
-//             var user = await _userManager.FindByIdAsync(userIdString);
-//             if (user == null) return NotFound();
+            var user = await _userManager.FindByIdAsync(userIdString);
+            if (user == null) return NotFound();
 
-//             bool isCraftManRole = await _userManager.IsInRoleAsync(user, "CraftMan");
+            bool isCraftManRole = await _userManager.IsInRoleAsync(user, "CraftMan");
+            var model = new ProfileViewModel
+            {
+                FullName = user.FullName,
+                Email = user.Email ?? "No Email",
+                Address = user.Address ?? "No Address",
+                PhoneNumber = user.PhoneNumber ?? "No Phone Number",
+                Rating = user.Rating > 0 ? user.Rating : 4.5,
+                IsCraftsman = isCraftManRole
+            };
 
-//             Craftsman craftsman = null;
-//             try
-//             {
-//                 craftsman = await _context.Set<Craftsman>()
-//                     .FromSqlRaw("SELECT Id, UserId, Bio, YearsOfExperience, IsAvailable, IsVerified, CategoryId FROM Craftsmen WHERE UserId = {0}", userIdString)
-//                     .FirstOrDefaultAsync();
-//             }
-//             catch (Exception) { }
+            if (isCraftManRole)
+            {
+                var craftsman = await _context.Craftsmen.FirstOrDefaultAsync(c => c.UserId == user.Id);
+                
+                var professions = await _context.CraftManProfessions
+                            .Include(x => x.Profession)
+                            .Include(x => x.Images)
+                            .Where(x => x.CraftsmanId == craftsman!.Id)
+                            .ToListAsync();
+                
+                model.IsAvailable = craftsman!.IsAvailable;
+                model.CurrentProfessions = new List<CraftsmanViewModel>();
+                foreach (var profession in professions)
+                {
+                    model.CurrentProfessions.Add(new CraftsmanViewModel
+                    {
+                        Id = profession.Id,
+                        Bio = profession.Bio,
+                        YearsOfExperience = profession.YearsOfExperience,
+                        ProfessionId = profession.Profession!.Id,
+                        Profession = profession.Profession!.Name,
 
-//             // 2. تحديث الـ ViewModel
-//             var model = new ProfileViewModel
-//             {
-//                 FullName = user.FullName,
-//                 Email = user.Email ?? "No Email",
-//                 Address = user.Address ?? "No Address",
-//                 PhoneNumber = user.PhoneNumber ?? "No Phone Number",
-//                 Rating = user.Rating > 0 ? user.Rating : 4.5,
+                        Images = profession!.Images!
+                                    .Select(x => x.ImagePath)
+                                    .ToList()
+                    });
+                }
+            }
+            return View(model);
+        }
 
-//                 // 🔥 لو واخد الرول أو ليه سجل، يبقى IsCraftsman بـ true والداش بورد تفتح فوراً!
-//                 IsCraftsman = isCraftManRole,
-//                 CurrentProfessions = new List<string>()
-//             };
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleAvailability()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userIdString == null) return RedirectToAction("Login", "Account");
 
-//             // 3. املأ بيانات الداش بورد
-//             if (craftsman != null)
-//             {
-//                 model.Bio = craftsman.Bio ?? "أوسطى محترف جاهز لخدمتكم فوراً! 💪";
-//                 model.YearsOfExperience = craftsman.YearsOfExperience > 0 ? craftsman.YearsOfExperience : 5;
-//                 model.IsAvailable = craftsman.IsAvailable;
+            try
+            {
+                await _context.Database.ExecuteSqlRawAsync(
+                    "UPDATE Craftsmen SET IsAvailable = CASE WHEN IsAvailable = 1 THEN 0 ELSE 1 END WHERE UserId = {0}",
+                    userIdString
+                );
+                TempData["SuccessMessage"] = "تم تحديث حالتك بنجاح! 🔄";
+            }
+            catch (Exception) { }
 
-//                 // try
-//                 // {
-//                 //     var categoryName = await _context.Categories
-//                 //         .Where(c => c.Id == craftsman.CategoryId)
-//                 //         .Select(c => c.Name)
-//                 //         .FirstOrDefaultAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-//                 //     model.CurrentProfessions.Add(categoryName ?? "نجارة وصيانة العامة");
-//                 // }
-//                 // catch
-//                 // {
-//                 //     model.CurrentProfessions.Add("أوسطى معتمد");
-//                 // }
-//             }
-//             else if (isCraftManRole)
-//             {
-//                 // 🛠️ حماية إضافية: لو الرول متفعل بس السجل لسه منزلش في الـ SQL، املأ داتا ديمو عشان الداش بورد تفتح ومتختفيش
-//                 model.Bio = "أوسطى محترف مسجل في منصة أوسطاوي وجاهز للشغل الفوري.";
-//                 model.YearsOfExperience = 4;
-//                 model.IsAvailable = true;
-//                 model.CurrentProfessions.Add("خدمات صيانة متكاملة");
-//             }
+        [HttpGet]
+        public async Task<IActionResult> BecomeCraftsman()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userIdString == null) return RedirectToAction("Login", "Account");
 
-//             return View(model);
-//         }
+            var user = await _userManager.FindByIdAsync(userIdString);
+            if (user == null) return NotFound();
+            ViewBag.Professions = new SelectList(
+                    await _context.Professions.ToListAsync(),
+                    "Id",
+                    "Name");
 
-//             // 2. أكشن تغيير الحالة (فاضي / مشغول) للأوسطى لايف
-//             [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> ToggleAvailability()
-//         {
-//             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (userIdString == null) return RedirectToAction("Login", "Account");
+            return View();
+        }
 
-//             try
-//             {
-//                 // بنعمل UPDATE مباشر لحالة الـ IsAvailable (بنقلب قيمتها) في الداتا بيز
-//                 await _context.Database.ExecuteSqlRawAsync(
-//                     "UPDATE Craftsmen SET IsAvailable = CASE WHEN IsAvailable = 1 THEN 0 ELSE 1 END WHERE UserId = {0}",
-//                     userIdString
-//                 );
-//                 TempData["SuccessMessage"] = "تم تحديث حالتك بنجاح! 🔄";
-//             }
-//             catch (Exception) { }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BecomeCraftsman(CraftManProfessionViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Professions = new SelectList(
+                    await _context.Professions.ToListAsync(),
+                    "Id",
+                    "Name");
 
-//             return RedirectToAction(nameof(Index));
-//         }
+                return View(model);
+            }
 
-//         // 2. GET: صفحة الانضمام وإدخال بيانات المهنة
-//         [HttpGet]
-//         public async Task<IActionResult> BecomeCraftsman()
-//         {
-//             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (userIdString == null) return RedirectToAction("Login", "Account");
+            var userId = Guid.Parse(_userManager.GetUserId(User)!);
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null) return NotFound();
 
-//             // var user = await _userManager.FindByIdAsync(userIdString);
-//             // if (user == null) return NotFound();
+            await _userManager.AddToRoleAsync(user, "CraftMan");
 
-//             // var professionsList = await _context.Categories
-//             //     .FromSqlRaw("SELECT Id, Name FROM Categories")
-//             //     .Select(c => new Category { Id = c.Id, Name = c.Name })
-//             //     .ToListAsync();
+            var craftsman = await _context.Craftsmen
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
-//             // var model = new BecomeCraftsmanViewModel
-//             // {
-//             //     PhoneNumber = user.PhoneNumber ?? string.Empty,
-//             //     AvailableProfessions = professionsList
-//             // };
+            if (craftsman == null)
+            {
+                craftsman = new Craftsman
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    IsAvailable = true
+                };
 
-//             return View();//View(model);
-//         }
+                _context.Craftsmen.Add(craftsman);
+            }
 
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> BecomeCraftsman(BecomeCraftsmanViewModel model)
-//         {
-//             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (userIdString == null) return RedirectToAction("Login", "Account");
+            bool exists = await _context.CraftManProfessions.AnyAsync(x =>
+                x.CraftsmanId == craftsman.Id &&
+                x.ProfessionId == model.ProfessionId);
 
-//             var user = await _userManager.FindByIdAsync(userIdString);
-//             if (user == null) return NotFound();
+            if (exists)
+            {
+                ModelState.AddModelError("", "لقد قمت بإضافة هذه الحرفة بالفعل.");
 
-//             // 1. تحديث رقم التليفون في جدول المستخدمين
-//             user.PhoneNumber = model.PhoneNumber;
-//             await _userManager.UpdateAsync(user);
+                ViewBag.Professions = new SelectList(
+                    await _context.Professions.ToListAsync(),
+                    "Id",
+                    "Name");
 
-//             var newCraftsmanId = Guid.NewGuid();
+                return View(model);
+            }
 
-//             try
-//             {
-//                 // 2. إدخال السجل في جدول الـ Craftsmen الأساسي بالأعمدة السليمة
-//                 await _context.Database.ExecuteSqlRawAsync(
-//                     "INSERT INTO Craftsmen (Id, UserId, Bio, YearsOfExperience, IsAvailable, IsVerified, CategoryId) VALUES ({0}, {1}, {2}, {3}, 1, 1, {4})",
-//                     newCraftsmanId, userIdString, model.Bio ?? "أوسطى محترف", model.YearsOfExperience, model.SelectedProfessionId
-//                 );
-//             }
-//             catch (Exception)
-//             {
-//                 // حماية لو العمود CategoryId مش موجود في الموديل
-//                 try
-//                 {
-//                     await _context.Database.ExecuteSqlRawAsync(
-//                         "INSERT INTO Craftsmen (Id, UserId, Bio, YearsOfExperience, IsAvailable, IsVerified) VALUES ({0}, {1}, {2}, {3}, 1, 1)",
-//                         newCraftsmanId, userIdString, model.Bio ?? "أوسطى محترف", model.YearsOfExperience
-//                     );
-//                 }
-//                 catch { }
-//             }
+            var craftProfession = new CraftManProfession
+            {
+                Id = Guid.NewGuid(),
+                CraftsmanId = craftsman.Id,
+                ProfessionId = model.ProfessionId,
+                Bio = model.Bio,
+                YearsOfExperience = model.YearsOfExperience,
+                IsVerified = false
+            };
 
-//             // 🚀 3. اللعب الصح في الـ Roles بـ SQL صريح عشان نضمن التسميع في جدول الـ AspNetUserRoles فوراً!
-//             try
-//             {
-//                 // أ) بنجيب الـ RoleId الحقيقي بتاع كلمة CraftMan من جدول الأدوار
-//                 var roleIdObj = await _context.Database.ExecuteSqlRawAsync(
-//                     "SELECT TOP 1 Id FROM AspNetRoles WHERE Name = 'CraftMan'"
-//                 );
+            _context.CraftManProfessions.Add(craftProfession);
 
-//                 // ب) بدلاً من اللف، هنضيف الـ Role بأمان تام باستخدام الـ UserManager المعتمد
-//                 if (!await _userManager.IsInRoleAsync(user, "CraftMan"))
-//                 {
-//                     await _userManager.AddToRoleAsync(user, "CraftMan");
-//                 }
+            if (model.Images != null && model.Images.Any())
+            {
+                var folder = Path.Combine(
+                    "wwwroot",
+                    "images");
 
-//                 // ج) هيدر الصنايعي عشان يظهر.. لازم نشيل رول العميل (Client) عشان ميبقاش فيه تضارب في الـ if/else بتاعة الـ Navbar!
-//                 if (await _userManager.IsInRoleAsync(user, "Client"))
-//                 {
-//                     await _userManager.RemoveFromRoleAsync(user, "Client");
-//                 }
-//             }
-//             catch (Exception) { }
+                if (!Directory.Exists(folder))
+                    Directory.CreateDirectory(folder);
 
-//             // 4. أهم سطر: ريفريش للكوكيز لايف عشان الـ Navbar تتقلب في نفس الثانية بدون تسجيل خروج
-//             await _signInManager.RefreshSignInAsync(user);
+                foreach (var image in model.Images.Take(5))
+                {
+                    var fileName =
+                        $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
 
-//             TempData["SuccessMessage"] = "يا مسهل الحال! بقيت أوسطى رسمي والداش بورد والـ Navbar فتحوا. 🛠️";
-//             return RedirectToAction(nameof(Index));
-//         }
-//     }
-// }
+                    var filePath = Path.Combine(folder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    _context.CraftManProfessionImages.Add(
+                        new CraftManProfessionImage
+                        {
+                            Id = Guid.NewGuid(),
+                            CraftManProfessionId = craftProfession.Id,
+                            ImagePath = "/images/" + fileName
+                        });
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "تم إضافة الحرفة بنجاح، وسيتم مراجعتها من الإدارة.";
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ostawy.Data;
 
@@ -11,9 +12,11 @@ using Ostawy.Data;
 namespace Ostawy.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260709131050_ModifyCraftManTable")]
+    partial class ModifyCraftManTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -264,27 +267,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("ProfessionId");
 
-                    b.ToTable("CraftManProfessions", (string)null);
-                });
-
-            modelBuilder.Entity("Ostawy.Models.CraftManProfessionImage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CraftManProfessionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CraftManProfessionId");
-
-                    b.ToTable("CraftManProfessionImages", (string)null);
+                    b.ToTable("CraftManProfessions");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
@@ -303,7 +286,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Craftsmen", (string)null);
+                    b.ToTable("Craftsmen");
                 });
 
             modelBuilder.Entity("Ostawy.Models.EmailVerification", b =>
@@ -332,7 +315,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EmailVerifications", (string)null);
+                    b.ToTable("EmailVerifications");
                 });
 
             modelBuilder.Entity("Ostawy.Models.PasswordResetOtp", b =>
@@ -360,7 +343,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PasswordResetOtps", (string)null);
+                    b.ToTable("PasswordResetOtps");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
@@ -403,7 +386,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Plan", b =>
@@ -443,7 +426,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plans", (string)null);
+                    b.ToTable("Plans");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Profession", b =>
@@ -462,7 +445,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Professions", (string)null);
+                    b.ToTable("Professions");
                 });
 
             modelBuilder.Entity("Ostawy.Models.UserSubscription", b =>
@@ -496,7 +479,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserSubscriptions", (string)null);
+                    b.ToTable("UserSubscriptions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -569,17 +552,6 @@ namespace Ostawy.Migrations
                     b.Navigation("Profession");
                 });
 
-            modelBuilder.Entity("Ostawy.Models.CraftManProfessionImage", b =>
-                {
-                    b.HasOne("Ostawy.Models.CraftManProfession", "CraftManProfession")
-                        .WithMany("Images")
-                        .HasForeignKey("CraftManProfessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CraftManProfession");
-                });
-
             modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
                 {
                     b.HasOne("Ostawy.Models.ApplicationUser", "User")
@@ -638,11 +610,6 @@ namespace Ostawy.Migrations
                     b.Navigation("Plan");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.CraftManProfession", b =>
-                {
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }
