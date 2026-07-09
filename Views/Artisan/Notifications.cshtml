@@ -1,0 +1,39 @@
+@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "إشعارات الأوسطى - أوستاوي";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-right" style="margin-top: 140px; margin-bottom: 60px; max-width: 800px;">
+    <h3 class="fw-bold mb-4" style="color: #031636;">
+        <i class="fa-solid fa-bell text-warning me-2"></i> مركز الإشعارات الخاص بك
+    </h3>
+
+    <div class="d-flex flex-column gap-3">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="card border-0 p-5 text-center shadow-sm rounded-4 bg-white text-muted">
+                <div class="fs-1 mb-2">🔔</div>
+                <h5>مفيش إشعارات جديدة حالياً يا أوسطى.</h5>
+                <p class="small m-0">أي شغل جديد ينزل أو رد من عميل هيظهرلك هنا علطول!</p>
+            </div>
+        }
+        else
+        {
+            foreach (var notify in Model)
+            {
+                <div class="card p-3 shadow-sm rounded-3 border-0 border-end border-4 border-warning bg-light">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="fw-bold text-dark m-0 mb-1">@notify.Title</h6>
+                                <p class="text-secondary small m-0">@notify.Message</p>
+                            </div>
+                        </div>
+                        <small class="text-muted small">@notify.CreatedAt.ToString("hh:mm tt")</small>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

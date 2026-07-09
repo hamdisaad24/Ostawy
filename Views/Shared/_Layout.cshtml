@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 @* <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -397,6 +399,7 @@
 </body>
 </html> *@
 
+>>>>>>> d6b528eecc84d19a95fd1c48a7395802d2fe3b21
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -465,7 +468,7 @@
         }
         .main-nav {
             display: flex;
-            align-items: center; /* تم التعديل لتوسيط العناصر عمودياً مع الزرار */
+            align-items: center;
             gap: 24px;
         }
         .nav-item {
@@ -473,9 +476,28 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
         }
         .nav-item:hover { color: #fd7613; text-decoration: none; }
+        
+        /* 🔥 الستايل السحري للرابط النشط (الرابط الفعّال حالياً ينور برتقالي) */
+        .nav-item.active {
+            color: #fd7613 !important;
+        }
+        /* خط برتقالي صغير شيك جداً تحت الرابط النشط لتأكيد الحركة */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fd7613;
+            border-radius: 2px;
+        }
+
         .auth-nav {
             display: flex;
             align-items: center;
@@ -489,6 +511,12 @@
             transition: color 0.3s;
         }
         .link-login:hover { color: #fd7613; text-decoration: none; }
+        
+        /* جعل كلمة "بروفايل" تنور برتقالي برضه لو هو واقف جوة صفحة البروفايل */
+        .link-login.active {
+            color: #fd7613 !important;
+        }
+
         .btn-register-nav {
             background-color: #031636;
             color: #ffffff !important;
@@ -551,8 +579,7 @@
         .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
         .footer-logo { height: 46px; width: auto; object-fit: contain; }
         .footer-app-name { font-size: 24px; font-weight: 900; color: #ffffff; }
-        .footer-brand-desc">المنصة الأقوى والأسرع في مصر للربط بين أصحاب المنازل وأقرب الفنيين والصنايعية المعتمدين جغرافياً بكل أمان وشفافية.</p>
-        </div>
+        .footer-brand-desc { color: #cbd5e1; font-size: 14px; line-height: 1.6; }
         .footer-title {
             color: #fd7613;
             font-size: 16px;
@@ -660,7 +687,6 @@
     }
 }
 
-
     <header class="main-header">
         <div class="custom-container header-container">
             <div class="d-flex align-items-center gap-3">
@@ -675,33 +701,26 @@
             
             <nav class="main-nav">
                 <a asp-controller="Home" asp-action="Index" class="nav-item">الرئيسية</a>
+                
                 @if (User!.Identity!.IsAuthenticated)
                 {
-                    @if (User.IsInRole("Client"))
+                    @if (User.IsInRole("CraftMan"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الخدمات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">طلباتي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الإشعارات</a>
+                        <a asp-controller="Artisan" asp-action="AvailableJobs" class="nav-item">الطلبات المتاحة</a>
+                        <a asp-controller="Artisan" asp-action="Notifications" class="nav-item">🔔 الإشعارات</a>
+                        <a asp-controller="Artisan" asp-action="MyWorks" class="nav-item">أعمالي</a>
+                                                    
+                        <form asp-controller="Subscription" asp-action="Upgrade" method="get" class="d-inline ms-2">
+                            <button type="submit" class="btn-upgrade-pro">🚀 ترقية إلى PRO</button>
+                        </form>
                     }
-                    else if(User.IsInRole("CraftMan"))
+                    else if (User.IsInRole("Client"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">أعمالي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الإحصائيات</a>
-                        
-                        @if (!isProUser)
-                        {
-                            <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post" class="d-inline ms-2">
-                                <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
-                                <button type="submit" class="btn-upgrade-pro">🚀 ترقية إلى PRO</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <span class="badge bg-success ms-2 p-2">⭐ حساب PRO نشط</span>
-                        }
+                        <a href="#services" class="nav-item">الخدمات</a>
+                        <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
+                        <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                     }
-                    else if(User.IsInRole("Admin"))
+                    else if (User.IsInRole("Admin"))
                     {
                         <a asp-controller="Account" asp-action="Profile" class="nav-item">العملاء</a>
                         <a asp-controller="Account" asp-action="Profile" class="nav-item">الصنايعية</a>
@@ -847,6 +866,31 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+            // بنجيب مسار الصفحة الحالية من الـ URL (مثال: /Profile أو /Artisan/AvailableJobs)
+            var currentPath = window.location.pathname.toLowerCase();
+
+            // 1. فحص روابط الـ Navbar الكبيرة
+            $(".main-nav a, .auth-nav a").each(function () {
+                var linkHref = $(this).attr("href");
+                if (linkHref) {
+                    linkHref = linkHref.toLowerCase();
+                    // لو اللينك مش الصفحة الرئيسية وفيه جزء مطابق للمسار الحالي، أو لو متطابق تماماً
+                    if ((linkHref !== "/" && linkHref !== "/home" && currentPath.indexOf(linkHref) !== -1) || (currentPath === linkHref)) {
+                        $(this).addClass("active");
+                    }
+                }
+            });
+
+            // حالة خاصة للصفحة الرئيسية لو المسار فاضي أو /
+            if (currentPath === "/" || currentPath === "/home" || currentPath === "/home/index") {
+                $(".main-nav a[href*='Home']").addClass("active");
+            }
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
