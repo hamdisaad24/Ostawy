@@ -16,11 +16,11 @@ namespace Ostawy.Models
         [Required]
         public int CategoryId { get; set; } // ربط مع جدول الأقسام (سباك، نجار..) اللي جاية من الداتا بيز
 
-        [ForeignKey("CategoryId")]
-        public virtual Category? Category { get; set; }
+        // [ForeignKey("CategoryId")]
+        // public virtual Category? Category { get; set; }
 
         [Required(ErrorMessage = "برجاء كتابة وصف للمشكلة")]
-        public string Description { get; set; } // وصف المشكلة
+        public string Description { get; set; } = string.Empty; // وصف المشكلة
 
         [Required(ErrorMessage = "برجاء تحديد ميزانية تقريبية")]
         [Column(TypeName = "decimal(18,2)")]

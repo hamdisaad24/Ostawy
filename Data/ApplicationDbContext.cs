@@ -18,5 +18,6 @@ namespace Ostawy.Data
         public DbSet<Payment> Payments { get; set; }   
         public DbSet<Craftsman> Craftsmen { get; set; }
         public DbSet<Profession> Professions { get; set; }
+        public DbSet<CraftManProfession> CraftManProfessions { get; set; }
     }
 }

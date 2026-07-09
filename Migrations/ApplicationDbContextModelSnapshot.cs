@@ -236,65 +236,27 @@ namespace Ostawy.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-<<<<<<< HEAD
-=======
-            modelBuilder.Entity("Ostawy.Models.Category", b =>
+            modelBuilder.Entity("Ostawy.Models.CraftManProfession", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("CraftsmanId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("IconPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ProfessionId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", null, t =>
-                        {
-                            t.ExcludeFromMigrations();
-                        });
+                    b.HasIndex("CraftsmanId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IconPath = "",
-                            Name = "أعمال السباكة"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IconPath = "",
-                            Name = "كهرباء منازل"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IconPath = "",
-                            Name = "تكييف وتبريد"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IconPath = "",
-                            Name = "نقاشة ودهانات"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IconPath = "",
-                            Name = "نجارة وصيانة أثاث"
-                        });
+                    b.HasIndex("ProfessionId");
+
+                    b.ToTable("CraftManProfessions");
                 });
 
->>>>>>> 620284492b73bc8bc050667f04e3aa68c3d63443
             modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
                 {
                     b.Property<Guid>("Id")
@@ -304,9 +266,6 @@ namespace Ostawy.Migrations
                     b.Property<string>("Bio")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
@@ -354,78 +313,6 @@ namespace Ostawy.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EmailVerifications");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.JobBid", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ArtisanId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("JobRequestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Note")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("OfferPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobRequestId");
-
-                    b.ToTable("JobBids");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("EstimatedPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("JobRequests");
                 });
 
             modelBuilder.Entity("Ostawy.Models.PasswordResetOtp", b =>
@@ -545,9 +432,6 @@ namespace Ostawy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -646,6 +530,25 @@ namespace Ostawy.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Ostawy.Models.CraftManProfession", b =>
+                {
+                    b.HasOne("Ostawy.Models.Craftsman", "Craftsman")
+                        .WithMany()
+                        .HasForeignKey("CraftsmanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ostawy.Models.Profession", "Profession")
+                        .WithMany()
+                        .HasForeignKey("ProfessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Craftsman");
+
+                    b.Navigation("Profession");
+                });
+
             modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
                 {
                     b.HasOne("Ostawy.Models.ApplicationUser", "User")
@@ -666,28 +569,6 @@ namespace Ostawy.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.JobBid", b =>
-                {
-                    b.HasOne("Ostawy.Models.JobRequest", "JobRequest")
-                        .WithMany("JobBids")
-                        .HasForeignKey("JobRequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("JobRequest");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
-                {
-                    b.HasOne("Ostawy.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
@@ -726,11 +607,6 @@ namespace Ostawy.Migrations
                     b.Navigation("Plan");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
-                {
-                    b.Navigation("JobBids");
                 });
 #pragma warning restore 612, 618
         }

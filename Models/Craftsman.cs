@@ -13,6 +13,5 @@ namespace Ostawy.Models
         public int YearsOfExperience { get; set; }
         public bool IsVerified { get; set; }
         public bool IsAvailable { get; set; }
-        public int CategoryId { get; internal set; }
     }
 }

@@ -31,7 +31,7 @@
                          style="border-right: 5px solid @(request.Status == "Closed" ? "#dc3545" : request.Status == "Cancelled" ? "#64748b" : "#fd7613") !important;">
                         <div>
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="fw-bold fs-5" style="color: #fd7613;">⚙️ @request.Category?.Name</span>
+                                @* <span class="fw-bold fs-5" style="color: #fd7613;">⚙️ @request.Category?.Name</span> *@
                                 
                                 @if (request.Status == "Open")
                                 {
