@@ -716,7 +716,7 @@
                     }
                     else if (User.IsInRole("Client"))
                     {
-                        <a href="#services" class="nav-item">الخدمات</a>
+                        <a asp-controller="Customer" asp-action="CreateRequest" class="nav-item">طلب صنايعي</a>
                         <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
                         <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                     }
@@ -765,9 +765,9 @@
                 {
                     @if (User.IsInRole("Client"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الخدمات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">طلباتي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الإشعارات</a>
+                        <a asp-controller="Customer" asp-action="CreateRequest" class="mobile-nav-item">طلب صنايعي</a>
+                        <a asp-controller="Customer" asp-action="MyRequests" class="mobile-nav-item">طلباتي</a>
+                        <a asp-controller="Customer" asp-action="Notifications" class="mobile-nav-item">الإشعارات</a>
                     }
                     else if(User.IsInRole("CraftMan"))
                     {

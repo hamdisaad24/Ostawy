@@ -1,214 +1,214 @@
-﻿// using System;
-// using System.Linq;
-// using System.Security.Claims;
-// using System.Threading.Tasks;
-// using Microsoft.AspNetCore.Authorization;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-// using Ostawy.Data;
-// using Ostawy.Models;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Ostawy.Data;
+using Ostawy.Models;
 
-// namespace Ostawy.Controllers
-// {
-//     [Authorize]
-//     public class CustomerController : Controller
-//     {
-//         private readonly ApplicationDbContext _db;
+namespace Ostawy.Controllers;
 
-//         public CustomerController(ApplicationDbContext db)
-//         {
-//             _db = db;
-//         }
+[Authorize]
+public class CustomerController : Controller
+{
+    private readonly ApplicationDbContext _db;
 
-//         // 1. عرض صفحة طلب صنايعي
-//         public async Task<IActionResult> CreateRequest()
-//         {
-//             ViewBag.Categories = await _db.Categories.ToListAsync();
-//             return View();
-//         }
+    public CustomerController(ApplicationDbContext db)
+    {
+        _db = db;
+    }
 
-//         // 2. استقبال بيانات الطلب ونشره
-//         [HttpPost]
-//         [ValidateAntiForgeryToken]
-//         public async Task<IActionResult> CreateRequest(JobRequest model)
-//         {
-//             var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
+    [HttpGet]
+    public IActionResult CreateRequest()
+    {
+        ViewBag.Categories = new List<dynamic>
+        {
+            new { Id = 1, Name = "سباكة" },
+            new { Id = 2, Name = "كهرباء" },
+            new { Id = 3, Name = "تكييف وتبريد" },
+            new { Id = 4, Name = "نقاشة ودهانات" },
+            new { Id = 5, Name = "نجارة" },
+            new { Id = 6, Name = "حدادة ولحام" },
+            new { Id = 7, Name = "سيراميك وبلاط" },
+            new { Id = 8, Name = "حدائق وتشجير" },
+            new { Id = 9, Name = "أثاث وديكور" },
+            new { Id = 10, Name = "صيانة عامة" }
+        };
+        return View();
+    }
 
-//             model.ClientId = clientId;
-//             model.Status = "Open";
-//             model.CreatedAt = DateTime.Now;
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CreateRequest(JobRequest model)
+    {
+        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
 
-//             ModelState.Remove("ClientId");
-//             ModelState.Remove("Category");
+        model.ClientId = clientId;
+        model.Status = "Open";
+        model.CreatedAt = DateTime.Now;
 
-//             if (ModelState.IsValid)
-//             {
-//                 _db.JobRequests.Add(model);
-//                 await _db.SaveChangesAsync();
+        ModelState.Remove("ClientId");
 
-//                 return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
-//             }
+        if (ModelState.IsValid)
+        {
+            _db.JobRequests.Add(model);
+            await _db.SaveChangesAsync();
 
-//             ViewBag.Categories = await _db.Categories.ToListAsync();
-//             return View(model);
-//         }
+            return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
+        }
 
-//         // 3. لوحة تحكم الطلب
-//         public async Task<IActionResult> RequestDashboard(int requestId)
-//         {
-//             var request = await _db.JobRequests
-//                 .Include(r => r.Category)
-//                 .Include(r => r.JobBids)
-//                 .FirstOrDefaultAsync(r => r.Id == requestId);
+        ViewBag.Categories = new List<dynamic>
+        {
+            new { Id = 1, Name = "سباكة" },
+            new { Id = 2, Name = "كهرباء" },
+            new { Id = 3, Name = "تكييف وتبريد" },
+            new { Id = 4, Name = "نقاشة ودهانات" },
+            new { Id = 5, Name = "نجارة" },
+            new { Id = 6, Name = "حدادة ولحام" },
+            new { Id = 7, Name = "سيراميك وبلاط" },
+            new { Id = 8, Name = "حدائق وتشجير" },
+            new { Id = 9, Name = "أثاث وديكور" },
+            new { Id = 10, Name = "صيانة عامة" }
+        };
+        return View(model);
+    }
 
-//             if (request == null) return NotFound();
+    public async Task<IActionResult> RequestDashboard(int requestId)
+    {
+        var request = await _db.JobRequests
+            .Include(r => r.JobBids)
+            .FirstOrDefaultAsync(r => r.Id == requestId);
 
-//             return View(request);
-//         }
+        if (request == null) return NotFound();
 
-//         // 4. API سريع بالـ AJAX يجلب العروض المفتوحة والمؤمنة ضد قفلات الـ LINQ
-//         [HttpGet]
-//         public async Task<IActionResult> GetBidsForRequest(int requestId)
-//         {
-//             var bids = await _db.JobBids
-//                 .Where(b => b.JobRequestId == requestId && (b.Status == "Pending" || b.Status == "pending"))
-//                 .OrderByDescending(b => b.CreatedAt)
-//                 .ToListAsync();
+        return View(request);
+    }
 
-//             var usersList = await _db.Users.ToListAsync();
+    [HttpGet]
+    public async Task<IActionResult> GetBidsForRequest(int requestId)
+    {
+        var bids = await _db.JobBids
+            .Where(b => b.JobRequestId == requestId && (b.Status == "Pending" || b.Status == "pending"))
+            .OrderByDescending(b => b.CreatedAt)
+            .ToListAsync();
 
-//             // سحب لستة الاشتراكات النشطة للـ PRO عشان نعلم عليهم
-//             var activeProUserIds = await _db.UserSubscriptions
-//                 .Where(s => s.IsActive && s.Plan!.Name == "Pro")
-//                 .Select(s => s.UserId.ToString())
-//                 .ToListAsync();
+        var usersList = await _db.Users.ToListAsync();
 
-//             var result = bids.Select(b => new {
-//                 id = b.Id,
-//                 offerPrice = b.OfferPrice,
-//                 note = b.Note,
-//                 artisanName = usersList.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
-//                 // 🚀 حركة سحرية: لو الـ ArtisanId موجود في لستة الـ PRO، نبعت علامة التوثيق
-//                 isVerified = activeProUserIds.Contains(b.ArtisanId),
-//                 createdAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
-//             }).ToList();
+        var activeProUserIds = await _db.UserSubscriptions
+            .Where(s => s.IsActive && s.Plan!.Name == "Pro")
+            .Select(s => s.UserId.ToString())
+            .ToListAsync();
 
-//             return Json(result);
-//         }
+        var result = bids.Select(b => new {
+            id = b.Id,
+            offerPrice = b.OfferPrice,
+            note = b.Note,
+            artisanName = usersList.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
+            isVerified = activeProUserIds.Contains(b.ArtisanId),
+            createdAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
+        }).ToList();
 
-//         // 5. قبول العرض لايف بالـ AJAX ومتوافق مع كود الـ View بتاعك
-//         [HttpPost]
-//         public async Task<IActionResult> ApiAcceptBid(int bidId)
-//         {
-//             var bid = await _db.JobBids.Include(b => b.JobRequest).FirstOrDefaultAsync(b => b.Id == bidId);
-//             if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+        return Json(result);
+    }
 
-//             bid.Status = "Accepted";
+    [HttpPost]
+    public async Task<IActionResult> ApiAcceptBid(int bidId)
+    {
+        var bid = await _db.JobBids.Include(b => b.JobRequest).FirstOrDefaultAsync(b => b.Id == bidId);
+        if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
 
-//             // عشان يطابق شروط الـ View التانية ويقفل الكارت، بنخلي حالة الشغلانة "Closed" أو "Accepted"
-//             if (bid.JobRequest != null)
-//             {
-//                 bid.JobRequest.Status = "Closed";
-//             }
+        bid.Status = "Accepted";
 
-//             // رفض باقي العروض التانية أوتوماتيك عشان الشغلانة اتقفلت خلاص
-//             var otherBids = await _db.JobBids.Where(b => b.JobRequestId == bid.JobRequestId && b.Id != bidId).ToListAsync();
-//             foreach (var other in otherBids)
-//             {
-//                 other.Status = "Rejected";
-//             }
+        if (bid.JobRequest != null)
+        {
+            bid.JobRequest.Status = "Closed";
+        }
 
-//             await _db.SaveChangesAsync();
-//             return Json(new { success = true, message = "تم قبول العرض بنجاح! جاري إرسال بيانات التواصل للصنايعي. 🎉" });
-//         }
+        var otherBids = await _db.JobBids.Where(b => b.JobRequestId == bid.JobRequestId && b.Id != bidId).ToListAsync();
+        foreach (var other in otherBids)
+        {
+            other.Status = "Rejected";
+        }
 
-//         // 6. رفض العرض لايف بالـ AJAX
-//         [HttpPost]
-//         public async Task<IActionResult> ApiRejectBid(int bidId)
-//         {
-//             var bid = await _db.JobBids.FindAsync(bidId);
-//             if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+        await _db.SaveChangesAsync();
+        return Json(new { success = true, message = "تم قبول العرض بنجاح!" });
+    }
 
-//             bid.Status = "Rejected";
-//             await _db.SaveChangesAsync();
+    [HttpPost]
+    public async Task<IActionResult> ApiRejectBid(int bidId)
+    {
+        var bid = await _db.JobBids.FindAsync(bidId);
+        if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
 
-//             return Json(new { success = true, message = "تم رفض العرض بنجاح." });
-//         }
+        bid.Status = "Rejected";
+        await _db.SaveChangesAsync();
 
-//         // 🚨 8. الـ API الجديد المسؤول عن إلغاء الطلب بالكامل
-//         [HttpPost]
-//         public async Task<IActionResult> CancelRequest(int requestId)
-//         {
-//             var request = await _db.JobRequests.FindAsync(requestId);
-//             if (request == null) return Json(new { success = false, message = "الطلب غير موجود" });
+        return Json(new { success = true, message = "تم رفض العرض بنجاح." });
+    }
 
-//             // تغيير حالة الطلب لـ ملغي
-//             request.Status = "Cancelled";
+    [HttpPost]
+    public async Task<IActionResult> CancelRequest(int requestId)
+    {
+        var request = await _db.JobRequests.FindAsync(requestId);
+        if (request == null) return Json(new { success = false, message = "الطلب غير موجود" });
 
-//             // رفض جميع العروض المعلقة عليه تلقائياً
-//             var pendingBids = await _db.JobBids.Where(b => b.JobRequestId == requestId).ToListAsync();
-//             foreach (var bid in pendingBids)
-//             {
-//                 bid.Status = "Rejected";
-//             }
+        request.Status = "Cancelled";
 
-//             await _db.SaveChangesAsync();
-//             return Json(new { success = true });
-//         }
+        var pendingBids = await _db.JobBids.Where(b => b.JobRequestId == requestId).ToListAsync();
+        foreach (var bid in pendingBids)
+        {
+            bid.Status = "Rejected";
+        }
 
-//         // 7. صفحة الإشعارات المفصولة ذكياً لكل مستخدم
-//         [Authorize]
-//         [HttpGet]
-//         public async Task<IActionResult> Notifications()
-//         {
-//             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (string.IsNullOrEmpty(userId)) return Unauthorized();
+        await _db.SaveChangesAsync();
+        return Json(new { success = true });
+    }
 
-//             if (User.IsInRole("Client"))
-//             {
-//                 var clientNotifications = await _db.JobBids
-//                     .Include(b => b.JobRequest)
-//                     .ThenInclude(r => r.Category)
-//                     .Where(b => b.JobRequest.ClientId == userId && b.Status == "Pending")
-//                     .OrderByDescending(b => b.CreatedAt)
-//                     .ToListAsync();
+    [HttpGet]
+    public async Task<IActionResult> Notifications()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
-//                 ViewBag.UserRole = "Client";
-//                 return View(clientNotifications);
-//             }
+        if (User.IsInRole("Client"))
+        {
+            var clientNotifications = await _db.JobBids
+                .Include(b => b.JobRequest)
+                .Where(b => b.JobRequest.ClientId == userId && b.Status == "Pending")
+                .OrderByDescending(b => b.CreatedAt)
+                .ToListAsync();
 
-//             if (User.IsInRole("CraftMan"))
-//             {
-//                 var artisanNotifications = await _db.JobBids
-//                     .Include(b => b.JobRequest)
-//                     .ThenInclude(r => r.Category)
-//                     .Where(b => b.ArtisanId == userId && b.Status == "Accepted")
-//                     .OrderByDescending(b => b.CreatedAt)
-//                     .ToListAsync();
+            ViewBag.UserRole = "Client";
+            return View(clientNotifications);
+        }
 
-//                 ViewBag.UserRole = "CraftMan";
-//                 return View(artisanNotifications);
-//             }
+        if (User.IsInRole("CraftMan"))
+        {
+            var artisanNotifications = await _db.JobBids
+                .Include(b => b.JobRequest)
+                .Where(b => b.ArtisanId == userId && b.Status == "Accepted")
+                .OrderByDescending(b => b.CreatedAt)
+                .ToListAsync();
 
-//             return View(new List<JobBid>());
-//         }
+            ViewBag.UserRole = "CraftMan";
+            return View(artisanNotifications);
+        }
 
-//         // 5. صفحة "طلباتي" الخاصة بالعميل فقط لمتابعة عروضها
-//         [Authorize(Roles = "Client")]
-//         [HttpGet]
-//         public async Task<IActionResult> MyRequests()
-//         {
-//             var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-//             if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
+        return View(new List<JobBid>());
+    }
 
-//             var myRequests = await _db.JobRequests
-//                 .Include(r => r.Category)
-//                 .Where(r => r.ClientId == clientId)
-//                 .OrderByDescending(r => r.CreatedAt)
-//                 .ToListAsync();
+    [Authorize(Roles = "Client")]
+    [HttpGet]
+    public async Task<IActionResult> MyRequests()
+    {
+        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
 
-//             return View(myRequests);
-//         }
-//     }
-// }
+        var myRequests = await _db.JobRequests
+            .Where(r => r.ClientId == clientId)
+            .OrderByDescending(r => r.CreatedAt)
+            .ToListAsync();
+
+        return View(myRequests);
+    }
+}
