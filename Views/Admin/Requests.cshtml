@@ -162,7 +162,7 @@
                     {
                         <tr>
                             <td><strong>@item.Id</strong></td>
-                            <td>@item.ClientId</td>
+                            <td>@(ViewBag.UserNames != null && ViewBag.UserNames.ContainsKey(item.ClientId) ? ViewBag.UserNames[item.ClientId] : item.ClientId)</td>
                             <td>@item.CategoryId</td>
                             <td class="desc-cell">@item.Description</td>
                             <td><span class="price">@item.EstimatedPrice EGP</span></td>

@@ -21,6 +21,13 @@ public class AdminController : Controller
         var requests = await _context.JobRequests
             .OrderByDescending(r => r.CreatedAt)
             .ToListAsync();
+
+        var userIds = requests.Select(r => r.ClientId).Distinct().ToList();
+        var users = await _context.Users
+            .Where(u => userIds.Contains(u.Id.ToString()))
+            .ToDictionaryAsync(u => u.Id.ToString(), u => u.FullName);
+        ViewBag.UserNames = users;
+
         return View(requests);
     }
 
