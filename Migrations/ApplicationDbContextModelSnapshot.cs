@@ -315,6 +315,76 @@ namespace Ostawy.Migrations
                     b.ToTable("EmailVerifications");
                 });
 
+            modelBuilder.Entity("Ostawy.Models.JobBid", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArtisanId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("JobRequestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("OfferPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobRequestId");
+
+                    b.ToTable("JobBids");
+                });
+
+            modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("EstimatedPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobRequests");
+                });
+
             modelBuilder.Entity("Ostawy.Models.PasswordResetOtp", b =>
                 {
                     b.Property<Guid>("Id")
@@ -571,6 +641,17 @@ namespace Ostawy.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Ostawy.Models.JobBid", b =>
+                {
+                    b.HasOne("Ostawy.Models.JobRequest", "JobRequest")
+                        .WithMany("JobBids")
+                        .HasForeignKey("JobRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JobRequest");
+                });
+
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
                 {
                     b.HasOne("Ostawy.Models.Plan", "Plan")
@@ -607,6 +688,11 @@ namespace Ostawy.Migrations
                     b.Navigation("Plan");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
+                {
+                    b.Navigation("JobBids");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,202 @@
+@model IEnumerable<Ostawy.Models.JobRequest>
+
+@{
+    ViewData["Title"] = "إدارة الطلبات";
+}
+
+<style>
+    :root {
+        --primary: #031636;
+        --secondary: #fd7613;
+        --success: #16a34a;
+        --danger: #dc2626;
+        --warning: #f59e0b;
+    }
+
+    .page-container {
+        max-width: 1300px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+    }
+
+    .page-title {
+        color: var(--primary);
+        font-weight: 900;
+        margin: 0;
+    }
+
+    .table-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    }
+
+    table {
+        margin: 0;
+    }
+
+    thead {
+        background: var(--primary);
+        color: white;
+    }
+
+    th {
+        font-weight: 700;
+        text-align: center;
+        padding: 18px !important;
+        white-space: nowrap;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 18px !important;
+    }
+
+    tbody tr:hover {
+        background: #fafafa;
+    }
+
+    .status-open {
+        background: rgba(22, 163, 74, .12);
+        color: var(--success);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .status-accepted {
+        background: rgba(245, 158, 11, .12);
+        color: var(--warning);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .status-closed {
+        background: rgba(220, 38, 38, .12);
+        color: var(--danger);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .price {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--secondary);
+    }
+
+    .btn-delete {
+        background: var(--danger);
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: .3s;
+        font-size: 13px;
+    }
+
+    .btn-delete:hover {
+        background: #b91c1c;
+        color: white;
+        text-decoration: none;
+    }
+
+    .desc-cell {
+        max-width: 300px;
+        text-align: right;
+    }
+
+    .empty {
+        text-align: center;
+        padding: 70px;
+    }
+
+    .empty h4 {
+        color: #64748b;
+    }
+</style>
+
+<div class="page-container">
+    <div class="page-header">
+        <div>
+            <h2 class="page-title">إدارة الطلبات</h2>
+            <p class="text-muted">جميع طلبات الصيانة المقدمة من العملاء.</p>
+        </div>
+    </div>
+
+    <div class="table-card">
+        @if (Model.Any())
+        {
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم العميل</th>
+                        <th>التصنيف</th>
+                        <th>الوصف</th>
+                        <th>الميزانية</th>
+                        <th>الحالة</th>
+                        <th>تاريخ الطلب</th>
+                        <th width="120">العمليات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><strong>@item.Id</strong></td>
+                            <td>@item.ClientId</td>
+                            <td>@item.CategoryId</td>
+                            <td class="desc-cell">@item.Description</td>
+                            <td><span class="price">@item.EstimatedPrice EGP</span></td>
+                            <td>
+                                @switch (item.Status)
+                                {
+                                    case "Open":
+                                        <span class="status-open">مفتوح</span>
+                                        break;
+                                    case "Accepted":
+                                        <span class="status-accepted">مقبول</span>
+                                        break;
+                                    case "Closed":
+                                        <span class="status-closed">مغلق</span>
+                                        break;
+                                    default:
+                                        <span>@item.Status</span>
+                                        break;
+                                }
+                            </td>
+                            <td>@item.CreatedAt.ToString("yyyy/MM/dd - hh:mm tt")</td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn-delete">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="empty">
+                <h4>لا توجد أي طلبات حتى الآن.</h4>
+            </div>
+        }
+    </div>
+</div>
