@@ -47,6 +47,6 @@ namespace Ostawy.Data
         public DbSet<Profession> Professions { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-
+        
     }
 }

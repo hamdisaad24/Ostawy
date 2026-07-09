@@ -707,17 +707,16 @@
                     @if (User.IsInRole("CraftMan"))
                     {
                         <a asp-controller="Artisan" asp-action="AvailableJobs" class="nav-item">الطلبات المتاحة</a>
-                        <a asp-controller="Artisan" asp-action="AvailableJobs" class="nav-item">🔔 الإشعارات</a>
-                        <a asp-controller="Craftsman" asp-action="MyWorks" class="nav-item">أعمالي</a>
+                        <a asp-controller="Artisan" asp-action="Notifications" class="nav-item">🔔 الإشعارات</a>
+                        <a asp-controller="Artisan" asp-action="MyWorks" class="nav-item">أعمالي</a>
                                                     
-                        <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post" class="d-inline ms-2">
-                            <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
+                        <form asp-controller="Subscription" asp-action="Upgrade" method="get" class="d-inline ms-2">
                             <button type="submit" class="btn-upgrade-pro">🚀 ترقية إلى PRO</button>
                         </form>
                     }
                     else if (User.IsInRole("Client"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الخدمات</a>
+                        <a href="#services" class="nav-item">الخدمات</a>
                         <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
                         <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                     }

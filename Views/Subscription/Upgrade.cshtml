@@ -1,0 +1,56 @@
+@model IEnumerable<Ostawy.Models.Plan>
+@{
+    ViewData["Title"] = "ترقية الحساب - أوستاوي";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-center" style="margin-top: 140px; margin-bottom: 60px; direction: rtl;">
+    <h2 class="fw-bold" style="color: #031636;">🚀 باقات اشتراك أوستاوي</h2>
+    <p class="text-muted mb-5">اختر الباقة المناسبة لتزيد أرباحك وتصل لعملاء أكثر</p>
+
+    <div class="row g-4 justify-content-center">
+        @foreach (var plan in Model)
+        {
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 shadow-sm border-0 p-4" style="border-radius: 20px; background: #ffffff; border-top: 5px solid @(plan.Price > 0 ? "#fd7613" : "#64748b") !important;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h4 class="fw-bold" style="color: #031636;">باقة @plan.Name</h4>
+                            <h2 class="fw-black text-success my-3">@plan.Price <span class="fs-6 text-muted">ج.م / شهر</span></h2>
+                            <p class="text-muted small mb-4">@plan.Description</p>
+                            <hr class="opacity-25">
+                            
+                            <ul class="list-unstyled text-right small p-0 mb-4" style="line-height: 2;">
+                                <li>✅ تقديم حتى (@(plan.MaxRequests > 500 ? "لامحدود" : plan.MaxRequests)) عروض شهرياً</li>
+                                <li>✅ صالحة لمدة @plan.DurationInDays يوم</li>
+                                @if (plan.HasVerifiedBadge)
+                                {
+                                    <li class="text-primary fw-bold">💙 الحصول على شارة التوثيق PRO مجاناً</li>
+                                    <li class="text-primary">🔥 أولوية الظهور في بحث العملاء</li>
+                                }
+                            </ul>
+                        </div>
+
+                        <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="planId" value="@plan.Id" />
+    
+                            @if (plan.Price > 0)
+                            {
+                                <button type="submit" class="btn w-100 fw-bold text-white py-2.5" style="background-color: #fd7613; border-radius: 12px;">
+                                    🚀 اشترك الآن بـ @plan.Price ج.م
+                                </button>
+                            }
+                            else
+                            {
+                                <a href="/Artisan/AvailableJobs" class="btn w-100 fw-bold text-white py-2.5" style="background-color: #031636; border-radius: 12px; text-decoration: none;">
+                                    ابدأ بالباقة المجانية
+                                </a>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

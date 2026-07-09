@@ -27,7 +27,7 @@ namespace Ostawy.Controllers
             return View();
         }
 
-        // 2. استقبال بيانات الطلب ونشره (تم تعديله لمنع فشل الـ ModelState)
+        // 2. استقبال بيانات الطلب ونشره
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateRequest(JobRequest model)
@@ -35,12 +35,10 @@ namespace Ostawy.Controllers
             var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
 
-            // إسناد البيانات الأساسية للطلب خلف الكواليس
             model.ClientId = clientId;
             model.Status = "Open";
             model.CreatedAt = DateTime.Now;
 
-            // 🛠️ الحركة السحرية: إزالة الحقول التي تسبب فشل التحقق التلقائي في الـ .NET 6/7/8
             ModelState.Remove("ClientId");
             ModelState.Remove("Category");
 
@@ -49,16 +47,14 @@ namespace Ostawy.Controllers
                 _db.JobRequests.Add(model);
                 await _db.SaveChangesAsync();
 
-                // التحويل المباشر لصفحة لوحة التحكم لمتابعة العروض لايف
                 return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
             }
 
-            // لو في أي مشكلة تانية حقيقية، بنعيد تحميل الأقسام عشان الفورم متضربش
             ViewBag.Categories = await _db.Categories.ToListAsync();
             return View(model);
         }
 
-        // 3. لوحة تحكم الطلب (نصف لطلب العميل والنصف الثاني لعروض الصنايعية)
+        // 3. لوحة تحكم الطلب
         public async Task<IActionResult> RequestDashboard(int requestId)
         {
             var request = await _db.JobRequests
@@ -71,29 +67,37 @@ namespace Ostawy.Controllers
             return View(request);
         }
 
-        // 4. API سريع بالـ AJAX عشان يجيب العروض الجديدة أول بأول مع إظهار اسم الصنايعي
+        // 4. API سريع بالـ AJAX يجلب العروض المفتوحة والمؤمنة ضد قفلات الـ LINQ
         [HttpGet]
         public async Task<IActionResult> GetBidsForRequest(int requestId)
         {
             var bids = await _db.JobBids
-                .Where(b => b.JobRequestId == requestId && b.Status == "Pending")
+                .Where(b => b.JobRequestId == requestId && (b.Status == "Pending" || b.Status == "pending"))
                 .OrderByDescending(b => b.CreatedAt)
                 .ToListAsync();
 
-            // حركة سحرية: بنجيب الاسماء من جدول الـ Users مباشرة عشان صاحبك مش عامل Navigation Property
+            var usersList = await _db.Users.ToListAsync();
+
+            // سحب لستة الاشتراكات النشطة للـ PRO عشان نعلم عليهم
+            var activeProUserIds = await _db.UserSubscriptions
+                .Where(s => s.IsActive && s.Plan!.Name == "Pro")
+                .Select(s => s.UserId.ToString())
+                .ToListAsync();
+
             var result = bids.Select(b => new {
                 id = b.Id,
                 offerPrice = b.OfferPrice,
                 note = b.Note,
-                // بنروح ندور في جدول الـ Users على الاسم باستخدام الـ ArtisanId
-                artisanName = _db.Users.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
+                artisanName = usersList.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
+                // 🚀 حركة سحرية: لو الـ ArtisanId موجود في لستة الـ PRO، نبعت علامة التوثيق
+                isVerified = activeProUserIds.Contains(b.ArtisanId),
                 createdAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
             }).ToList();
 
             return Json(result);
         }
 
-        // 5. 🚀 الـ API الجديد المسؤول عن قبول العرض لايف بالـ AJAX
+        // 5. قبول العرض لايف بالـ AJAX ومتوافق مع كود الـ View بتاعك
         [HttpPost]
         public async Task<IActionResult> ApiAcceptBid(int bidId)
         {
@@ -101,7 +105,12 @@ namespace Ostawy.Controllers
             if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
 
             bid.Status = "Accepted";
-            bid.JobRequest.Status = "Accepted"; // قفلنا الطلب وحولناه لمقبول
+
+            // عشان يطابق شروط الـ View التانية ويقفل الكارت، بنخلي حالة الشغلانة "Closed" أو "Accepted"
+            if (bid.JobRequest != null)
+            {
+                bid.JobRequest.Status = "Closed";
+            }
 
             // رفض باقي العروض التانية أوتوماتيك عشان الشغلانة اتقفلت خلاص
             var otherBids = await _db.JobBids.Where(b => b.JobRequestId == bid.JobRequestId && b.Id != bidId).ToListAsync();
@@ -114,17 +123,38 @@ namespace Ostawy.Controllers
             return Json(new { success = true, message = "تم قبول العرض بنجاح! جاري إرسال بيانات التواصل للصنايعي. 🎉" });
         }
 
-        // 6. 🚀 الـ API الجديد المسؤول عن رفض العرض لايف بالـ AJAX
+        // 6. رفض العرض لايف بالـ AJAX
         [HttpPost]
         public async Task<IActionResult> ApiRejectBid(int bidId)
         {
             var bid = await _db.JobBids.FindAsync(bidId);
             if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
 
-            bid.Status = "Rejected"; // حولناه لمرفوض
+            bid.Status = "Rejected";
             await _db.SaveChangesAsync();
 
             return Json(new { success = true, message = "تم رفض العرض بنجاح." });
+        }
+
+        // 🚨 8. الـ API الجديد المسؤول عن إلغاء الطلب بالكامل
+        [HttpPost]
+        public async Task<IActionResult> CancelRequest(int requestId)
+        {
+            var request = await _db.JobRequests.FindAsync(requestId);
+            if (request == null) return Json(new { success = false, message = "الطلب غير موجود" });
+
+            // تغيير حالة الطلب لـ ملغي
+            request.Status = "Cancelled";
+
+            // رفض جميع العروض المعلقة عليه تلقائياً
+            var pendingBids = await _db.JobBids.Where(b => b.JobRequestId == requestId).ToListAsync();
+            foreach (var bid in pendingBids)
+            {
+                bid.Status = "Rejected";
+            }
+
+            await _db.SaveChangesAsync();
+            return Json(new { success = true });
         }
 
         // 7. صفحة الإشعارات المفصولة ذكياً لكل مستخدم
@@ -165,19 +195,17 @@ namespace Ostawy.Controllers
         }
 
         // 5. صفحة "طلباتي" الخاصة بالعميل فقط لمتابعة عروضها
-        [Authorize(Roles = "Client")] // 🔐 دي اللي بتفرّق! بتسمح للعميل وتمنع الصنايعي تماماً
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public async Task<IActionResult> MyRequests()
         {
-            // بنجيب الـ ID بتاع العميل اللي مسجل دخول حالياً
             var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
 
-            // بنروح للداتا بيز نجيب الطلبات اللي العميل ده عملها هو بس
             var myRequests = await _db.JobRequests
-                .Include(r => r.Category) // عشان نسحب اسم الحرفة (سباكة، كهرباء...)
+                .Include(r => r.Category)
                 .Where(r => r.ClientId == clientId)
-                .OrderByDescending(r => r.CreatedAt) // الأحدث يظهر فوق
+                .OrderByDescending(r => r.CreatedAt)
                 .ToListAsync();
 
             return View(myRequests);
