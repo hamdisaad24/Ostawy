@@ -20,19 +20,7 @@ public class CustomerController : Controller
     [HttpGet]
     public IActionResult CreateRequest()
     {
-        ViewBag.Categories = new List<dynamic>
-        {
-            new { Id = 1, Name = "سباكة" },
-            new { Id = 2, Name = "كهرباء" },
-            new { Id = 3, Name = "تكييف وتبريد" },
-            new { Id = 4, Name = "نقاشة ودهانات" },
-            new { Id = 5, Name = "نجارة" },
-            new { Id = 6, Name = "حدادة ولحام" },
-            new { Id = 7, Name = "سيراميك وبلاط" },
-            new { Id = 8, Name = "حدائق وتشجير" },
-            new { Id = 9, Name = "أثاث وديكور" },
-            new { Id = 10, Name = "صيانة عامة" }
-        };
+        ViewBag.Categories = _db.Professions.Select(p => new { Id = p.Id, Name = p.Name }).ToList();
         return View();
     }
 
@@ -57,19 +45,7 @@ public class CustomerController : Controller
             return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
         }
 
-        ViewBag.Categories = new List<dynamic>
-        {
-            new { Id = 1, Name = "سباكة" },
-            new { Id = 2, Name = "كهرباء" },
-            new { Id = 3, Name = "تكييف وتبريد" },
-            new { Id = 4, Name = "نقاشة ودهانات" },
-            new { Id = 5, Name = "نجارة" },
-            new { Id = 6, Name = "حدادة ولحام" },
-            new { Id = 7, Name = "سيراميك وبلاط" },
-            new { Id = 8, Name = "حدائق وتشجير" },
-            new { Id = 9, Name = "أثاث وديكور" },
-            new { Id = 10, Name = "صيانة عامة" }
-        };
+        ViewBag.Categories = _db.Professions.Select(p => new { Id = p.Id, Name = p.Name }).ToList();
         return View(model);
     }
 

@@ -14,7 +14,7 @@ namespace Ostawy.Models
         public string? ClientId { get; set; } // المعرف الخاص بالعميل اللي نشر الطلب
 
         [Required]
-        public int CategoryId { get; set; } // ربط مع جدول الأقسام (سباك، نجار..) اللي جاية من الداتا بيز
+        public Guid CategoryId { get; set; } // ربط مع جدول الأقسام (سباك، نجار..) اللي جاية من الداتا بيز
 
         // [ForeignKey("CategoryId")]
         // public virtual Category? Category { get; set; }

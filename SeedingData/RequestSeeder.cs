@@ -19,7 +19,7 @@ public static class RequestSeeder
             new()
             {
                 ClientId = users[0].Id.ToString(),
-                CategoryId = 1,
+                CategoryId = Guid.NewGuid(),
                 Description = "تسريب مياه من المواسير أسفل المغسلة في الحمام، الموية بتجري حتى لو مقفلة.",
                 EstimatedPrice = 300,
                 Status = "Open",
@@ -28,7 +28,7 @@ public static class RequestSeeder
             new()
             {
                 ClientId = users[1 % users.Count].Id.ToString(),
-                CategoryId = 2,
+                CategoryId = Guid.NewGuid(),
                 Description = "تركيب ٥ مراوح شفط في شقة جديدة، مع توصيل الكهرباء لكل مروحة.",
                 EstimatedPrice = 1500,
                 Status = "Open",
@@ -37,7 +37,7 @@ public static class RequestSeeder
             new()
             {
                 ClientId = users[2 % users.Count].Id.ToString(),
-                CategoryId = 3,
+                CategoryId = Guid.NewGuid(),
                 Description = "تكييف سبليت ٣ حصان مش بيعمل تبريد كويس، ممكن يحتاج فريون أو صيانة.",
                 EstimatedPrice = 500,
                 Status = "Accepted",
@@ -46,7 +46,7 @@ public static class RequestSeeder
             new()
             {
                 ClientId = users[0].Id.ToString(),
-                CategoryId = 1,
+                CategoryId = Guid.NewGuid(),
                 Description = "سخان مياه بينقط موية من تحت، عايز حد يصلحه قبل ما يبوظ بالكامل.",
                 EstimatedPrice = 250,
                 Status = "Closed",

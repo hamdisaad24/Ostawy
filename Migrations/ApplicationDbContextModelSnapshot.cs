@@ -264,7 +264,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("ProfessionId");
 
-                    b.ToTable("CraftManProfessions", (string)null);
+                    b.ToTable("CraftManProfessions");
                 });
 
             modelBuilder.Entity("Ostawy.Models.CraftManProfessionImage", b =>
@@ -284,7 +284,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("CraftManProfessionId");
 
-                    b.ToTable("CraftManProfessionImages", (string)null);
+                    b.ToTable("CraftManProfessionImages");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Craftsman", b =>
@@ -303,7 +303,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Craftsmen", (string)null);
+                    b.ToTable("Craftsmen");
                 });
 
             modelBuilder.Entity("Ostawy.Models.EmailVerification", b =>
@@ -332,7 +332,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EmailVerifications", (string)null);
+                    b.ToTable("EmailVerifications");
                 });
 
             modelBuilder.Entity("Ostawy.Models.JobBid", b =>
@@ -379,8 +379,8 @@ namespace Ostawy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ClientId")
                         .IsRequired()
@@ -430,7 +430,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PasswordResetOtps", (string)null);
+                    b.ToTable("PasswordResetOtps");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Payment", b =>
@@ -473,7 +473,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Plan", b =>
@@ -513,7 +513,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plans", (string)null);
+                    b.ToTable("Plans");
                 });
 
             modelBuilder.Entity("Ostawy.Models.Profession", b =>
@@ -532,7 +532,7 @@ namespace Ostawy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Professions", (string)null);
+                    b.ToTable("Professions");
                 });
 
             modelBuilder.Entity("Ostawy.Models.UserSubscription", b =>
@@ -566,7 +566,7 @@ namespace Ostawy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserSubscriptions", (string)null);
+                    b.ToTable("UserSubscriptions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -721,15 +721,14 @@ namespace Ostawy.Migrations
                     b.Navigation("User");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("Ostawy.Models.CraftManProfession", b =>
                 {
                     b.Navigation("Images");
-=======
+                });
+
             modelBuilder.Entity("Ostawy.Models.JobRequest", b =>
                 {
                     b.Navigation("JobBids");
->>>>>>> e6e5dfec399d24b6061d61e5d39dd64881de0979
                 });
 #pragma warning restore 612, 618
         }

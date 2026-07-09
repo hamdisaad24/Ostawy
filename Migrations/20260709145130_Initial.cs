@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ostawy.Migrations
 {
     /// <inheritdoc />
-    public partial class setupDatabase : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,6 +53,24 @@ namespace Ostawy.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobRequests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClientId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstimatedPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobRequests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -216,9 +234,6 @@ namespace Ostawy.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YearsOfExperience = table.Column<int>(type: "int", nullable: false),
-                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -250,6 +265,30 @@ namespace Ostawy.Migrations
                         name: "FK_EmailVerifications_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobBids",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobRequestId = table.Column<int>(type: "int", nullable: false),
+                    ArtisanId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OfferPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobBids", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JobBids_JobRequests_JobRequestId",
+                        column: x => x.JobRequestId,
+                        principalTable: "JobRequests",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -320,7 +359,10 @@ namespace Ostawy.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CraftsmanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProfessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProfessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YearsOfExperience = table.Column<int>(type: "int", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -335,6 +377,25 @@ namespace Ostawy.Migrations
                         name: "FK_CraftManProfessions_Professions_ProfessionId",
                         column: x => x.ProfessionId,
                         principalTable: "Professions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CraftManProfessionImages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CraftManProfessionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CraftManProfessionImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CraftManProfessionImages_CraftManProfessions_CraftManProfessionId",
+                        column: x => x.CraftManProfessionId,
+                        principalTable: "CraftManProfessions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -379,6 +440,11 @@ namespace Ostawy.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CraftManProfessionImages_CraftManProfessionId",
+                table: "CraftManProfessionImages",
+                column: "CraftManProfessionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CraftManProfessions_CraftsmanId",
                 table: "CraftManProfessions",
                 column: "CraftsmanId");
@@ -397,6 +463,11 @@ namespace Ostawy.Migrations
                 name: "IX_EmailVerifications_UserId",
                 table: "EmailVerifications",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobBids_JobRequestId",
+                table: "JobBids",
+                column: "JobRequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Payments_PlanId",
@@ -438,10 +509,13 @@ namespace Ostawy.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "CraftManProfessions");
+                name: "CraftManProfessionImages");
 
             migrationBuilder.DropTable(
                 name: "EmailVerifications");
+
+            migrationBuilder.DropTable(
+                name: "JobBids");
 
             migrationBuilder.DropTable(
                 name: "PasswordResetOtps");
@@ -456,13 +530,19 @@ namespace Ostawy.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "CraftManProfessions");
+
+            migrationBuilder.DropTable(
+                name: "JobRequests");
+
+            migrationBuilder.DropTable(
+                name: "Plans");
+
+            migrationBuilder.DropTable(
                 name: "Craftsmen");
 
             migrationBuilder.DropTable(
                 name: "Professions");
-
-            migrationBuilder.DropTable(
-                name: "Plans");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

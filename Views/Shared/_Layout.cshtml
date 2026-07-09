@@ -1,405 +1,3 @@
-<<<<<<< HEAD
-=======
-@* <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - أوستاوي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Ostawy.styles.css" asp-append-version="true" />
-    <style>
-        html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 100% !important;
-            overflow-x: hidden;
-            font-family: 'Manrope', sans-serif;
-            background-color: #fcfdfe;
-        }
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-        .custom-container {
-            width: 100%;
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .main-header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(3, 22, 54, 0.05);
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 12px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .brand-box:hover { text-decoration: none; }
-        .app-logo {
-            height: 42px;
-            width: auto;
-            object-fit: contain;
-        }
-        .app-name {
-            font-size: 22px;
-            font-weight: 900;
-            color: #031636;
-            letter-spacing: -0.5px;
-        }
-        .main-nav {
-            display: flex;
-            gap: 24px;
-        }
-        .nav-item {
-            color: #64748b;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .nav-item:hover { color: #fd7613; text-decoration: none; }
-        .auth-nav {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .link-login {
-            color: #031636;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .link-login:hover { color: #fd7613; text-decoration: none; }
-        .btn-register-nav {
-            background-color: #031636;
-            color: #ffffff !important;
-            padding: 9px 20px;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .btn-register-nav:hover {
-            background-color: #fd7613;
-            transform: translateY(-1px);
-            text-decoration: none;
-        }
-        .menu-toggle-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #031636;
-            cursor: pointer;
-        }
-        main {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .main-footer {
-            background-color: #031636;
-            color: #ffffff;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 80px 0 0 0;
-            width: 100%;
-            margin-top: 60px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            text-align: right;
-        }
-        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .footer-logo { height: 46px; width: auto; object-fit: contain; }
-        .footer-app-name { font-size: 24px; font-weight: 900; color: #ffffff; }
-        .footer-brand-desc { color: #94a3b8; font-size: 14px; line-height: 1.7; }
-        .footer-title {
-            color: #fd7613;
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            position: relative;
-            padding-bottom: 8px;
-        }
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 35px;
-            height: 2px;
-            background-color: #fd7613;
-            border-radius: 2px;
-        }
-        .footer-links-list { list-style: none; padding: 0; }
-        .footer-links-list li { margin-bottom: 12px; }
-        .footer-links-list a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .footer-links-list a:hover { color: #fd7613; padding-right: 6px; text-decoration: none; }
-        .footer-info-item { color: #cbd5e1; font-size: 14px; font-weight: 600; }
-        .footer-bottom {
-            background-color: #020e24;
-            padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .footer-bottom-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .footer-copy { color: #64748b; font-size: 13px; }
-        .footer-socials { display: flex; gap: 16px; }
-        .social-icon { color: #94a3b8; text-decoration: none; font-size: 13px; font-weight: 700; }
-        .social-icon:hover { color: #fd7613; text-decoration: none; }
-
-        .offcanvas {
-            max-width: 270px;
-            background-color: #ffffff;
-        }
-        .offcanvas-header {
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .offcanvas-title {
-            font-weight: 900;
-            color: #031636;
-        }
-        .mobile-nav-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            padding: 20px 0;
-        }
-        .mobile-nav-item {
-            color: #031636;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-        .mobile-nav-item:hover {
-            background-color: #fff4e6;
-            color: #fd7613;
-            text-decoration: none;
-        }
-
-        @@media (max-width: 992px) {
-            .main-nav { display: none; }
-            .menu-toggle-btn { display: block; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        }
-        @@media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; }
-            .auth-nav { display: none; }
-            .footer-bottom-flex { flex-direction: column; text-align: center; gap: 10px; }
-        }
-        @@media (max-width: 576px) {
-            .footer-brand { justify-content: center; }
-            .footer-title::after { right: 50%; transform: translateX(50%); }
-        }
-    </style>
-    @await RenderSectionAsync("Styles", required: false)
-</head>
-<body>
-
-    <header class="main-header">
-        <div class="custom-container header-container">
-            <div class="d-flex align-items-center gap-3">
-                <button class="menu-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                    ☰
-                </button>
-                <a class="brand-box" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/osta.png" alt="لوجو أوستاوي" class="app-logo" asp-append-version="true">
-                    <span class="app-name">أوستاوي</span>
-                </a>
-            </div>
-            
-            <nav class="main-nav">
-                <a asp-controller="Home" asp-action="Index" class="nav-item">الرئيسية</a>
-                @if (User!.Identity!.IsAuthenticated)
-                {
-                    @if (User.IsInRole("Client"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الخدمات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">طلباتي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الإشعارات</a>
-                    }
-                    else if(User.IsInRole("CraftMan"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">أعمالي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الإحصائيات</a>
-                    }
-                    else if(User.IsInRole("Admin"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">العملاء</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الصنايعية</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الحرف</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">التقارير</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الشكاوى</a>
-                    }
-                }
-                else
-                {
-                    <a href="#services" class="nav-item">الخدمات</a>
-                    <a href="#how-it-works" class="nav-item">كيف يعمل؟</a>
-                    <a href="#features" class="nav-item">المميزات</a>
-                    <a href="#faq" class="nav-item">الأسئلة الشائعة</a>
-                }
-            </nav>
-            
-            <nav class="auth-nav">
-                @if (User!.Identity!.IsAuthenticated)
-                {
-                    <a class="link-login" asp-area="" asp-controller="Profile" asp-action="Index">بروفايل</a>
-                    <a class="btn-register-nav" asp-area="" asp-controller="Account" asp-action="Logout">خروج</a>
-                }
-                else
-                {
-                    <a class="link-login" asp-area="" asp-controller="Account" asp-action="Login">تسجيل دخول</a>
-                    <a class="btn-register-nav" asp-area="" asp-controller="Account" asp-action="Register">إنشاء حساب</a>
-                }
-            </nav>
-        </div>
-    </header>
-
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="mobileSidebarLabel">قائمة أوستاوي</h5>
-            <button type="button" class="btn-close text-reset" data-bs-shadow="none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <nav class="mobile-nav-list">
-                <a asp-controller="Home" asp-action="Index" class="mobile-nav-item">الرئيسية</a>
-                @if (User!.Identity!.IsAuthenticated)
-                {
-                    @if (User.IsInRole("Client"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الخدمات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">طلباتي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الإشعارات</a>
-                    }
-                    else if(User.IsInRole("CraftMan"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">أعمالي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الإحصائيات</a>
-                    }
-                    else if(User.IsInRole("Admin"))
-                    {
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">العملاء</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الصنايعية</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الحرف</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">التقارير</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الشكاوى</a>
-                    }
-                    <hr>
-                    <a class="mobile-nav-item text-primary" asp-controller="Profile" asp-action="Index">بروفايل</a>
-                    <a class="mobile-nav-item text-danger" asp-controller="Account" asp-action="Logout">تسجيل الخروج</a>
-                }
-                else
-                {
-                    <a href="#services" class="mobile-nav-item" data-bs-dismiss="offcanvas">الخدمات</a>
-                    <a href="#how-it-works" class="mobile-nav-item" data-bs-dismiss="offcanvas">كيف يعمل؟</a>
-                    <a href="#features" class="mobile-nav-item" data-bs-dismiss="offcanvas">المميزات</a>
-                    <a href="#faq" class="mobile-nav-item" data-bs-dismiss="offcanvas">الأسئلة الشائعة</a>
-                    <hr>
-                    <a class="mobile-nav-item text-primary" asp-controller="Account" asp-action="Login">تسجيل دخول</a>
-                    <a class="mobile-nav-item text-success" asp-controller="Account" asp-action="Register">إنشاء حساب</a>
-                }
-            </nav>
-        </div>
-    </div>
-
-    <main role="main">
-        @RenderBody()
-    </main>
-
-    <footer class="main-footer">
-        <div class="custom-container footer-grid">
-            <div class="footer-col brand-col">
-                <div class="footer-brand">
-                    <img src="~/images/osta.png" alt="لوجو أوستاوي" class="footer-logo" asp-append-version="true">
-                    <span class="footer-app-name">أوستاوي</span>
-                </div>
-                <p class="footer-brand-desc">المنصة الأقوى والأسرع في مصر للربط بين أصحاب المنازل وأقرب الفنيين والصنايعية المعتمدين جغرافياً بكل أمان وشفافية.</p>
-            </div>
-            <div class="footer-col">
-                <h4 class="footer-title">تصفح المنصة</h4>
-                <ul class="footer-links-list">
-                    <li><a href="/Home/MapView">اطلب أوستا على الخريطة</a></li>
-                    <li><a href="#how-it-works">دليل الاستخدام السريع</a></li>
-                    <li><a href="#faq">الأسئلة الشائعة</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 class="footer-title">أبرز التخصصات</h4>
-                <ul class="footer-links-list">
-                    <li><a href="#services">أعمال السباكة والصرف</a></li>
-                    <li><a href="#services">كهرباء وتأسيس منازل</a></li>
-                    <li><a href="#services">تكييف وتبريد الهواء</a></li>
-                    <li><a href="#services">نقاشة ودهانات عصرية</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 class="footer-title">الدعم والمساعدة</h4>
-                <ul class="footer-links-list">
-                    <li><span class="footer-info-item">📞 رقم الدعم: 19999</span></li>
-                    <li><span class="footer-info-item">✉ البريد: support@ostawy.com</span></li>
-                    <li><a href="#">سياسة الخصوصية</a></li>
-                    <li><a href="#">شروط الاستخدام</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="custom-container footer-bottom-flex">
-                <p class="footer-copy">© 2026 أوستاوي. جميع الحقوق محفوظة لـ تيم مشروع التخرج.</p>
-                <div class="footer-socials">
-                    <a href="#" class="social-icon">Facebook</a>
-                    <a href="#" class="social-icon">WhatsApp</a>
-                    <a href="#" class="social-icon">LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html> *@
-
->>>>>>> d6b528eecc84d19a95fd1c48a7395802d2fe3b21
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -682,7 +280,7 @@
         if (Guid.TryParse(userIdString, out Guid userId))
         {
             isProUser = _context.UserSubscriptions
-                .Any(s => s.UserId == userId && s.IsActive && s.Plan!.Name == "Pro");
+                .Any(s => s.UserId == userId && s.IsActive && s.Plan!.Name == "PRO المتميزة");
         }
     }
 }
@@ -709,10 +307,26 @@
                         <a asp-controller="Artisan" asp-action="AvailableJobs" class="nav-item">الطلبات المتاحة</a>
                         <a asp-controller="Artisan" asp-action="Notifications" class="nav-item">🔔 الإشعارات</a>
                         <a asp-controller="Artisan" asp-action="MyWorks" class="nav-item">أعمالي</a>
+                        <a asp-controller="Customer" asp-action="CreateRequest" class="nav-item">طلب صنايعي</a>
+                        <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
+                        <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                                                     
-                        <form asp-controller="Subscription" asp-action="Upgrade" method="get" class="d-inline ms-2">
-                            <button type="submit" class="btn-upgrade-pro">🚀 ترقية إلى PRO</button>
-                        </form>
+                        @if (!isProUser)
+                        {
+                            <div class="px-3 py-2">
+                                <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post">
+                                    <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
+                                    <button type="submit" class="btn-upgrade-pro w-100 text-center py-2">🚀 ترقية إلى PRO</button>
+                                </form>
+                            </div>
+                        }else{
+                           <div class="px-3 py-2">
+                                <span class="d-block w-100 text-center bg-success text-white rounded-pill py-2 fw-bold">
+                                    <i class="fa-solid fa-circle-check me-2"></i>
+                                    تمت الترقية
+                                </span>
+                            </div>
+                        }
                     }
                     else if (User.IsInRole("Client"))
                     {
@@ -771,10 +385,10 @@
                     }
                     else if(User.IsInRole("CraftMan"))
                     {
+                        <a asp-controller="Customer" asp-action="MyRequests" class="mobile-nav-item">طلباتي</a>
+                        <a asp-controller="Customer" asp-action="Notifications" class="mobile-nav-item">الإشعارات</a>
                         <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">أعمالي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الطلبات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الإحصائيات</a>
-                        
+                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الطلبات</a>                        
                         @if (!isProUser)
                         {
                             <div class="px-3 py-2">
