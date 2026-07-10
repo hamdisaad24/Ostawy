@@ -264,6 +264,34 @@
             .footer-brand { justify-content: center; }
             .footer-title::after { right: 50%; transform: translateX(50%); }
         }
+        .upgrade-status{
+    display: flex;
+    align-items: center;
+}
+
+.upgrade-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(34,197,94,.25);
+    white-space: nowrap;
+    transition: .3s ease;
+}
+
+.upgrade-badge i{
+    font-size: 14px;
+}
+
+.upgrade-badge:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(34,197,94,.35);
+}
     </style>
     @await RenderSectionAsync("Styles", required: false)
 </head>
@@ -305,25 +333,22 @@
                     @if (User.IsInRole("CraftMan"))
                     {
                         <a asp-controller="Artisan" asp-action="AvailableJobs" class="nav-item">الطلبات المتاحة</a>
-                        <a asp-controller="Artisan" asp-action="Notifications" class="nav-item">🔔 الإشعارات</a>
-                        <a asp-controller="Artisan" asp-action="MyWorks" class="nav-item">أعمالي</a>
                         <a asp-controller="Customer" asp-action="CreateRequest" class="nav-item">طلب صنايعي</a>
                         <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
-                        <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                                                     
                         @if (!isProUser)
                         {
                             <div class="px-3 py-2">
-                                <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post">
-                                    <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
+                                <form asp-controller="Subscription" asp-action="Upgrade" method="get">
+                                    @* <input type="hidden" name="planId" value="51267b58-906a-423b-bf07-a3a43c32be99" /> *@
                                     <button type="submit" class="btn-upgrade-pro w-100 text-center py-2">🚀 ترقية إلى PRO</button>
                                 </form>
                             </div>
                         }else{
-                           <div class="px-3 py-2">
-                                <span class="d-block w-100 text-center bg-success text-white rounded-pill py-2 fw-bold">
-                                    <i class="fa-solid fa-circle-check me-2"></i>
-                                    تمت الترقية
+                           <div class="upgrade-status">
+                                <span class="upgrade-badge">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    تمت الترقية إلى PRO
                                 </span>
                             </div>
                         }
@@ -332,12 +357,11 @@
                     {
                         <a asp-controller="Customer" asp-action="CreateRequest" class="nav-item">طلب صنايعي</a>
                         <a asp-controller="Customer" asp-action="MyRequests" class="nav-item">طلباتي</a>
-                        <a asp-controller="Customer" asp-action="Notifications" class="nav-item">الإشعارات</a>
                     }
                     else if (User.IsInRole("Admin"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">العملاء</a>
-                        <a asp-controller="Account" asp-action="Profile" class="nav-item">الصنايعية</a>
+                        <a asp-controller="Admin" asp-action="Clients" class="nav-item">العملاء</a>
+                        <a asp-controller="Admin" asp-action="Artisans" class="nav-item">الصنايعية</a>
                         <a asp-controller="Profession" asp-action="Index" class="nav-item">الحرف</a>
                         <a asp-controller="Admin" asp-action="Requests" class="nav-item">الطلبات</a>
                         <a asp-controller="Plan" asp-action="Index" class="nav-item">الباقات</a>
@@ -381,19 +405,17 @@
                     {
                         <a asp-controller="Customer" asp-action="CreateRequest" class="mobile-nav-item">طلب صنايعي</a>
                         <a asp-controller="Customer" asp-action="MyRequests" class="mobile-nav-item">طلباتي</a>
-                        <a asp-controller="Customer" asp-action="Notifications" class="mobile-nav-item">الإشعارات</a>
                     }
                     else if(User.IsInRole("CraftMan"))
                     {
-                        <a asp-controller="Customer" asp-action="MyRequests" class="mobile-nav-item">طلباتي</a>
-                        <a asp-controller="Customer" asp-action="Notifications" class="mobile-nav-item">الإشعارات</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">أعمالي</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الطلبات</a>                        
+                        <a asp-controller="Artisan" asp-action="AvailableJobs" class="mobile-nav-item">الطلبات المتاحة</a>
+                        <a asp-controller="Customer" asp-action="CreateRequest" class="mobile-nav-item">طلب صنايعي</a>
+                        <a asp-controller="Customer" asp-action="MyRequests" class="mobile-nav-item">طلباتي</a>                      
                         @if (!isProUser)
                         {
                             <div class="px-3 py-2">
-                                <form asp-controller="Subscription" asp-action="UpgradeToPro" method="post">
-                                    <input type="hidden" name="planId" value="5e45d947-c2d6-4f7d-90b6-83c485082a03" />
+                                <form asp-controller="Subscription" asp-action="Upgrade" method="post">
+                                    <input type="hidden" name="planId" value="51267b58-906a-423b-bf07-a3a43c32be99" />
                                     <button type="submit" class="btn-upgrade-pro w-100 text-center py-2">🚀 ترقية إلى PRO</button>
                                 </form>
                             </div>
@@ -401,11 +423,11 @@
                     }
                     else if(User.IsInRole("Admin"))
                     {
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">العملاء</a>
-                        <a asp-controller="Account" asp-action="Profile" class="mobile-nav-item">الصنايعية</a>
+                        <a asp-controller="Admin" asp-action="Clients" class="mobile-nav-item">العملاء</a>
+                        <a asp-controller="Admin" asp-action="Artisans" class="mobile-nav-item">الصنايعية</a>
                         <a asp-controller="Profession" asp-action="Index" class="mobile-nav-item">الحرف</a>
                         <a asp-controller="Admin" asp-action="Requests" class="mobile-nav-item">الطلبات</a>
-                        <a asp-controller="Plan" asp-action="Index" class="nav-item">الباقات</a>
+                        <a asp-controller="Plan" asp-action="Index" class="mobile-nav-item">الباقات</a>
                     }
                     <hr>
                     <a class="mobile-nav-item text-primary" asp-controller="Profile" asp-action="Index">بروفايل</a>

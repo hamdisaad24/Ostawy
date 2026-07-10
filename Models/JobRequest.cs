@@ -8,29 +8,27 @@ namespace Ostawy.Models
     public class JobRequest
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public string? ClientId { get; set; } // المعرف الخاص بالعميل اللي نشر الطلب
+        public Guid UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser? User { get; set; }
 
         [Required]
-        public Guid CategoryId { get; set; } // ربط مع جدول الأقسام (سباك، نجار..) اللي جاية من الداتا بيز
+        public Guid ProfessionId { get; set; }
 
-        // [ForeignKey("CategoryId")]
-        // public virtual Category? Category { get; set; }
+        [ForeignKey("ProfessionId")]
+        public virtual Profession? Profession { get; set; }
 
         [Required(ErrorMessage = "برجاء كتابة وصف للمشكلة")]
-        public string Description { get; set; } = string.Empty; // وصف المشكلة
+        public string Description { get; set; } = string.Empty; 
 
         [Required(ErrorMessage = "برجاء تحديد ميزانية تقريبية")]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal EstimatedPrice { get; set; } // السعر التقريبي
-
-        public string Status { get; set; } = "Open"; // حالة الطلب (Open, Accepted, Closed)
-
+        public decimal EstimatedPrice { get; set; } 
+        public string Status { get; set; } = "Open"; 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
-        // علاقة مع العروض المقدمة على هذا الطلب
-        public virtual ICollection<JobBid> JobBids { get; set; } = new List<JobBid>();
+        public virtual ICollection<JobBid>? JobBids { get; set; }   
     }
 }

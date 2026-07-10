@@ -1,0 +1,365 @@
+@model Ostawy.ViewModels.UserDetailsViewModel
+
+
+@{
+    ViewData["Title"] = "تفاصيل المستخدم";
+}
+
+
+<div class="container" style="margin-top:120px">
+
+
+    <div class="row g-4">
+
+
+        <!-- User Card -->
+
+        <div class="col-lg-4">
+
+
+            <div class="card shadow-sm border-0 rounded-4">
+
+                <div class="card-body text-center p-4">
+
+
+                    <div class="mb-3">
+
+                        <div style="
+                            width:90px;
+                            height:90px;
+                            background:#031636;
+                            color:white;
+                            border-radius:50%;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:35px;
+                            margin:auto;
+                            ">
+
+                            @Model.User.FullName?.Substring(0, 1)
+
+                        </div>
+
+                    </div>
+
+
+                    <h3 class="fw-bold">
+                        @Model.User.FullName
+                    </h3>
+
+
+                    <p class="text-muted">
+                        @Model.User.Email
+                    </p>
+
+
+
+                    @if (Model.IsPro)
+                    {
+                        <span class="badge bg-warning text-dark px-3 py-2">
+                            ⭐ PRO
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary px-3 py-2">
+                            Free
+                        </span>
+                    }
+
+
+
+                    <hr>
+
+
+                    <div class="text-start">
+
+
+                        <p>
+                            <b>تاريخ التسجيل:</b>
+                            <br />
+
+                            @Model.User.CreatedAt.ToString("yyyy/MM/dd")
+
+                        </p>
+
+
+                        <p>
+                            <b>رقم الهاتف:</b>
+                            <br />
+
+                            @Model.User.PhoneNumber
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- Statistics -->
+
+
+        <div class="col-lg-8">
+
+
+            <div class="row g-3 mb-4">
+
+
+                <div class="col-md-4">
+
+                    <div class="card border-0 shadow-sm rounded-4">
+
+                        <div class="card-body text-center">
+
+                            <h2 class="fw-bold text-primary">
+                                @Model.RequestsCount
+                            </h2>
+
+                            <p>
+                                الطلبات
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card border-0 shadow-sm rounded-4">
+
+                        <div class="card-body text-center">
+
+                            <h2 class="fw-bold text-warning">
+                                @Model.BidsCount
+                            </h2>
+
+                            <p>
+                                العروض
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card border-0 shadow-sm rounded-4">
+
+                        <div class="card-body text-center">
+
+                            <h2 class="fw-bold text-success">
+                                @Model.AcceptedBidsCount
+                            </h2>
+
+                            <p>
+                                عروض مقبولة
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.Requests.Any())
+            {
+
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+                    <div class="card-body">
+
+
+                        <h4 class="fw-bold mb-4">
+                            📋 طلباته
+                        </h4>
+
+
+                        <table class="table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        التخصص
+                                    </th>
+
+                                    <th>
+                                        الميزانية
+                                    </th>
+
+                                    <th>
+                                        الحالة
+                                    </th>
+
+                                    <th>
+                                        التاريخ
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                @foreach (var item in Model.Requests)
+                                {
+
+                                    <tr>
+
+                                        <td>
+                                            @item.Profession?.Name
+                                        </td>
+
+
+                                        <td>
+                                            @item.EstimatedPrice جنيه
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="badge bg-success">
+                                                @item.Status
+                                            </span>
+
+                                        </td>
+
+
+                                        <td>
+                                            @item.CreatedAt.ToString("yyyy/MM/dd")
+                                        </td>
+
+
+                                    </tr>
+
+                                }
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+                </div>
+
+
+            }
+
+
+
+
+
+            @if (Model.Bids.Any())
+            {
+
+                <div class="card border-0 shadow-sm rounded-4">
+
+
+                    <div class="card-body">
+
+
+                        <h4 class="fw-bold mb-4">
+                            🛠️ عروضه
+                        </h4>
+
+
+                        <table class="table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        الطلب
+                                    </th>
+
+                                    <th>
+                                        السعر
+                                    </th>
+
+                                    <th>
+                                        الحالة
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                @foreach (var bid in Model.Bids)
+                                {
+
+                                    <tr>
+
+                                        <td>
+                                            @bid.JobRequest?.Profession?.Name
+                                        </td>
+
+
+                                        <td>
+                                            @bid.OfferPrice جنيه
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="badge bg-info">
+                                                @bid.Status
+                                            </span>
+
+                                        </td>
+
+
+                                    </tr>
+
+                                }
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+            }
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

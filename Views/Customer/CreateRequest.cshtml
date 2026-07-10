@@ -1,138 +1,140 @@
 ﻿@model Ostawy.Models.JobRequest
 
 @{
-    ViewData["Title"] = "طلب صنايعي - أوستاوي";
+    ViewData["Title"] = "طلب صنايعي";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container" style="margin-top: 120px; margin-bottom: 60px;">
-    <div class="row g-4">
-        
-        <!-- النصف الأيمن: فورم طلب الصنايعي -->
-        <div class="col-lg-6">
-            <div class="card shadow-sm border-0 p-4" style="border-radius: 20px; background: #ffffff;">
-                <h3 class="fw-bold mb-3" style="color: #031636;">طلب صنايعي جديد</h3>
-                <p class="text-muted small mb-4">املا البيانات دي عشان طلبك يوصل لأقرب صنايعي متاح في منطقتك.</p>
-                
-                <form asp-action="CreateRequest" method="post">
-                    @Html.AntiForgeryToken()
-                    <div asp-validation-summary="All" class="text-danger mb-3 fw-bold"></div>
+<div class="container" style="max-width:760px; margin-top:120px; margin-bottom:60px;">
 
-                    @* <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div> *@
+    <div class="card border-0 shadow-lg rounded-4">
 
-                    <!-- 1. اختيار التخصص من الداتا بيز -->
-                    <div class="mb-3">
-                        <label class="form-label fw-bold" style="color: #031636;">نوع الخدمة / التخصص</label>
-                        <select asp-for="CategoryId" class="form-select form-control-lg" style="border-radius: 10px; font-size: 15px;">
-                            <option value="">-- اختر التخصص المطلوب --</option>
-                            @if (ViewBag.Categories != null)
-                            {
-                                foreach (var cat in ViewBag.Categories)
-                                {
-                                    <option value="@cat.Id">@cat.Name</option>
-                                }
-                            }
-                        </select>
-                        <span asp-validation-for="CategoryId" class="text-danger small"></span>
-                    </div>
+        <div class="card-body p-5">
 
-                    <!-- 2. السعر التقريبي -->
-                    <div class="mb-3">
-                        <label class="form-label fw-bold" style="color: #031636;">الميزانية / السعر التقريبي (جنية)</label>
-                        <input asp-for="EstimatedPrice" type="number" class="form-control form-control-lg" placeholder="150" style="border-radius: 10px; font-size: 15px;" />
-                        <span asp-validation-for="EstimatedPrice" class="text-danger small"></span>
-                    </div>
+            <div class="text-center mb-5">
 
-                    <!-- 3. وصف المشكلة -->
-                    <div class="mb-4">
-                        <label class="form-label fw-bold" style="color: #031636;">وصف المشكلة بالتفصيل</label>
-                        <textarea asp-for="Description" rows="4" class="form-control" placeholder="اكتب مشكلتك هنا بالتفصيل (مثال: محتاج تركيب خلاط مياه جديد وتصليح حنفية بتسرب)..." style="border-radius: 10px; font-size: 15px;"></textarea>
-                        <span asp-validation-for="Description" class="text-danger small"></span>
-                    </div>
+                <div class="mb-3" style="font-size:65px;">🛠️</div>
 
-                    <!-- زر النشر -->
-                    <button type="submit" class="btn w-100 fw-bold text-white py-3" style="background-color: #fd7613; border-radius: 12px; font-size: 16px; box-shadow: 0 8px 20px rgba(253, 118, 19, 0.2);">
-                        🚀 نشر الطلب الآن
-                    </button>
-                </form>
+                <h2 class="fw-bold" style="color:#031636;">
+                    اطلب صنايعي
+                </h2>
+
+                <p class="text-muted mb-0">
+                    اكتب تفاصيل المشكلة، وسيتم إرسال طلبك إلى الصنايعية المناسبين حسب التخصص.
+                </p>
+
             </div>
-        </div>
 
-        <!-- النصف الأيسر: عرض عروض الأسعار الواصلة للعميل -->
-        <div class="col-lg-6">
-            <div class="card shadow-sm border-0 p-4 d-flex flex-column h-100" style="border-radius: 20px; background: #ffffff; min-height: 450px;">
-                <h3 class="fw-bold mb-2" style="color: #031636;">العروض المقدمة</h3>
-                <p class="text-muted small mb-4">العروض اللي هتبعت من الصنايعية المتاحين حالياً هتظهر هنا تلقائياً.</p>
-                
-                <!-- انيميشن تحميل أو رسالة افتراضية لو مفيش طلب شغال لسه -->
-                <div id="bidsContainer" class="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center text-muted">
-                    <div class="fs-1 mb-2">📥</div>
-                    <p class="m-0 small">في انتظار نشر الطلب لاستقبال العروض...</p>
+            <form asp-action="CreateRequest" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger">
                 </div>
-            </div>
+
+                <!-- Profession -->
+
+                <div class="mb-4">
+
+                    <label asp-for="ProfessionId" class="form-label fw-bold">
+
+                        <i class="fa-solid fa-screwdriver-wrench me-1"></i>
+                        التخصص المطلوب
+
+                    </label>
+
+                    <select asp-for="ProfessionId" asp-items="ViewBag.Professions" class="form-select form-select-lg">
+
+                        <option value="">
+                            -- اختر التخصص --
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="ProfessionId" class="text-danger small"></span>
+
+                </div>
+
+                <!-- Budget -->
+
+                <div class="mb-4">
+
+                    <label asp-for="EstimatedPrice" class="form-label fw-bold">
+
+                        <i class="fa-solid fa-money-bill-wave me-1"></i>
+                        الميزانية المتوقعة
+
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            ج.م
+                        </span>
+
+                        <input asp-for="EstimatedPrice" type="number" min="1" class="form-control form-control-lg"
+                               placeholder="مثال: 300" />
+
+                    </div>
+
+                    <small class="text-muted">
+                        الميزانية تساعد الصنايعي في تقديم عرض مناسب.
+                    </small>
+
+                    <span asp-validation-for="EstimatedPrice" class="text-danger d-block"></span>
+
+                </div>
+
+                <!-- Description -->
+
+                <div class="mb-4">
+
+                    <label asp-for="Description" class="form-label fw-bold">
+
+                        <i class="fa-solid fa-file-lines me-1"></i>
+                        وصف المشكلة
+
+                    </label>
+
+                    <textarea asp-for="Description" rows="6" class="form-control"
+                              placeholder="مثال: يوجد تسريب مياه أسفل الحوض بالمطبخ وأحتاج إلى تغيير المحبس وتركيب خرطوم جديد."></textarea>
+
+                    <small class="text-muted">
+                        كلما كان الوصف أوضح، كانت العروض أدق وأسرع.
+                    </small>
+
+                    <span asp-validation-for="Description" class="text-danger d-block"></span>
+
+                </div>
+
+                <div class="alert alert-light border rounded-3">
+
+                    <strong>ماذا يحدث بعد نشر الطلب؟</strong>
+
+                    <ul class="mb-0 mt-2">
+                        <li>سيظهر الطلب للصنايعية المناسبين.</li>
+                        <li>ستبدأ عروض الأسعار في الوصول إليك.</li>
+                        <li>يمكنك مقارنة العروض واختيار الأنسب.</li>
+                    </ul>
+
+                </div>
+
+                <button type="submit" class="btn w-100 text-white fw-bold py-3 mt-3"
+                        style="background:#fd7613;border-radius:12px;font-size:18px;">
+
+                    🚀 نشر الطلب
+
+                </button>
+
+            </form>
+
         </div>
 
     </div>
+
 </div>
 
-<!-- 🧪 جافا سكريبت تفاعلية لتحديث العروض أول بأول بدون ريفريش للصفحة -->
-@section Scripts {
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    
-    <script>
-        // لو العميل جاي من صفحة داشبورد طلب شغال بالفعل، هنعمل تشيك على العروض بالـ AJAX كل 5 ثواني
-        function fetchNewBids(requestId) {
-            if(!requestId) return;
-            
-            $.ajax({
-                url: '/Customer/GetBidsForRequest?requestId=' + requestId,
-                type: 'GET',
-                success: function(data) {
-                    if(data && data.length > 0) {
-                        var html = '<div class="w-100 d-flex flex-column gap-3">';
-                        data.forEach(function(bid) {
-                            html += `
-                                <div class="p-3 border rounded-3 text-right" style="border-color: #f1f5f9 !important; background-color: #f8fafc;">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span class="fw-bold text-success fs-5">${bid.offerPrice} ج.م</span>
-                                        <span class="text-muted small">${bid.createdAt}</span>
-                                    </div>
-                                    <p class="text-dark small mb-3">${bid.note || 'بدون ملاحظات إضافية'}</p>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-sm btn-dark w-50 fw-bold" onclick="respondToBid(${bid.id}, 'Approved')">✅ قبول العرض</button>
-                                        <button class="btn btn-sm btn-outline-danger w-50 fw-bold" onclick="respondToBid(${bid.id}, 'Rejected')">❌ رفض</button>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        html += '</div>';
-                        $('#bidsContainer').html(html);
-                    } else {
-                        $('#bidsContainer').html(`
-                            <div class="text-center text-muted my-auto">
-                                <div class="spinner-border spinner-border-sm text-warning mb-2" role="status"></div>
-                                <p class="m-0 small">مستنيين عروض الصنايعية...</p>
-                            </div>
-                        `);
-                    }
-                }
-            });
-        }
-
-        // دالة قبول أو رفض العرض (هنربط الباك إند بتاعها مع صفحة الفني)
-        function respondToBid(bidId, status) {
-            alert("تم تحديد حالة العرض كـ " + (status === 'Approved' ? 'مقبول' : 'مرفوض') + " - وجاري ربطه بالسيستم!");
-        }
-
-        // لو الصفحة فتحت ومعاها RequestId شغال، ابدأ التحديث التلقائي
-        $(document).ready(function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            var reqId = urlParams.get('requestId');
-            if(reqId) {
-                fetchNewBids(reqId);
-                setInterval(function() { fetchNewBids(reqId); }, 5000); // تحديث كل 5 ثواني
-            }
-        });
-    </script>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
 }

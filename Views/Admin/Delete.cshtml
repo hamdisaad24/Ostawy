@@ -21,7 +21,7 @@
         background: #fff;
         border-radius: 18px;
         padding: 35px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
     }
 
     .page-title {
@@ -43,12 +43,6 @@
     .warning-box h4 {
         color: var(--danger);
         font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .warning-box p {
-        margin: 0;
-        color: #555;
     }
 
     .info-box {
@@ -74,8 +68,9 @@
     }
 
     .info-value {
-        font-weight: 600;
         color: #444;
+        font-weight: 600;
+        text-align: left;
     }
 
     .btn-delete {
@@ -90,7 +85,7 @@
 
     .btn-delete:hover {
         background: #bb2d3b;
-        color: white;
+        color: #fff;
     }
 
     .btn-back {
@@ -105,56 +100,103 @@
 
     .btn-back:hover {
         background: var(--secondary);
-        color: white;
-        text-decoration: none;
+        color: #fff;
     }
 </style>
 
 <div class="page-container">
+
     <div class="card-box">
-        <h2 class="page-title">حذف الطلب</h2>
+
+        <h2 class="page-title">
+            حذف الطلب
+        </h2>
 
         <div class="warning-box">
-            <h4>تأكيد الحذف</h4>
+
+            <h4>
+                ⚠️ تأكيد الحذف
+            </h4>
+
             <p>
-                هل أنت متأكد أنك تريد حذف هذا الطلب؟
+                هل أنت متأكد من حذف هذا الطلب؟
+                <br />
                 لا يمكن التراجع عن هذه العملية.
             </p>
+
         </div>
 
         <div class="info-box">
+
             <div class="info-row">
                 <span class="info-title">رقم الطلب</span>
-                <span class="info-value">@Model.Id</span>
+                <span class="info-value">
+                    @Model.Id.ToString().Substring(0,8)
+                </span>
             </div>
+
             <div class="info-row">
                 <span class="info-title">العميل</span>
-                <span class="info-value">@Model.ClientId</span>
+                <span class="info-value">
+                    @Model.User?.FullName
+                </span>
             </div>
+
+            <div class="info-row">
+                <span class="info-title">التخصص</span>
+                <span class="info-value">
+                    @Model.Profession?.Name
+                </span>
+            </div>
+
             <div class="info-row">
                 <span class="info-title">الوصف</span>
-                <span class="info-value">@Model.Description</span>
+                <span class="info-value">
+                    @Model.Description
+                </span>
             </div>
+
             <div class="info-row">
                 <span class="info-title">الميزانية</span>
-                <span class="info-value">@Model.EstimatedPrice EGP</span>
+                <span class="info-value">
+                    @Model.EstimatedPrice.ToString("N0") ج.م
+                </span>
             </div>
+
             <div class="info-row">
                 <span class="info-title">الحالة</span>
-                <span class="info-value">@Model.Status</span>
+                <span class="info-value">
+                    @Model.Status
+                </span>
             </div>
+
             <div class="info-row">
-                <span class="info-title">تاريخ الطلب</span>
-                <span class="info-value">@Model.CreatedAt.ToString("yyyy/MM/dd - hh:mm tt")</span>
+                <span class="info-title">تاريخ الإنشاء</span>
+                <span class="info-value">
+                    @Model.CreatedAt.ToString("yyyy/MM/dd hh:mm tt")
+                </span>
             </div>
+
         </div>
 
         <form asp-action="DeleteConfirmed" method="post">
-            <input type="hidden" name="id" value="@Model.Id" />
+
+            <input asp-for="Id" type="hidden" />
+
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn-delete">حذف الطلب</button>
-                <a asp-action="Requests" class="btn-back">رجوع</a>
+
+                <button type="submit" class="btn-delete">
+                    حذف الطلب
+                </button>
+
+                <a asp-action="Requests" class="btn-back">
+                    رجوع
+                </a>
+
             </div>
+
         </form>
+
     </div>
+
 </div>

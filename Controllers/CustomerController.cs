@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ostawy.Data;
 using Ostawy.Models;
@@ -20,7 +21,11 @@ public class CustomerController : Controller
     [HttpGet]
     public IActionResult CreateRequest()
     {
-        ViewBag.Categories = _db.Professions.Select(p => new { Id = p.Id, Name = p.Name }).ToList();
+        ViewBag.Professions = new SelectList(
+            _db.Professions,
+            "Id",
+            "Name");
+
         return View();
     }
 
@@ -28,146 +33,248 @@ public class CustomerController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> CreateRequest(JobRequest model)
     {
-        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        model.ClientId = clientId;
-        model.Status = "Open";
-        model.CreatedAt = DateTime.Now;
+        if (string.IsNullOrEmpty(userId))
+            return RedirectToAction("Login", "Account");
 
-        ModelState.Remove("ClientId");
-
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            _db.JobRequests.Add(model);
-            await _db.SaveChangesAsync();
+            ViewBag.Professions = new SelectList(
+                _db.Professions,
+                "Id",
+                "Name");
 
-            return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
+            return View(model);
         }
 
-        ViewBag.Categories = _db.Professions.Select(p => new { Id = p.Id, Name = p.Name }).ToList();
-        return View(model);
+        model.Id = Guid.NewGuid();
+        model.UserId = Guid.Parse(userId);
+        model.Status = "Open";
+        model.CreatedAt = DateTime.UtcNow;
+
+        _db.JobRequests.Add(model);
+        await _db.SaveChangesAsync();
+
+        return RedirectToAction(nameof(RequestDashboard), new { requestId = model.Id });
     }
 
-    public async Task<IActionResult> RequestDashboard(int requestId)
+    [HttpGet]
+    public async Task<IActionResult> RequestDashboard(Guid requestId)
     {
         var request = await _db.JobRequests
+            .Include(r => r.User)
+            .Include(r => r.Profession)
             .Include(r => r.JobBids)
             .FirstOrDefaultAsync(r => r.Id == requestId);
 
-        if (request == null) return NotFound();
+        if (request == null)
+            return NotFound();
+
+        ViewBag.AcceptedBid = request.JobBids?
+            .FirstOrDefault(b => b.Status == "Accepted");
 
         return View(request);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetBidsForRequest(int requestId)
+    public async Task<IActionResult> GetBidsForRequest(Guid requestId)
     {
         var bids = await _db.JobBids
-            .Where(b => b.JobRequestId == requestId && (b.Status == "Pending" || b.Status == "pending"))
+            .Where(b => b.JobRequestId == requestId &&
+                        b.Status == "Pending")
             .OrderByDescending(b => b.CreatedAt)
             .ToListAsync();
 
-        var usersList = await _db.Users.ToListAsync();
-
-        var activeProUserIds = await _db.UserSubscriptions
-            .Where(s => s.IsActive && s.Plan!.Name == "Pro")
-            .Select(s => s.UserId.ToString())
+        var activeProUsers = await _db.UserSubscriptions
+            .Include(x => x.Plan)
+            .Where(x => x.IsActive && x.Plan!.Name == "Pro")
+            .Select(x => x.UserId)
             .ToListAsync();
 
-        var result = bids.Select(b => new {
+        var result = bids.Select(b => new
+        {
             id = b.Id,
             offerPrice = b.OfferPrice,
             note = b.Note,
-            artisanName = usersList.FirstOrDefault(u => u.Id.ToString() == b.ArtisanId)?.FullName ?? "أسطى محترف",
-            isVerified = activeProUserIds.Contains(b.ArtisanId),
+
+            artisanName = _db.Users
+                .Where(u => u.Id == b.UserId)
+                .Select(u => u.FullName)
+                .FirstOrDefault() ?? "أسطى محترف",
+
+            phoneNumber = _db.Users
+                .Where(u => u.Id == b.UserId)
+                .Select(u => u.PhoneNumber)
+                .FirstOrDefault(),
+
+            isVerified = activeProUsers.Contains(b.UserId),
+
+            status = b.Status,
+
             createdAt = b.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")
-        }).ToList();
+        });
 
         return Json(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> ApiAcceptBid(int bidId)
+    public async Task<IActionResult> ApiAcceptBid(Guid bidId)
     {
-        var bid = await _db.JobBids.Include(b => b.JobRequest).FirstOrDefaultAsync(b => b.Id == bidId);
-        if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+        var bid = await _db.JobBids
+            .Include(b => b.JobRequest)
+            .FirstOrDefaultAsync(b => b.Id == bidId);
+
+        if (bid == null)
+            return Json(new
+            {
+                success = false,
+                message = "العرض غير موجود"
+            });
+
+        if (bid.JobRequest == null)
+            return Json(new
+            {
+                success = false,
+                message = "الطلب غير موجود"
+            });
+
+        if (bid.JobRequest.Status != "Open")
+            return Json(new
+            {
+                success = false,
+                message = "تم اختيار صنايعي بالفعل."
+            });
 
         bid.Status = "Accepted";
 
-        if (bid.JobRequest != null)
-        {
-            bid.JobRequest.Status = "Closed";
-        }
+        bid.JobRequest.Status = "Assigned";
 
-        var otherBids = await _db.JobBids.Where(b => b.JobRequestId == bid.JobRequestId && b.Id != bidId).ToListAsync();
+        var otherBids = await _db.JobBids
+            .Where(x => x.JobRequestId == bid.JobRequestId &&
+                        x.Id != bid.Id)
+            .ToListAsync();
+
         foreach (var other in otherBids)
         {
             other.Status = "Rejected";
         }
 
         await _db.SaveChangesAsync();
-        return Json(new { success = true, message = "تم قبول العرض بنجاح!" });
+
+        return Json(new
+        {
+            success = true,
+            message = "تم قبول العرض بنجاح."
+        });
     }
 
     [HttpPost]
-    public async Task<IActionResult> ApiRejectBid(int bidId)
+    public async Task<IActionResult> ApiRejectBid(Guid bidId)
     {
         var bid = await _db.JobBids.FindAsync(bidId);
-        if (bid == null) return Json(new { success = false, message = "العرض غير موجود" });
+
+        if (bid == null)
+            return Json(new
+            {
+                success = false,
+                message = "العرض غير موجود"
+            });
 
         bid.Status = "Rejected";
+
         await _db.SaveChangesAsync();
 
-        return Json(new { success = true, message = "تم رفض العرض بنجاح." });
+        return Json(new
+        {
+            success = true,
+            message = "تم رفض العرض."
+        });
     }
 
     [HttpPost]
-    public async Task<IActionResult> CancelRequest(int requestId)
+    public async Task<IActionResult> CompleteRequest(Guid requestId)
     {
         var request = await _db.JobRequests.FindAsync(requestId);
-        if (request == null) return Json(new { success = false, message = "الطلب غير موجود" });
+
+        if (request == null)
+            return Json(new
+            {
+                success = false,
+                message = "الطلب غير موجود"
+            });
+
+        request.Status = "Completed";
+
+        await _db.SaveChangesAsync();
+
+        return Json(new
+        {
+            success = true,
+            message = "تم إنهاء الطلب بنجاح."
+        });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CancelRequest(Guid requestId)
+    {
+        var request = await _db.JobRequests.FindAsync(requestId);
+
+        if (request == null)
+            return Json(new
+            {
+                success = false,
+                message = "الطلب غير موجود"
+            });
 
         request.Status = "Cancelled";
 
-        var pendingBids = await _db.JobBids.Where(b => b.JobRequestId == requestId).ToListAsync();
-        foreach (var bid in pendingBids)
+        var bids = await _db.JobBids
+            .Where(b => b.JobRequestId == requestId)
+            .ToListAsync();
+
+        foreach (var bid in bids)
         {
             bid.Status = "Rejected";
         }
 
         await _db.SaveChangesAsync();
+
         return Json(new { success = true });
     }
 
     [HttpGet]
     public async Task<IActionResult> Notifications()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+        Guid userId = Guid.Parse(
+            User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
         if (User.IsInRole("Client"))
         {
-            var clientNotifications = await _db.JobBids
+            var notifications = await _db.JobBids
                 .Include(b => b.JobRequest)
-                .Where(b => b.JobRequest.ClientId == userId && b.Status == "Pending")
+                .Where(b => b.JobRequest!.UserId == userId &&
+                            b.Status == "Pending")
                 .OrderByDescending(b => b.CreatedAt)
                 .ToListAsync();
 
             ViewBag.UserRole = "Client";
-            return View(clientNotifications);
+
+            return View(notifications);
         }
 
         if (User.IsInRole("CraftMan"))
         {
-            var artisanNotifications = await _db.JobBids
+            var notifications = await _db.JobBids
                 .Include(b => b.JobRequest)
-                .Where(b => b.ArtisanId == userId && b.Status == "Accepted")
+                .Where(b => b.UserId == userId &&
+                            b.Status == "Accepted")
                 .OrderByDescending(b => b.CreatedAt)
                 .ToListAsync();
 
             ViewBag.UserRole = "CraftMan";
-            return View(artisanNotifications);
+
+            return View(notifications);
         }
 
         return View(new List<JobBid>());
@@ -177,14 +284,16 @@ public class CustomerController : Controller
     [HttpGet]
     public async Task<IActionResult> MyRequests()
     {
-        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (string.IsNullOrEmpty(clientId)) return RedirectToAction("Login", "Account");
+        var userId = Guid.Parse(
+            User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-        var myRequests = await _db.JobRequests
-            .Where(r => r.ClientId == clientId)
+        var requests = await _db.JobRequests
+            .Include(r => r.Profession)
+            .Include(r => r.JobBids)
+            .Where(r => r.UserId == userId)
             .OrderByDescending(r => r.CreatedAt)
             .ToListAsync();
 
-        return View(myRequests);
+        return View(requests);
     }
 }

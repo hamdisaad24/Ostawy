@@ -29,18 +29,13 @@
     .page-title {
         color: var(--primary);
         font-weight: 900;
-        margin: 0;
     }
 
     .table-card {
         background: white;
         border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
-    }
-
-    table {
-        margin: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,.06);
     }
 
     thead {
@@ -49,10 +44,9 @@
     }
 
     th {
-        font-weight: 700;
         text-align: center;
-        padding: 18px !important;
         white-space: nowrap;
+        padding: 18px !important;
     }
 
     td {
@@ -66,137 +60,194 @@
     }
 
     .status-open {
-        background: rgba(22, 163, 74, .12);
+        background: rgba(22,163,74,.15);
         color: var(--success);
         padding: 6px 14px;
         border-radius: 30px;
-        font-size: 13px;
         font-weight: bold;
-        display: inline-block;
     }
 
     .status-accepted {
-        background: rgba(245, 158, 11, .12);
+        background: rgba(245,158,11,.15);
         color: var(--warning);
         padding: 6px 14px;
         border-radius: 30px;
-        font-size: 13px;
         font-weight: bold;
-        display: inline-block;
     }
 
     .status-closed {
-        background: rgba(220, 38, 38, .12);
+        background: rgba(220,38,38,.15);
         color: var(--danger);
         padding: 6px 14px;
         border-radius: 30px;
-        font-size: 13px;
         font-weight: bold;
-        display: inline-block;
+    }
+
+    .status-cancelled {
+        background: rgba(108,117,125,.15);
+        color: #6c757d;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-weight: bold;
     }
 
     .price {
-        font-size: 16px;
-        font-weight: bold;
         color: var(--secondary);
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .desc-cell {
+        text-align: right;
+        max-width: 350px;
     }
 
     .btn-delete {
         background: var(--danger);
         color: white;
-        border: none;
         padding: 8px 18px;
         border-radius: 8px;
         text-decoration: none;
-        transition: .3s;
-        font-size: 13px;
     }
 
     .btn-delete:hover {
         background: #b91c1c;
         color: white;
-        text-decoration: none;
-    }
-
-    .desc-cell {
-        max-width: 300px;
-        text-align: right;
     }
 
     .empty {
         text-align: center;
         padding: 70px;
     }
-
-    .empty h4 {
-        color: #64748b;
-    }
 </style>
 
 <div class="page-container">
+
     <div class="page-header">
         <div>
             <h2 class="page-title">إدارة الطلبات</h2>
-            <p class="text-muted">جميع طلبات الصيانة المقدمة من العملاء.</p>
+            <p class="text-muted">
+                جميع طلبات العملاء داخل النظام.
+            </p>
         </div>
     </div>
 
     <div class="table-card">
+
         @if (Model.Any())
         {
-            <table class="table table-hover align-middle">
+            <table class="table table-hover align-middle mb-0">
+
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>اسم العميل</th>
-                        <th>التصنيف</th>
-                        <th>الوصف</th>
-                        <th>الميزانية</th>
-                        <th>الحالة</th>
-                        <th>تاريخ الطلب</th>
-                        <th width="120">العمليات</th>
-                    </tr>
+
+                <tr>
+                    <th>رقم الطلب</th>
+                    <th>العميل</th>
+                    <th>التخصص</th>
+                    <th>الوصف</th>
+                    <th>الميزانية</th>
+                    <th>الحالة</th>
+                    <th>تاريخ الإنشاء</th>
+                    <th>العمليات</th>
+                </tr>
+
                 </thead>
+
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td><strong>@item.Id</strong></td>
-                            <td>@(ViewBag.UserNames != null && ViewBag.UserNames.ContainsKey(item.ClientId) ? ViewBag.UserNames[item.ClientId] : item.ClientId)</td>
-                            <td>@item.CategoryId</td>
-                            <td class="desc-cell">@item.Description</td>
-                            <td><span class="price">@item.EstimatedPrice EGP</span></td>
-                            <td>
-                                @switch (item.Status)
-                                {
-                                    case "Open":
-                                        <span class="status-open">مفتوح</span>
-                                        break;
-                                    case "Accepted":
-                                        <span class="status-accepted">مقبول</span>
-                                        break;
-                                    case "Closed":
-                                        <span class="status-closed">مغلق</span>
-                                        break;
-                                    default:
-                                        <span>@item.Status</span>
-                                        break;
-                                }
-                            </td>
-                            <td>@item.CreatedAt.ToString("yyyy/MM/dd - hh:mm tt")</td>
-                            <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn-delete">حذف</a>
-                            </td>
-                        </tr>
-                    }
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Id.ToString().Substring(0,8)
+                        </td>
+
+                        <td>
+                            @item.User?.FullName
+                        </td>
+
+                        <td>
+                            @item.Profession?.Name
+                        </td>
+
+                        <td class="desc-cell">
+                            @item.Description
+                        </td>
+
+                        <td>
+                            <span class="price">
+                                @item.EstimatedPrice.ToString("N0") ج.م
+                            </span>
+                        </td>
+
+                        <td>
+
+                            @switch (item.Status)
+                            {
+                                case "Open":
+                                    <span class="status-open">
+                                        مفتوح
+                                    </span>
+                                    break;
+
+                                case "Accepted":
+                                    <span class="status-accepted">
+                                        تم قبول عرض
+                                    </span>
+                                    break;
+
+                                case "Closed":
+                                    <span class="status-closed">
+                                        مغلق
+                                    </span>
+                                    break;
+
+                                case "Cancelled":
+                                    <span class="status-cancelled">
+                                        ملغي
+                                    </span>
+                                    break;
+
+                                default:
+                                    <span>
+                                        @item.Status
+                                    </span>
+                                    break;
+                            }
+
+                        </td>
+
+                        <td>
+                            @item.CreatedAt.ToString("yyyy/MM/dd hh:mm tt")
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn-delete">
+
+                                حذف
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
                 </tbody>
+
             </table>
         }
         else
         {
             <div class="empty">
-                <h4>لا توجد أي طلبات حتى الآن.</h4>
+                <h4>لا توجد طلبات حتى الآن.</h4>
             </div>
         }
+
     </div>
+
 </div>
